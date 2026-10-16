@@ -47,7 +47,7 @@ write("p1-food-day-1x1", pg(f"""
 # ===== 2. Safe homes carousel =====
 T = 5
 write("p2-safe-01", pg(f"""
- {photo(LEKKI, 0, 0, 1080, 1350, "40% 50%")}{grad('bottom', 85, .97)}{grad('top', 22, .6, 0, 400)}
+ {photo(LEKKI, 0, 0, 1080, 1350, "33.5% 50%")}{grad('bottom', 85, .97)}{grad('top', 22, .6, 0, 400)}
  <div class="chip" style="left:90px;top:90px">Stock photo &middot; Lekki, Lagos</div>
  <div class="c" style="position:absolute;left:90px;right:90px;bottom:160px">
   <div class="h" style="font-size:134px">{st('Just rain.', th=11)}<br><span class="acc">A safe home<br>is climate<br>protection.</span></div></div>
@@ -77,14 +77,14 @@ write("p2-safe-04", pg(f"""
 write("p2-safe-05", pg(f"""
  <div class="label">Tell us</div>
  <div class="h" style="font-size:134px;margin-top:60px">Where does<br><span class="acc">water collect</span><br>on your street?</div>
- <div class="body" style="margin-top:44px;font-weight:700">Tell us in the comments.</div>
+ <div class="body" style="margin-top:44px;font-weight:700">Tell us.</div>
  <img src="{LOGO_L}" style="position:absolute;left:90px;bottom:170px;width:380px">
  {sprout(380, extra="right:-60px;bottom:140px;transform:rotate(-12deg)")}
 """, "ink", 5, T))
 
 # ===== 3. Safe homes X, 1600x900 =====
 write("p3-safe-x-16x9", pg(f"""
- {photo(LEKKI, 760, 0, 840, 780, "58% 50%")}
+ <div style="position:absolute;z-index:0;left:760px;top:0;width:840px;height:780px;overflow:hidden"><img src="{LEKKI}" style="position:absolute;left:-400px;top:-260px;width:1920px;height:1280px;max-width:none"></div>
  <div class="chip" style="right:40px;top:40px">Stock photo &middot; Lekki, Lagos</div>
  <div class="label">Climate, explained locally</div>
  <div class="h" style="font-size:100px;margin-top:50px;max-width:680px">When it rains,<br>where does<br><span class="acc">the water go</span><br>on your street?</div>
@@ -163,21 +163,21 @@ countdown("p9-ycef-last-x-16x9", 4, "Your street,<br>your fix.", "4 days left<br
 T = 4
 write("p8-oniwaya-01", pg(f"""
  <div class="label">One drain &middot; Oniwaya</div>
- <div class="brico" style="font-size:150px;margin-top:40px">{st('Blocked.')}<br><span style="color:{LIME}">Cleared.</span></div>
+ <div class="brico" style="font-size:150px;margin-top:40px">{st('Blocked.')}<br><span style="color:{LIME}">Cleaned up.</span></div>
  <div style="position:absolute;left:160px;top:560px;width:760px;height:620px;transform:rotate(-2.5deg);border:10px solid {OFF};overflow:hidden;z-index:0;box-shadow:0 20px 40px rgba(0,0,0,.4)">
   <img src="{ONI % '01'}" style="position:absolute;left:0;top:-300px;width:1520px;height:1520px;max-width:none"></div>
  <div class="tape" style="background:{LIME};color:{INK};left:120px;top:520px;transform:rotate(-6deg);z-index:4">Before</div>
 """, "ink", 1, T))
 write("p8-oniwaya-02", pg(f"""
- {photo(ONI % '01', 0, 150, 1080, 1080)}
+ <div style="position:absolute;z-index:0;left:0;top:310px;width:1080px;height:920px;overflow:hidden"><img src="{ONI % '01'}" style="position:absolute;left:0;top:-160px;width:1080px;height:1080px;max-width:none"></div>
  <div class="label" style="position:relative;z-index:3;color:{OFF}">Oniwaya &middot; From our archive</div>
- <div class="tape" style="z-index:4;background:{LIME};color:{INK};left:50px;top:172px;font-size:26px;padding:12px 28px;transform:rotate(-3deg)">Before</div>
- <div class="tape" style="z-index:4;background:{LIME};color:{INK};left:590px;top:172px;font-size:26px;padding:12px 28px;transform:rotate(3deg)">After</div>
+ <div class="tape" style="z-index:4;background:{LIME};color:{INK};left:50px;top:200px;font-size:26px;padding:12px 28px;transform:rotate(-3deg)">Before</div>
+ <div class="tape" style="z-index:4;background:{LIME};color:{INK};left:590px;top:200px;font-size:26px;padding:12px 28px;transform:rotate(3deg)">After</div>
 """, "ink", 2, T))
 write("p8-oniwaya-03", pg(f"""
  <div class="label">What it took</div>
  <div class="brico" style="font-size:130px;margin-top:36px">Volunteers, gloves, rakes. <span style="color:{OFF}">That's it.</span></div>
- {photo(ONI % '11', 90, 640, 900, 560, "50% 52%", "border-radius:28px")}
+ {photo(ONI % '08', 90, 650, 900, 550, "50% 36%", "border-radius:28px")}
 """, "lime", 3, T))
 write("p8-oniwaya-04", pg(f"""
  <div class="label">Your turn</div>
