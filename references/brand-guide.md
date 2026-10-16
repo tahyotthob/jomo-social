@@ -15,6 +15,7 @@ Every post should serve at least one of these.
 ## Programmes and partners
 
 - **Running now:** JOMO's Pods (the podcast) and the Young Climate Educators Fellowship (YCEF). YCEF applications open Mon 12 Oct 2026 and close Mon 26 Oct 2026; Weekend 1 is Fri 13 Nov 2026. YCEF is a 3-weekend virtual programme for 50 fellows across Nigeria and Zambia, open to university students and grassroots community volunteers aged 18 and over. Fellows research hyper-local climate challenges, design youth-led "sustenance engineering" projects and learn to pitch for seed funding. Never promise funding: there is no funding guarantee and no pitch competition.
+- **YCEF application link:** https://jomoclimatechange.org/events?apply=ycef (use this in every YCEF call to action).
 - **Past work to use as proof:** tree planting, community and market clean-ups, school sensitisation, the "My Photo With Earth" campaign.
 - **Partners JOMO can name:** Oxygen X (Access Holdings), the Rotary Club of Mende, the Lagos State environmental agency (confirm exact name and handle before tagging), The Slum Organisation.
 - Credit a government agency by name for its work; never praise or criticise officials personally.
