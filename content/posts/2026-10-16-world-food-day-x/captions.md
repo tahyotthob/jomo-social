@@ -8,7 +8,7 @@ Visual: Text graphic on Ink, no photo. "~~Food security.~~ Food on your street."
 Caption — X:
 What's one thing your street could grow, fix or stop wasting?
 
-World Food Day's theme is "Innovate today. Nourish tomorrow." Start with one street. Reply with your idea.
+World Food Day's theme is "Innovate today. Nourish tomorrow." [CONFIRM THEME ON FAO PAGE] Start with one street. Reply with your idea.
 
 #WorldFoodDay
 

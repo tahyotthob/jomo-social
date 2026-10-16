@@ -16,6 +16,6 @@ Apply: https://jomoclimatechange.org/events?apply=ycef
 
 (Approx. 190 characters with the link counted as 23.)
 
-Alt text: Dark graphic with a large lime-green "5" inside a round stamp, with the text "Days left" and the JOMO handle [HANDLE].
+Alt text: Dark graphic reading "Applications close Mon 26 Oct. Your street's fix starts here." beside a large lime-green round stamp with a "5" and the words "days left". Handle bar at the bottom reads [HANDLE].
 
 Sources: references/brand-guide.md. Close time [TIME] unconfirmed. Check the link opens. No funding promise.

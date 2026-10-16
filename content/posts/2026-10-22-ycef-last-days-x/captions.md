@@ -16,6 +16,6 @@ Apply: https://jomoclimatechange.org/events?apply=ycef
 
 (Approx. 170 characters with the link counted as 23.)
 
-Alt text: Dark graphic with a large lime-green "4" inside a round stamp, with the text "Days left" and the JOMO handle [HANDLE].
+Alt text: Dark graphic reading "Your street, your fix. 4 days left to apply." beside a large lime-green round stamp with a "4" and the words "days left". Handle bar at the bottom reads [HANDLE].
 
 Sources: references/brand-guide.md. Close time [TIME] unconfirmed. Check the link opens. No funding promise.

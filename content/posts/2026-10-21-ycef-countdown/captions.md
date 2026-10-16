@@ -23,6 +23,8 @@ Who: university students and grassroots community volunteers, 18+, in Nigeria ðŸ
 5 days left. Applications close Mon 26 Oct, [TIME] WAT.
 Apply: link in bio.
 
+Photos from our archive.
+
 #YCEF #ClimateAction #YouthLed #Nigeria #Zambia
 
 Caption â€” Facebook:
@@ -43,14 +45,15 @@ The programme: 50 fellows, 3 virtual weekends. Weekend 1 is Fri 13 Nov 2026.
 Applications close Mon 26 Oct, [TIME] WAT. That is 5 days from today.
 
 Apply here: https://jomoclimatechange.org/events?apply=ycef
-Know a student or community volunteer who should see this? Send them the link.
+
+Photos from our archive.
 
 #YCEF #ClimateAction #YouthLed
 
 Alt text:
-- Slide 1: Three JOMO volunteers in yellow-green "Climate Action" vests seen from behind, walking down a busy Lagos street past market stalls. Tilted tape banner reads "5 DAYS LEFT" and the headline reads "Your street has a climate problem. You've got the fix."
+- Slide 1: Three JOMO volunteers in yellow-green "Climate Action" vests seen from behind, walking down a busy street past market stalls. Tilted tape banner reads "5 DAYS LEFT" and the headline reads "Your street has a climate problem. You've got the fix."
 - Slide 2: Lime slide with the words "Someone should fix it." crossed out and "You can." beside a photo of a volunteer in a JOMO vest and red gloves clearing a drain. Text: "That blocked drain, that dump behind the market, that flooded corner."
-- Slide 3: Dark slide with text describing what fellows do: research one hyper-local climate challenge, design a youth-led sustenance engineering project, and learn to pitch for seed funding, with no funding guarantee. Photo of volunteers clearing a drain with rakes.
+- Slide 3: Dark slide with text describing what fellows do: research one hyper-local climate challenge, design a youth-led sustenance engineering project, and learn to pitch for seed funding, with no funding guarantee. Photo of two volunteers in JOMO vests at a roadside, one bending to pick up rubbish while the other holds a rake.
 - Slide 4: Lime slide with text: "University students and grassroots community volunteers, 18+, Nigeria and Zambia. 50 fellows. 3 virtual weekends. Weekend 1: Fri 13 Nov 2026."
 - Slide 5: Dark slide reading "Applications close Mon 26 Oct. Apply: https://jomoclimatechange.org/events?apply=ycef". Handle bar [HANDLE] and white JOMO logo.
 

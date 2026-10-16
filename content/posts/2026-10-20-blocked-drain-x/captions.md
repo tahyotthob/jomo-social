@@ -8,7 +8,7 @@ Visual: assets/photos/events/oniwaya-cleanup/oniwaya-cleanup-11.jpg (a volunteer
 Caption — X:
 That blocked drain is a flood waiting for rain.
 
-It is visible, and a few people with gloves and rakes can clear it.
+It is visible, and volunteers with gloves can clear it.
 
 From our archive: Oniwaya cleanup, [DATE].
 

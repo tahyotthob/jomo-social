@@ -16,7 +16,7 @@ What fellows do: research one hyper-local climate challenge, then design a youth
 
 Weekend 1 is Fri 13 Nov 2026. Applications close Mon 26 Oct, [TIME] WAT.
 
-If you teach, mentor or work with young people, please pass this on: https://jomoclimatechange.org/events?apply=ycef
+If you teach, mentor or work with young people, the application details are here: https://jomoclimatechange.org/events?apply=ycef
 
 #YCEF #ClimateEducation
 
