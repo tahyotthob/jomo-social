@@ -1,0 +1,178 @@
+<title>JOMO Newsroom Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@400;700;900&display=swap">
+<style>
+/* Layout: a newsroom floor. The operator's desk sits in the middle, twelve roles around it; a ticker on the right logs every handoff as it happens. */
+:root{
+  --bg:#F4F6EC; --fg:#1E2220; --muted:#5d645f; --line:rgba(30,34,32,.14);
+  --panel:#ffffff; --accent:#77962A; --lime:#A5CD39; --ink:#1E2220;
+  --node:#ffffff; --node-on:#A5CD39; --node-text:#1E2220;
+  --stop:#D9442B;
+  --display:Anton,"Arial Narrow",Impact,sans-serif; --body:Lato,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bg:#1E2220; --fg:#F4F6EC; --muted:#a7ada8; --line:rgba(244,246,236,.16);
+  --panel:#272b29; --accent:#A5CD39; --node:#2f3431; --node-on:#A5CD39; --node-text:#1E2220; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#1E2220; --fg:#F4F6EC; --muted:#a7ada8; --line:rgba(244,246,236,.16);
+  --panel:#272b29; --accent:#A5CD39; --node:#2f3431; --node-on:#A5CD39; --node-text:#1E2220; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+header{max-width:1240px;margin:0 auto 18px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 32px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);line-height:.95;margin:0;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+h1 span{color:var(--accent)}
+.eyebrow{font-weight:900;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.sub{color:var(--muted);max-width:60ch;margin:0;font-size:15px;line-height:1.45}
+.wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:20px}
+@media (max-width:860px){.wrap{grid-template-columns:1fr}}
+.floor{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:12px;min-width:0}
+svg{width:100%;height:auto;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+button{font:700 14px var(--body);border:1.5px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;padding:9px 16px;cursor:pointer;min-height:44px}
+button.primary{background:var(--ink);color:var(--lime);border-color:var(--ink)}
+button:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.step-name{margin-left:auto;font-weight:900;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.ticker{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.ticker h2{font-family:var(--display);font-weight:400;font-size:22px;margin:0;text-transform:uppercase;letter-spacing:.02em}
+.now{border-left:4px solid var(--lime);padding:8px 12px;font-size:15px;line-height:1.4}
+.now b{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto;font-size:13.5px;line-height:1.35}
+.log li{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.log .n{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700}
+.log .who{font-weight:700}
+.stop-tag{display:inline-block;background:var(--stop);color:#fff;font-size:10px;font-weight:900;letter-spacing:.14em;padding:2px 7px;border-radius:4px;vertical-align:middle;margin-left:6px}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:12.5px;color:var(--muted);margin-top:4px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:6px}
+.node{cursor:pointer}
+.node rect{fill:var(--node);stroke:var(--line);stroke-width:1.5;transition:fill .25s,stroke .25s}
+.node.on rect{fill:var(--node-on);stroke:var(--node-on)}
+.node text{fill:var(--fg);font-family:var(--body);font-weight:700;font-size:12.5px;pointer-events:none}
+.node.on text{fill:var(--node-text)}
+.node .sub{fill:var(--muted);font-weight:400;font-size:10.5px}
+.node.on .sub{fill:var(--node-text);opacity:.8}
+.edge{stroke:var(--line);stroke-width:1.5;fill:none}
+.edge.on{stroke:var(--accent);stroke-width:3;stroke-dasharray:8 8;animation:flow .9s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-16}}
+.edge.stop{stroke:var(--stop)}
+.dot{fill:var(--accent)}
+.dot.stop{fill:var(--stop)}
+.desk rect{fill:var(--ink);stroke:var(--lime);stroke-width:2}
+.desk text{fill:var(--lime);font-family:var(--display);font-size:20px;letter-spacing:.04em}
+.desk .sub{fill:#F4F6EC;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.12em}
+@media (prefers-reduced-motion:reduce){.edge.on{animation:none}}
+.roles{max-width:1240px;margin:22px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.role{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.4;background:var(--panel)}
+.role b{display:block;margin-bottom:2px}
+.role small{color:var(--muted)}
+</style>
+
+<header>
+  <div>
+    <div class="eyebrow">JOMO social media team · how the Monday session runs</div>
+    <h1>Twelve desks,<br><span>one sign-off.</span></h1>
+  </div>
+  <p class="sub">Every post moves around this floor in a fixed order. Press play to watch a week's plan travel from desk to desk. The two red stops are where nothing moves until you, the operator, say so.</p>
+</header>
+
+<div class="wrap">
+  <div class="floor">
+    <svg id="floor" viewBox="0 0 900 640" role="img" aria-label="Map of the twelve JOMO social media roles around the operator's desk, with handoffs drawn between them"></svg>
+    <div class="controls">
+      <button class="primary" id="play">Play the week</button>
+      <button id="prev">Back</button>
+      <button id="next">Next handoff</button>
+      <button id="reset">Reset</button>
+      <span class="step-name" id="stepname">Ready</span>
+    </div>
+    <div class="legend"><span><i style="background:var(--accent)"></i>Handoff in progress</span><span><i style="background:var(--stop)"></i>Stops for operator approval</span><span><i style="background:var(--lime)"></i>Desk at work</span></div>
+  </div>
+
+  <aside class="ticker">
+    <h2>Handoff ticker</h2>
+    <div class="now" id="now"><b>Step 0 of 14</b>Press play, or tap any desk to see what it owns.</div>
+    <ol class="log" id="log" aria-live="polite"></ol>
+  </aside>
+</div>
+
+<section class="roles" id="roles"></section>
+
+<script>
+const roles = [
+ ['EIC','Editor-in-Chief','Weekly plan, content mix, priorities'],
+ ['TRD','Trend Scout','Awareness days, formats, news hooks'],
+ ['ANL','Analyst','Weekly report from exported stats'],
+ ['CRD','Creative Director','The hook; rejects safe ideas'],
+ ['COP','Copywriter','Captions per platform, hashtags, alt text'],
+ ['DES','Designer','Visuals per platform size'],
+ ['VID','Video Producer','Reel scripts, shot lists, subtitles'],
+ ['IMP','Impact Storyteller','Numbers, quotes, LinkedIn proof'],
+ ['FCT','Fact-checker','Every claim gets a source'],
+ ['PSR','Policy & Safety','Pass, Fix or Block on every post'],
+ ['PRT','Partnerships','Correct partner names, tags, approval'],
+ ['COM','Community Manager','Replies to comments; flags risks'],
+];
+// Each step: from, to (arrays allowed), label, stop?
+const steps = [
+ {from:['ANL'],to:['EIC'],t:'Analyst sends last week’s numbers to the Editor-in-Chief.'},
+ {from:['TRD'],to:['EIC'],t:'Trend Scout hands over the 7-day hook list: awareness days, YCEF dates, podcast drops.'},
+ {from:['EIC'],to:['OP'],t:'Editor-in-Chief proposes the week’s plan, one post marked as the big swing.',stop:true},
+ {from:['OP'],to:['EIC'],t:'Operator approves or changes the plan.'},
+ {from:['EIC'],to:['CRD'],t:'Approved posts go to the Creative Director for a hook each.'},
+ {from:['CRD'],to:['COP','DES','VID','IMP'],t:'Hooks fan out: captions, visuals, reels and the LinkedIn proof post are made in parallel.'},
+ {from:['PRT'],to:['COP','DES'],t:'Partnerships supplies exact partner names and handles before anyone is tagged.'},
+ {from:['COP','DES','VID','IMP'],to:['FCT'],t:'Every draft lands with the Fact-checker. Each number and date gets a source or a placeholder.'},
+ {from:['FCT'],to:['PSR'],t:'Checked posts move to Policy & Safety for the 13-point review.'},
+ {from:['PSR'],to:['COP','DES'],t:'Fixes bounce back: engagement bait rewritten, consent confirmed, apolitical check.'},
+ {from:['PSR'],to:['OP'],t:'The sign-off pack reaches the operator: hook, visual, captions, alt text, sources, verdict.',stop:true},
+ {from:['OP'],to:['EIC'],t:'Operator signs off. Nothing is scheduled before this moment.'},
+ {from:['EIC'],to:['DES','COP'],t:'Calendar sheet updated; scheduling list for Meta Business Suite, LinkedIn and X reminders.'},
+ {from:['COM'],to:['OP'],t:'Through the week, Community Manager drafts replies and flags anything political or sensitive to the operator.'},
+];
+const svg=document.getElementById('floor'); const NS='http://www.w3.org/2000/svg';
+const cx=450, cy=320, R=250, pos={OP:[cx,cy]};
+roles.forEach((r,i)=>{const a=-Math.PI/2+i*2*Math.PI/roles.length; pos[r[0]]=[cx+R*Math.cos(a),cy+R*Math.sin(a)];});
+function el(n,at){const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);return e;}
+const edges={}; const g=el('g',{}); svg.appendChild(g);
+function key(a,b){return a<b?a+'|'+b:b+'|'+a;}
+steps.forEach(s=>s.from.forEach(f=>s.to.forEach(t=>{const k=key(f,t);if(edges[k])return;
+  const [x1,y1]=pos[f],[x2,y2]=pos[t];const p=el('path',{class:'edge',d:`M${x1},${y1} L${x2},${y2}`});g.appendChild(p);edges[k]=p;})));
+const nodes={};
+roles.forEach(r=>{const [x,y]=pos[r[0]];const n=el('g',{class:'node',tabindex:'0',role:'button','aria-label':r[1]});
+ n.appendChild(el('rect',{x:x-78,y:y-26,width:156,height:52,rx:10}));
+ const t1=el('text',{x:x,y:y-4,'text-anchor':'middle'});t1.textContent=r[1];n.appendChild(t1);
+ const t2=el('text',{x:x,y:y+14,'text-anchor':'middle',class:'sub'});t2.textContent=r[2].split(',')[0].split(';')[0];n.appendChild(t2);
+ n.addEventListener('click',()=>show(r));n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(r);}});
+ svg.appendChild(n);nodes[r[0]]=n;});
+const desk=el('g',{class:'desk'});desk.appendChild(el('rect',{x:cx-90,y:cy-40,width:180,height:80,rx:14}));
+let d1=el('text',{x:cx,y:cy-2,'text-anchor':'middle'});d1.textContent='OPERATOR';desk.appendChild(d1);
+let d2=el('text',{x:cx,y:cy+22,'text-anchor':'middle',class:'sub'});d2.textContent='FINAL SIGN-OFF';desk.appendChild(d2);svg.appendChild(desk);nodes.OP=desk;
+const dots=el('g',{});svg.appendChild(dots);
+
+let i=-1,timer=null;
+const log=document.getElementById('log'),now=document.getElementById('now'),stepname=document.getElementById('stepname');
+function clear(){Object.values(edges).forEach(e=>{e.classList.remove('on','stop')});Object.values(nodes).forEach(n=>n.classList.remove('on'));dots.innerHTML='';}
+function render(){clear();log.innerHTML='';
+ for(let k=0;k<=i;k++){const s=steps[k];const li=document.createElement('li');li.innerHTML=`<span class="n">${String(k+1).padStart(2,'0')}</span><span><span class="who">${s.from.map(name).join(', ')} → ${s.to.map(name).join(', ')}</span>${s.stop?'<span class="stop-tag">STOP</span>':''}<br>${s.t}</span>`;log.appendChild(li);}
+ log.scrollTop=log.scrollHeight;
+ if(i<0){now.innerHTML='<b>Step 0 of 14</b>Press play, or tap any desk to see what it owns.';stepname.textContent='Ready';return;}
+ const s=steps[i];now.innerHTML=`<b>Step ${i+1} of ${steps.length}${s.stop?' · stops here':''}</b>${s.t}`;stepname.textContent=s.stop?'Waiting for operator':'Handoff '+(i+1);
+ s.from.concat(s.to).forEach(id=>nodes[id].classList.add('on'));
+ s.from.forEach(f=>s.to.forEach(t=>{const e=edges[key(f,t)];e.classList.add('on');if(s.stop)e.classList.add('stop');
+  const [x1,y1]=pos[f],[x2,y2]=pos[t];const c=el('circle',{r:7,class:'dot'+(s.stop?' stop':'')});
+  const m=el('animateMotion',{dur:'1.4s',repeatCount:'indefinite',path:`M${x1},${y1} L${x2},${y2}`});c.appendChild(m);dots.appendChild(c);}));
+}
+function name(id){return id==='OP'?'Operator':roles.find(r=>r[0]===id)[1];}
+function next(){if(i<steps.length-1){i++;render();}else stop();if(i>=0&&steps[i].stop&&timer){stop();}}
+function stop(){clearInterval(timer);timer=null;document.getElementById('play').textContent=i>=steps.length-1?'Play again':'Play the week';}
+document.getElementById('play').onclick=()=>{if(timer){stop();return;}if(i>=steps.length-1)i=-1;next();timer=setInterval(next,2200);document.getElementById('play').textContent='Pause';};
+document.getElementById('next').onclick=()=>{stop();next();};
+document.getElementById('prev').onclick=()=>{stop();if(i>=0){i--;render();}};
+document.getElementById('reset').onclick=()=>{stop();i=-1;render();};
+function show(r){stop();clear();nodes[r[0]].classList.add('on');
+ Object.keys(edges).forEach(k=>{if(k.split('|').includes(r[0]))edges[k].classList.add('on');});
+ const talks=new Set();steps.forEach(s=>{if(s.from.includes(r[0]))s.to.forEach(t=>talks.add(name(t)));if(s.to.includes(r[0]))s.from.forEach(f=>talks.add(name(f)));});
+ now.innerHTML=`<b>${r[1]}</b>Owns: ${r[2]}.<br>Talks to: ${[...talks].join(', ')}.`;stepname.textContent=r[1];}
+const rolesEl=document.getElementById('roles');roles.forEach(r=>{const d=document.createElement('div');d.className='role';d.innerHTML=`<b>${r[1]}</b>${r[2]}<br><small>Code: ${r[0]}</small>`;rolesEl.appendChild(d);});
+render();
+</script>

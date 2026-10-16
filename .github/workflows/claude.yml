@@ -1,0 +1,42 @@
+name: Claude social team
+
+# Mention @claude in any issue or pull request comment to call the team, e.g.
+#   @claude run the weekly session
+#   @claude draft a one-off post for World Cleanup Day
+# Claude replies in the thread and opens a pull request with the post files.
+# Nothing is ever posted to social media from here: you still schedule by hand after sign-off.
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+
+jobs:
+  claude:
+    if: contains(github.event.comment.body || github.event.issue.body, '@claude')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install flyer tools
+        run: cd tools && npm ci && npx playwright install --with-deps chromium
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Everything the team may touch. Tools outside this list are refused.
+          allowed_tools: "Read,Write,Edit,Grep,Glob,Bash(python3 tools/*),Bash(node tools/*),Bash(git *),WebSearch,WebFetch,Task"
