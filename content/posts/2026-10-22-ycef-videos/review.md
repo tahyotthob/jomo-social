@@ -171,3 +171,39 @@ The singular photo line ("Real JOMO volunteer…") is already re-rendered, so no
   - video-b-ycef-ai-avatar.srt
   - tools/video/music_bed.py
   - the consent row for oniwaya-cleanup-11.jpg
+
+## Follow-up, 2026-10-22: re-rendered videos
+
+The Video Producer cut the ridge shot and moved the pills. I checked:
+- the new stills (a-0.0 to a-12.0, b-1.0 to b-12.5)
+- both new contact sheets and both covers
+- the updated build-notes.md.
+
+**Verdicts (unchanged)**
+- **Video A: FIX.** The required frame check is done, and nothing more is required from the Video Producer. One change is recommended (the cover, below). The operator items above still apply.
+- **Video B: BLOCK** until the operator confirms the avatar and voice (operator item 1). The re-render changed only the pill position.
+- **With-music files: BLOCK** until the operator decides on item 9.
+
+**New Video A opening**
+- The ridge shot is cut, and the opening now shows:
+  - 0.00 to about 0.7 s: brown water and plastic. a-0.0 shows no trace of the man in the crested polo.
+  - then to 2.36 s: the cascade. a-1.9 and the contact sheet show no trace of the sketchbook.
+- **Silhouettes in the cascade (a-0.9, a-1.4, a-1.9): acceptable, PASS on items 6 and 8.**
+  - What I see:
+    - two figures on the hillside
+    - a handful on the far bank
+    - one on a rock beside the waterfall.
+  - They are roughly 50–100 px tall, with no faces and no visible uniforms or crests, and nobody is littering or in distress.
+  - At this size a smaller figure reads as further away, not as a child. The ridge group was about twice as big, which is why a small figure there could pass for a child.
+  - They are on screen for about 1.6 s, moving, under the AI label and the hook.
+  - Residual risk is small but real, because AI perspective is unreliable. If the operator wants no AI people at all, replacing the AI opening with a people-free JOMO drain photo also settles operator item 1(a) and (c) for Video A.
+- **Recommended: change the Video A cover.**
+  - cover-video-a.jpg is now the 1.4 s cascade frame, so it carries all of these figures as a still that stays on the grid and can be studied.
+  - The frame at about 0.4 s (a-0.4) has the hook and the AI label, with only two tiny specks in the trees.
+- **Pills:** at y 300 in both videos and on both covers, inside a 4:5 crop. The "CapCut AI" mark is visible and uncovered on every CapCut still. In Video B the "Apply now" band still hides CapCut's garbled caption (b-9.95).
+
+**captions.md:** no edits needed in this round. The singular "volunteer" fix and its alt text are intact, and the Visual line already gives the new 14.2 s length.
+
+**Not safety (for the Video Producer):**
+- In both videos the first frame shows an empty caption band (a-0.0; b-contact-sheet at 0.0 s). The hook, lower third and captions fade in a moment later. The AI label is on from frame one, so disclosure is fine, but scripts.md wanted the hook visible from the first frame.
+- build-notes.md calls cover A "the gully frame"; it is the cascade frame.

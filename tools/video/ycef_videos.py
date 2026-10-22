@@ -291,7 +291,8 @@ def video_a():
         layer("", 0, t1, style=f"left:0;top:780px;width:1080px;height:440px;background:{INK};box-shadow:0 18px 60px rgba(0,0,0,.35)",
               anim="none", hold=True),
         layer("", 0, t1, style=f"left:0;top:780px;width:1080px;height:12px;background:{LIME}", anim="none", hold=True),
-        layer(A_GULLY, 0, t1, cls="center", style="left:0;top:792px;width:1080px;height:428px;padding:0 80px", anim="up", dur=0.4, hold=True),
+        # the hook starts just before frame 0 so it is already readable on the first frame
+        layer(A_GULLY, -0.3, t1, cls="center", style="left:0;top:792px;width:1080px;height:428px;padding:0 80px", anim="up", dur=0.4, hold=True),
         pill("AI-generated visuals", 0, t1),
         # the real photo keeps the volunteer's hands clear, so its band sits lower
         layer("", t1, t2, style=f"left:0;top:1300px;width:1080px;height:330px;background:{INK}", anim="none", hold=True),
@@ -319,7 +320,7 @@ def video_a():
 B_LINE_1 = (0.28, 3.70)   # "...climate action training programme for young people in Nigeria and Zambia" (starts after the garbled first word)
 B_LINE_2 = (4.605, 5.78)  # "selecting 50 fellows": starts at its own "s" (4.61), after the garbled syllable; ends before the wrong dates
 B_LINE_3 = (8.52, 9.16)   # "Apply now" (after the glass board has gone; ends before the wrong web address)
-B_CAPTIONS_1 = [(0.00, 1.18, "Climate action training programme"), (1.18, 1.92, "for young people"),
+B_CAPTIONS_1 = [(-0.10, 1.18, "Climate action training programme"), (1.18, 1.92, "for young people"),
                 (1.92, None, "in <b>Nigeria</b> and <b>Zambia</b>")]
 B_CARD_1 = (f'<div class="label" style="opacity:.75">YCEF 2026</div>'
             f'<div style="font-weight:900;font-size:50px;letter-spacing:.14em;text-transform:uppercase;margin-top:60px">Selecting</div>'

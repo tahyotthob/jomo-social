@@ -9,9 +9,9 @@ Built with `tools/video/ycef_videos.py`. All four files are 1080x1920, 25 fps, H
 | `video-b-ycef-ai-avatar.mp4` | 15.0 s | Avatar voice plus team-made bed, ducked under the voice, -14 LUFS |
 | `video-b-ycef-ai-avatar-voice-only.mp4` | 15.0 s | Avatar voice only, -16 LUFS |
 | `video-b-ycef-ai-avatar.srt` | | Captions file for Facebook and LinkedIn uploads |
-| `cover-video-a.jpg`, `cover-video-b.jpg` | | Reel covers: the gully frame with its label, and the "50 fellows" card |
+| `cover-video-a.jpg`, `cover-video-b.jpg` | | Reel covers: the 0.4 s gully frame with the hook and its label, and the "50 fellows" card |
 
-Stills for review are in `stills/`: `a-0.0.jpg`, `a-0.4.jpg`, `a-0.9.jpg`, `a-1.4.jpg`, `a-1.9.jpg`, `a-2.4.jpg`, `a-3.6.jpg`, `a-6.0.jpg`, `a-8.4.jpg`, `a-12.0.jpg`, `b-1.0.jpg`, `b-2.6.jpg`, `b-4.2.jpg`, `b-6.2.jpg`, `b-8.4.jpg`, `b-9.95.jpg`, `b-12.5.jpg`, plus `a-contact-sheet.png` and `b-contact-sheet.png`. The contact sheets show a frame every 0.5 s, each grabbed at its exact labelled time.
+Stills for review are in `stills/`: `a-0.0.jpg` (first frame), `a-0.4.jpg` (cover), `a-0.9.jpg`, `a-1.4.jpg`, `a-1.9.jpg`, `a-2.4.jpg`, `a-3.6.jpg`, `a-6.0.jpg`, `a-8.4.jpg`, `a-12.0.jpg`, `b-0.0.jpg` (first frame), `b-1.0.jpg`, `b-2.6.jpg`, `b-4.2.jpg`, `b-6.2.jpg`, `b-8.4.jpg`, `b-9.95.jpg`, `b-12.5.jpg`, plus `a-contact-sheet.png` and `b-contact-sheet.png`. The contact sheets show a frame every 0.5 s, each grabbed at its exact labelled time.
 
 ## Video A timeline
 

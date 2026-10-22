@@ -1,7 +1,7 @@
 # Captions: YCEF videos (Video A promo reel, Video B AI avatar explainer)
 Role: Copywriter
 
-Drafting, 2026-10-22. Nothing here is approved, scheduled or published. Next: Fact-checker and Policy and Safety Reviewer on these captions, then operator sign-off.
+In review, 2026-10-22. Fact-checked, then reviewed by the Policy and Safety Reviewer: Video A is FIX (edits applied); Video B and both with-music files are BLOCKED until the operator decides (see review.md). Nothing here is approved, scheduled or published. Next: operator sign-off.
 In every caption the AI disclosure sits above the call to action and the hashtags, so each post still ends with something to do.
 
 ## Video A: promo reel
