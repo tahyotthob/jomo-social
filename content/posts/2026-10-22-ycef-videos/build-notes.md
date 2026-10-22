@@ -18,7 +18,7 @@ Stills for review are in `stills/`: `a-0.5.jpg`, `a-1.6.jpg`, `a-3.8.jpg`, `a-6.
 | Time | Picture | On screen |
 |---|---|---|
 | 0.00–2.96 | AI gully and plastic waste (source 0.88–2.92 s, slowed 1.5x). No identifiable people; the only figures are tiny ones on the ridge. | Pill "AI-generated visuals". An edge-to-edge Ink band covers the text CapCut burned in, carrying "YCEF 2026" and "Your street has a climate problem." |
-| 2.96–5.56 | Real photo, slow push-in: `oniwaya-cleanup-11.jpg` (consent row in `content/consent-log.csv`). Volunteer in a JOMO vest, face hidden, clearing a drain; the photo's own 2020 "World Clean Up Day" badge sits at the bottom. | Pill "Real photo · JOMO archive". Lower band: "You've got the fix." and "Real JOMO volunteers clearing a drain, Oniwaya clean-up" |
+| 2.96–5.56 | Real photo, slow push-in: `oniwaya-cleanup-11.jpg` (consent row in `content/consent-log.csv`). Volunteer in a JOMO vest, face hidden, clearing a drain; the photo's own 2020 "World Clean Up Day" badge sits at the bottom. | Pill "Real photo · JOMO archive". Lower band: "You've got the fix." and "Real JOMO volunteer clearing a drain, Oniwaya clean-up" |
 | 5.56–7.46 | Lime card | "Young Climate Educators Fellowship" / "50 fellows" / "Nigeria + Zambia" |
 | 7.46–10.16 | Ink card | "3 virtual weekends" / "Starts Fri 13 Nov 2026" / "For university students and grassroots community volunteers, aged 18+" |
 | 10.16–14.76 | End card | Logo / "Young Climate Educators Fellowship" / "Applications close" / "Mon 26 Oct" / "Apply now" / "jomoclimatechange.org/events?apply=ycef" / "The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real." / @jomoclimatechange |

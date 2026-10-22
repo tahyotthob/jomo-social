@@ -19,7 +19,7 @@ The Young Climate Educators Fellowship (YCEF) is 3 virtual weekends for 50 fello
 
 For university students and grassroots community volunteers, 18+. Weekend 1: Fri 13 Nov 2026.
 
-The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: JOMO volunteers at the Oniwaya clean-up.
+The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up, from our archive.
 
 Applications close Mon 26 Oct, [TIME] WAT. Apply: link in bio.
 
@@ -35,7 +35,7 @@ Over 3 virtual weekends, starting Fri 13 Nov 2026, fellows:
 - design a youth-led project
 - learn to pitch for seed funding. There is no funding guarantee.
 
-The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: JOMO volunteers at the Oniwaya clean-up.
+The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up, from our archive.
 
 Applications close Mon 26 Oct, [TIME] WAT. Apply here: https://jomoclimatechange.org/events?apply=ycef
 
@@ -49,7 +49,7 @@ YCEF is for university students and grassroots community volunteers aged 18 and 
 
 Over 3 virtual weekends, starting Fri 13 Nov 2026, fellows research a local climate problem, design a youth-led project and learn to pitch for seed funding. There is no funding guarantee.
 
-The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: JOMO volunteers at the Oniwaya clean-up.
+The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up, from our archive.
 
 If you teach, mentor or lead young people who fit that description, the application is here: https://jomoclimatechange.org/events?apply=ycef
 

@@ -259,7 +259,7 @@ def silent_track(seconds, out):
 A_GULLY = (f'<div class="label" style="color:{LIME}">YCEF 2026</div>'
            f'<div class="brico" style="font-size:88px;margin-top:22px">Your street has<br>a climate problem.</div>')
 A_FIX = (f'<div class="brico" style="font-size:112px;color:{LIME}">You&rsquo;ve got<br>the fix.</div>'
-         f'<div style="font-weight:700;font-size:30px;margin-top:20px;opacity:.85">Real JOMO volunteers clearing a drain, Oniwaya clean-up</div>')
+         f'<div style="font-weight:700;font-size:30px;margin-top:20px;opacity:.85">Real JOMO volunteer clearing a drain, Oniwaya clean-up</div>')
 A_CARD_1 = (f'<div class="label" style="opacity:.75">Young Climate Educators Fellowship</div>'
             f'<div class="anton" style="font-size:250px;margin-top:40px">50 fellows</div>'
             f'<div style="font-weight:900;font-size:60px;margin-top:30px">Nigeria + Zambia</div>')
