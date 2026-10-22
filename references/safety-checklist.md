@@ -17,7 +17,13 @@ This review lowers the risk of removals, reduced reach and account restrictions;
 5. **Boosting.** A paid boost about environmental policy may be treated by Meta as an ad about social issues or politics, which can need advertiser authorisation and a "Paid for by" disclaimer. Flag any post the operator plans to boost; unpaid posts are not affected.
 6. **No shaming.** Never show identifiable people littering, in poor conditions or in distress. Show the problem, not a person to blame.
 7. **Climate claims.** No exaggeration or unsourced predictions. Disputed claims can be labelled or limited by platforms.
-8. **AI imagery.** A photorealistic AI-generated or heavily edited image is disclosed in the caption; never present it as a real JOMO activity.
+8. **AI content (avatars, voices, images, video).** Allowed (operator decision, 2026-10-22) when every condition below is met:
+   - **Disclose every time.** Show a label on the content itself ("AI avatar", "AI-generated visuals") and say it in the caption. Also switch on the platform's own AI label: Meta's "Add AI label" (required for realistic AI video or voice; set it in the Instagram or Facebook app, and check it exists before scheduling from Meta Business Suite), TikTok's "AI-generated content" setting, YouTube's "AI use" setting under Attributes, and X's "Made with AI" label and LinkedIn's AI self-attestation where offered. A boosted post also falls under Meta's ad rules (check 5).
+   - **Never pass it off as real.** An AI avatar or AI scene is never presented as a real person (JOMO staff, volunteer, fellow, partner or beneficiary) or as a real JOMO event or result. No testimonials or quotes from AI people. Proof of impact uses JOMO's own photos.
+   - **No real likeness without consent.** No avatar or cloned voice that resembles a real person unless that person has given written consent, recorded in the consent log. Never a public figure, official or partner representative.
+   - **No AI children.** Do not generate or use AI people who look under 18.
+   - **Check every word.** AI scripts are fact-checked like captions. AI tools garble on-screen text, so add all text in the edit, never from the generator. Check the avatar says names correctly ("Y-C-E-F" for YCEF).
+   - **Tool terms.** Use only outputs the tool's licence allows for organisational promotion (in CapCut, only materials marked "Commercial use"). Never crop, cover or blur a tool's AI mark (for example "CapCut AI"). A tool's music stays on the platforms its licence names.
 9. **Copyright.** JOMO's own or properly licensed images; music only from the platform's own library; partner logos only with permission.
 10. **Partners.** Paid or sponsored partner content uses the platform's branded content or paid partnership label. Partners approve before they are named in new content.
 11. **Fundraising.** Donation asks link only to the website or a platform's own fundraising tools, with no promises about outcomes.

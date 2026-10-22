@@ -42,8 +42,8 @@ Contrast rules: Lime and Off-white text work on Ink; Ink text works on Lime and 
 
 ## Logo
 
-- Full-colour logo (`assets/jomo-logo.png`) on white or very light backgrounds.
-- Light version (`assets/jomo-logo-light.png`, white arc and text) on Ink or Charcoal.
+- Full-colour logo (`assets/logos/jomo-logo.png`) on white or very light backgrounds.
+- Light version (`assets/logos/jomo-logo-light.png`, white arc and text) on Ink or Charcoal.
 - On Lime, place the logo on a white rounded tile.
 - Never recolour the leaves, stretch it or add effects. Clear space at least the height of the "J".
 
@@ -67,6 +67,6 @@ Contrast rules: Lime and Off-white text work on Ink; Ink text works on Lime and 
 ## Photography
 
 - Real people and real places first: volunteers in branded tees, tree planting, community work. These build the most trust with partners and funders.
-- Composite or AI-generated images are for concepts only, never as evidence of JOMO's work. When a realistic image is AI-generated, say so in the caption.
+- Composite or AI-generated images, AI video and AI avatars are for explainers, concepts and promos, never as evidence of JOMO's work. Label them on screen and in the caption (safety checklist item 8).
 - Action over posing. Name the place in the caption.
 - Only photos with consent on record; never pair a child's face with their name or school.
