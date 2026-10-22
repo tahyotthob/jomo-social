@@ -129,7 +129,7 @@ def layer(inner, t_in, t_out, cls="", style="", anim="fade", dur=0.35, dout=0.25
 
 
 def pill(text, t_in, t_out, side="left"):
-    return layer(f"<i></i>{text}", t_in, t_out, cls="pill", style=f"{side}:60px;top:268px", anim="none", hold=True)
+    return layer(f"<i></i>{text}", t_in, t_out, cls="pill", style=f"{side}:60px;top:300px", anim="none", hold=True)
 
 
 def end_card(t_in, t_out, disclosure):
@@ -271,7 +271,12 @@ A_DISCLOSURE = "The opening scene is AI-generated, not a real place or JOMO even
 
 def video_a():
     gully, photo = WORK / "a-gully.mp4", WORK / "a-photo.mp4"
-    clip(SRC_A, 0.88, 2.04, gully, slow=1.5)   # gully and plastic waste: after the man dissolves out, before the sketchbook dissolves in
+    # Two people-free stretches of the polluted gully, slowed 2x: the brown water after the man in the crested
+    # polo has dissolved out (0.86-1.22 s), then the cascade (2.00-2.92 s) before the sketchbook dissolves in.
+    # The ridge shot between them (1.28-1.92 s) is left out: one of its AI figures could pass for a child.
+    clip(SRC_A, 0.86, 0.36, WORK / "a-gully1.mp4", slow=2.0)
+    clip(SRC_A, 2.00, 0.92, WORK / "a-gully2.mp4", slow=2.0)
+    concat([WORK / "a-gully1.mp4", WORK / "a-gully2.mp4"], gully)
     photo_clip(2.6, photo)
     t1 = dur(gully)
     t2 = t1 + dur(photo)

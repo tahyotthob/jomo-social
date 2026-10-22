@@ -8,7 +8,7 @@ In every caption the AI disclosure sits above the call to action and the hashtag
 
 ### [POST DATE], [POST TIME] WAT · Instagram reel + Facebook reel + LinkedIn vertical video + X · Opportunities and calls to action
 Hook: Your street has a climate problem. You've got the fix.
-Visual: content/posts/2026-10-22-ycef-videos/video-a-ycef-promo.mp4 (14.8 s, 1080x1920, team-made music bed; needs the operator's exception to checklist item 9) or video-a-ycef-promo-no-music.mp4 (silent: add Meta Sound Collection music in the Instagram or Facebook app; this is the file for LinkedIn and X). Cover: cover-video-a.jpg.
+Visual: content/posts/2026-10-22-ycef-videos/video-a-ycef-promo.mp4 (14.2 s, 1080x1920, team-made music bed; needs the operator's exception to checklist item 9) or video-a-ycef-promo-no-music.mp4 (silent: add Meta Sound Collection music in the Instagram or Facebook app; this is the file for LinkedIn and X). Cover: cover-video-a.jpg.
 
 Caption — Instagram (reel):
 Your street has a climate problem. You've got the fix. 🌱
@@ -19,7 +19,7 @@ The Young Climate Educators Fellowship (YCEF) is 3 virtual weekends for 50 fello
 
 For university students and grassroots community volunteers, 18+. Weekend 1: Fri 13 Nov 2026.
 
-The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up, from our archive.
+The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up.
 
 Applications close Mon 26 Oct, [TIME] WAT. Apply: link in bio.
 
@@ -35,7 +35,7 @@ Over 3 virtual weekends, starting Fri 13 Nov 2026, fellows:
 - design a youth-led project
 - learn to pitch for seed funding. There is no funding guarantee.
 
-The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up, from our archive.
+The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up.
 
 Applications close Mon 26 Oct, [TIME] WAT. Apply here: https://jomoclimatechange.org/events?apply=ycef
 
@@ -49,7 +49,7 @@ YCEF is for university students and grassroots community volunteers aged 18 and 
 
 Over 3 virtual weekends, starting Fri 13 Nov 2026, fellows research a local climate problem, design a youth-led project and learn to pitch for seed funding. There is no funding guarantee.
 
-The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up, from our archive.
+The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real: a JOMO volunteer at the Oniwaya clean-up.
 
 If you teach, mentor or lead young people who fit that description, the application is here: https://jomoclimatechange.org/events?apply=ycef
 
@@ -68,7 +68,7 @@ Apply: https://jomoclimatechange.org/events?apply=ycef
 
 (272 characters, counting the link as 23. The real closing time changes this by a few characters.)
 
-Alt text (all platforms, under 1,000 characters): Vertical video, no speech. Opens on AI-generated footage, labelled "AI-generated visuals", of a muddy gully among palm trees with brown water and heaps of plastic waste; a small "CapCut AI" mark sits top left. A dark band reads "YCEF 2026. Your street has a climate problem." Then a real photo, labelled "Real photo · JOMO archive": a volunteer in a yellow-green JOMO vest and red gloves, face hidden, pulls rubbish from a muddy drain. Text: "You've got the fix. Real JOMO volunteers clearing a drain, Oniwaya clean-up." Lime card: "Young Climate Educators Fellowship. 50 fellows. Nigeria + Zambia." Dark card: "3 virtual weekends. Starts Fri 13 Nov 2026. For university students and grassroots community volunteers, aged 18+." End card: JOMO logo, "Applications close Mon 26 Oct. Apply now.", jomoclimatechange.org/events?apply=ycef, "The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real." and @jomoclimatechange.
+Alt text (all platforms, under 1,000 characters): Vertical video, no speech. Opens on AI-generated footage, labelled "AI-generated visuals", of a muddy gully among palm trees with brown water and heaps of plastic waste; a small "CapCut AI" mark sits top left. A dark band reads "YCEF 2026. Your street has a climate problem." Then a real photo, labelled "Real photo · JOMO archive": a volunteer in a yellow-green JOMO vest and red gloves, face hidden, pulls rubbish from a muddy drain. Text: "You've got the fix. Real JOMO volunteer clearing a drain, Oniwaya clean-up." Lime card: "Young Climate Educators Fellowship. 50 fellows. Nigeria + Zambia." Dark card: "3 virtual weekends. Starts Fri 13 Nov 2026. For university students and grassroots community volunteers, aged 18+." End card: JOMO logo, "Applications close Mon 26 Oct. Apply now.", jomoclimatechange.org/events?apply=ycef, "The opening scene is AI-generated, not a real place or JOMO event. The clean-up photo is real." and @jomoclimatechange.
 
 AI label (operator): when posting, switch on Meta's "Add AI label" in the Instagram or Facebook app (check it is offered before scheduling from Meta Business Suite), X's "Made with AI" label and LinkedIn's AI self-attestation where offered.
 

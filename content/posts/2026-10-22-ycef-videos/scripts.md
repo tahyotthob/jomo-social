@@ -16,7 +16,7 @@ The videos were built with `tools/video/ycef_videos.py`. The build differs from 
    "You've got the fix." now runs over a real JOMO photo instead: `assets/photos/events/oniwaya-cleanup/oniwaya-cleanup-11.jpg`. It is consent-logged, shows a volunteer whose face is hidden clearing a drain, and carries the label "Real photo · JOMO archive".
 2. **Programme facts sit only on brand cards, never over AI people.** Video A: "50 fellows · Nigeria + Zambia", then "3 virtual weekends · Starts Fri 13 Nov 2026 · university students and grassroots community volunteers, 18+".
 3. **The gully shot is cut inside the dissolves.** It runs from source 0.88 s to 2.92 s, slowed 1.5x: after the man has fully gone and before the sketchbook fades in.
-4. **The "CapCut AI" mark is never cropped or covered.** Frames are scaled to full width and trimmed at the bottom only, and the label pills sit at y 268, below the mark.
+4. **The "CapCut AI" mark is never cropped or covered.** Frames are scaled to full width and trimmed at the bottom only, and the label pills sit at y 300, below the mark.
 5. **Video B uses only the avatar's three accurate lines**, taken from her voice with the CapCut background music removed (`tools/video/separate_voice.py`, Demucs).
 
    | Line | Source time | On screen |
