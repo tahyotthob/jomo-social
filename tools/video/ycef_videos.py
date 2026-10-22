@@ -114,9 +114,11 @@ window.render = function (t) {
 def icons():
     ig = (f'<svg viewBox="0 0 24 24" fill="none" stroke="{OFF}" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/>'
           f'<circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="{OFF}" stroke="none"/></svg>')
-    fb = (f'<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="{OFF}"/>'
-          f'<path d="M13.2 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.3-1.4 1.4-1.4H16V5.5c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2.2H8v2.8h2.4v7z" fill="{INK}"/></svg>')
-    return ig + fb
+    # brand guide: the handle bar carries the Instagram and LinkedIn icons (same marks as tools/build.py)
+    li = (f'<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="{OFF}"/>'
+          f'<rect x="6" y="10" width="2.6" height="8" fill="{INK}"/><circle cx="7.3" cy="6.9" r="1.6" fill="{INK}"/>'
+          f'<path d="M11 10h2.5v1.2c.5-.8 1.5-1.4 2.8-1.4 2 0 3 1.2 3 3.6V18h-2.6v-4.2c0-1.2-.4-1.9-1.4-1.9s-1.7.7-1.7 1.9V18H11z" fill="{INK}"/></svg>')
+    return ig + li
 
 
 def layer(inner, t_in, t_out, cls="", style="", anim="fade", dur=0.35, dout=0.25, hold=False):
