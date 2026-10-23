@@ -54,7 +54,7 @@ def foot(theme, n, total):
     ig, li = icons(color)
     li = li.replace("BG", bg)
     count = f'<span class="count">{n:02d} / {total:02d}</span>' if total else ""
-    return f'<div class="foot"><div class="icons">{ig}{li}<span>@jomoclimatechange</span></div>{count}</div>'
+    return f'<div class="foot"><div class="icons">{ig}{li}<span>@jomoclimate</span></div>{count}</div>'
 
 def sprout(size, color1=LIME, color2=LEAF, extra=""):
     # two-leaf sprout, echoing the logo
