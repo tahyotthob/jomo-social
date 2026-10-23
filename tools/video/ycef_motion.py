@@ -165,7 +165,7 @@ def video_a_layers():
     T = 18.5
     return T, [3.0, 5.6, 8.6, 11.0, 14.2], [
         scene("dark", 0, 5.6,
-            E(lines("Your street", "has a climate", '<span class="acc">problem.</span>', size=150), 0.25, 2.85, 640, "mask", d=1.0),
+            E(lines("Your street", "has a climate", '<span class="acc">problem.</span>', size=150), -0.45, 2.85, 640, "mask", d=1.0),   # readable on frame 0
             E(lines("Blocked drains.", size=128), 3.0, 3.9, 840, "mask", "c", d=.6, dx=.25),
             E(lines("Flooded roads.", size=128), 3.9, 4.75, 840, "mask", "c", d=.6, dx=.25),
             E(lines("Plastic everywhere.", size=112), 4.75, 5.6, 840, "mask", "c", d=.6, dx=.3)),
@@ -205,7 +205,7 @@ def video_b_layers():
     T = 21.5
     return T, [3.0, 5.8, 8.6, 11.6, 14.4, 17.2], [
         scene("light", 0, 3.0,
-            E(lines("Three weekends.", "One street.", '<span class="acc">Your fix.</span>', size=112), 0.25, 2.85, 700, "mask", d=1.0)),
+            E(lines("Three weekends.", "One street.", '<span class="acc">Your fix.</span>', size=112), -0.45, 2.85, 700, "mask", d=1.0)),   # readable on frame 0
         scene("dark", 3.0, 11.6,
             *step(1, "Research.", "Study a climate problem<br>where you live.", 3.0, 5.8),
             *step(2, "Design.", "Plan a youth-led fix<br>for it.", 5.8, 8.6),

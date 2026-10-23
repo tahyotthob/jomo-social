@@ -207,3 +207,37 @@ The Video Producer cut the ridge shot and moved the pills. I checked:
 **Not safety (for the Video Producer):**
 - In both videos the first frame shows an empty caption band (a-0.0; b-contact-sheet at 0.0 s). The hook, lower third and captions fade in a moment later. The AI label is on from frame one, so disclosure is fine, but scripts.md wanted the hook visible from the first frame.
 - build-notes.md calls cover A "the gully frame"; it is the cascade frame.
+
+## Motion-graphics versions, 2026-10-23
+Role: Policy and Safety Reviewer
+
+These replace the AI versions above, so the CapCut, avatar and AI-label items no longer apply. I checked captions-motion.md (all eight captions and both alt texts), the 15 stills in stills/motion/, the consent row for oniwaya-cleanup-11.jpg, tools/video/ycef_motion.py (logo, photo, handle, fonts) and tools/video/ambient_bed.py. I have not played the video or audio files. Nothing is approved, scheduled or published.
+
+**Verdicts**
+- **Video A, "Your street has a climate problem." (18.5 s): PASS.** No edits.
+- **Video B, "Three weekends. One street. Your fix." (21.5 s): PASS.** No edits.
+- **With-music files (video-a-ycef-motion.mp4, video-b-ycef-motion.mp4): BLOCK until the operator decides on item 9.** Item 9 allows platform-library music only, so the team-made bed needs your exception. The copyright risk is low: ambient_bed.py only writes a WAV, reads no audio file and uses no samples. The no-music files are clear.
+
+**Checks (both videos, all captions)**
+1. Accuracy: every fact on screen and in the captions matches brand-guide.md and the operator's inputs. That covers 50 fellows, Nigeria + Zambia, 3 virtual weekends, Weekend 1 Fri 13 Nov 2026, university students and grassroots community volunteers 18+, and the close at Mon 26 Oct, 11:59 PM WAT. Both dates fall on the right weekdays. Every mention of pitching carries "There is no funding guarantee" (on screen in b-10.4 and in all eight captions). There is no prize or competition. "Now open" is true until the close.
+2. Consent: oniwaya-cleanup-11.jpg has a consent row, now marked "18+ (confirmed by operator 2026-10-23)". The face is hidden and no name is given. She is the only real person in either video.
+3. Engagement bait: none. "Which would you fix first?" is a genuine question.
+4. Apolitical: no officials, parties, slogans or blame.
+5. Boosting: none planned. Tell me first if that changes.
+6. No shaming: the volunteer is shown cleaning, and the waste is the problem. Nobody is shown littering.
+7. Climate claims: no statistics or predictions.
+8. AI content: none (no AI footage, avatar or voice). No AI label is needed, so leave the platform AI labels off.
+9. Copyright: the photo and the light logo are JOMO's own. Bricolage Grotesque and Lato are open-licence fonts. Music: see the BLOCK above.
+10. Partners: none named.
+11. Fundraising: none.
+12. Links and handles: the link matches brand-guide.md and the operator confirmed it works. @jomoclimate is on both end cards and in ycef_motion.py. No shorteners.
+13. Hate and safety: nothing. Oniwaya was a public clean-up, and the volunteer can't be identified.
+
+Format: the hashtags (IG 5, FB 3, LinkedIn 2, X 1) and emojis are within voice.md. Both X posts are under 280 characters. All text sits clear of the top and bottom 250 px.
+
+**Operator, before posting**
+1. Music: grant the item 9 exception, or post the no-music files.
+2. Confirm the Instagram bio link points to the YCEF application (the IG captions say "link in bio").
+3. Fill in [POST DATE] and [POST TIME] before Mon 26 Oct, 11:59 PM WAT. Optional: 11:59 PM WAT is 12:59 AM Tue 27 Oct in Zambia (CAT). Consider saying so for Zambian applicants.
+
+**Not safety (Video Producer):** the first frame of both videos is blank (a-0.0, b-0.0), and the hook only appears at about 1.8–2.0 s. The tagline under the light logo is barely legible on Ink.
