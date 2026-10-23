@@ -241,3 +241,7 @@ Format: the hashtags (IG 5, FB 3, LinkedIn 2, X 1) and emojis are within voice.m
 3. Fill in [POST DATE] and [POST TIME] before Mon 26 Oct, 11:59 PM WAT. Optional: 11:59 PM WAT is 12:59 AM Tue 27 Oct in Zambia (CAT). Consider saying so for Zambian applicants.
 
 **Not safety (Video Producer):** the first frame of both videos is blank (a-0.0, b-0.0), and the hook only appears at about 1.8–2.0 s. The tagline under the light logo is barely legible on Ink.
+
+## Operator sign-off, 2026-10-23
+
+Both motion-graphics videos are approved as posted in captions-motion.md, with the team-made music track (code-made by tools/video/ambient_bed.py; operator exception to check 9 for these two posts). The Instagram bio link points to the YCEF application. Both posts go out on 2026-10-23 before 11:59 AM WAT. The music-version BLOCK is lifted by the operator's exception.

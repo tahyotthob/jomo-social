@@ -1,15 +1,15 @@
 # Captions: YCEF motion-graphics videos (2026-10-23)
 Role: Copywriter (adapted from the reviewed captions in captions.md)
 
-In review. These replace the AI versions after the operator's brief of 2026-10-23: make them as if Apple made them, with motion graphics instead of an avatar. Neither video contains AI-generated footage or people, so no AI disclosure or AI label is needed. The only photo, in Video A, is a real consent-logged JOMO photo. Operator inputs for 2026-10-23: applications close at 11:59 PM WAT, the handle is @jomoclimate, the link works, and the volunteer in the photo is over 18.
+**Approved by the operator, 2026-10-23**, with the code-made music track (an exception to checklist item 9 for these two posts), to post on 2026-10-23 before 11:59 AM WAT. The operator also confirmed the Instagram bio link points to the YCEF application. These replace the AI versions after the operator's brief of 2026-10-23: make them as if Apple made them, with motion graphics instead of an avatar. Neither video contains AI-generated footage or people, so no AI disclosure or AI label is needed. The only photo, in Video A, is a real consent-logged JOMO photo. Operator inputs for 2026-10-23: applications close at 11:59 PM WAT, the handle is @jomoclimate, the link works, and the volunteer in the photo is over 18.
 
-Nothing here is approved, scheduled or published.
+The AI versions (video-a-ycef-promo*, video-b-ycef-ai-avatar*) are superseded and must not be posted.
 
 ## Video A: "Your street has a climate problem." (motion graphics, 18.5 s)
 
-### [POST DATE], [POST TIME] WAT · Instagram reel + Facebook reel + LinkedIn vertical video + X · Opportunities and calls to action
+### Fri 2026-10-23, 11:00 WAT · Instagram reel + Facebook reel + LinkedIn vertical video + X · Opportunities and calls to action
 Hook: Your street has a climate problem. You've got the fix.
-Visual: video-a-ycef-motion.mp4 (1080x1920, 30 fps, team-made ambient music) or video-a-ycef-motion-no-music.mp4 (add Meta Sound Collection music in the app; use this file for LinkedIn and X). Cover: cover-video-a-motion.jpg.
+Visual: video-a-ycef-motion.mp4 (1080x1920, 30 fps, team-made ambient music, approved for every platform). Cover: cover-video-a-motion.jpg.
 
 Caption — Instagram (reel):
 Your street has a climate problem. You've got the fix. 🌱
@@ -65,9 +65,9 @@ Sources: programme facts, the link and the hook are from references/brand-guide.
 
 ## Video B: "Three weekends. One street. Your fix." (motion graphics, 21.5 s)
 
-### [POST DATE], [POST TIME] WAT · Instagram reel + Facebook reel + LinkedIn vertical video + X · Opportunities and calls to action
+### Fri 2026-10-23, 11:30 WAT · Instagram reel + Facebook reel + LinkedIn vertical video + X · Opportunities and calls to action
 Hook: Three weekends. One street. Your fix.
-Visual: video-b-ycef-motion.mp4 (1080x1920, 30 fps, team-made ambient music) or video-b-ycef-motion-no-music.mp4. Cover: cover-video-b-motion.jpg.
+Visual: video-b-ycef-motion.mp4 (1080x1920, 30 fps, team-made ambient music, approved for every platform). Cover: cover-video-b-motion.jpg.
 
 Caption — Instagram (reel):
 Three weekends. One street. Your fix. 🌱
@@ -120,7 +120,6 @@ Alt text: Vertical motion-graphics video, no speech. On off-white: "Three weeken
 
 Sources: programme facts and the link are from references/brand-guide.md. The closing time and handle come from the operator (2026-10-23).
 
-## Still open
+## Open items
 
-- [POST DATE] and [POST TIME]: post before Mon 26 Oct, 11:59 PM WAT.
-- Music: either approve the team-made ambient bed (an exception to checklist item 9) or post the no-music files with a Meta Sound Collection track.
+None. Music approved (team-made track), post times set, bio link confirmed.
