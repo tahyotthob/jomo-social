@@ -4,3 +4,6 @@ tools/png/
 __pycache__/
 .DS_Store
 web/dist/
+
+tools/video/avatar/_frames/
+tools/video/avatar/_reel.html

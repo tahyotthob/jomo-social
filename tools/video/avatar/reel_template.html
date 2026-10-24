@@ -1,0 +1,58 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Anton;src:url('__FS__/anton/files/anton-latin-400-normal.woff2')}
+@font-face{font-family:Lato;font-weight:700;src:url('__FS__/lato/files/lato-latin-700-normal.woff2')}
+@font-face{font-family:Lato;font-weight:900;src:url('__FS__/lato/files/lato-latin-900-normal.woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#F4F6EC;font-family:Lato;color:#1E2220;position:relative}
+.label{position:absolute;left:90px;top:260px;font-weight:900;font-size:30px;letter-spacing:.22em;text-transform:uppercase;color:#77962A}
+.title{position:absolute;left:90px;top:310px;width:900px;font-family:Anton;text-transform:uppercase;font-size:104px;line-height:.98}
+.title span{color:#77962A}
+.sub{position:absolute;left:90px;right:90px;top:650px;border-radius:40px;padding:30px 40px;font-weight:700;font-size:50px;line-height:1.22;transform-origin:50% 100%}
+.sub .who{display:block;font-size:24px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.disc{position:absolute;left:0;right:0;top:1650px;text-align:center;font-size:26px;font-weight:700;opacity:.55}
+.end{position:absolute;inset:0;background:#1E2220;color:#F4F6EC;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.end .h{font-family:Anton;text-transform:uppercase;font-size:120px;line-height:1}
+.end .h span{color:#A5CD39}
+.end .tile{background:#fff;border-radius:28px;padding:24px 34px;margin-bottom:60px}
+.end .handle{margin-top:50px;font-weight:900;font-size:40px;letter-spacing:.04em}
+.end .d{margin-top:30px;font-size:26px;opacity:.6}
+</style></head><body>
+<div class="label" id="label">Source, please</div>
+<div class="title" id="title">Burning refuse:<br><span>clean fix or<br>smoke trap?</span></div>
+<div id="stage"></div>
+<div class="sub" id="sub"><span class="who" id="who"></span><span id="txt"></span></div>
+<div class="disc">Tobi and Amara are JOMO's AI characters</div>
+<div class="end" id="end"><div class="tile"><img src="__LOGO__" style="width:320px;display:block"></div>
+ <div class="h">Who's coming?<br><span>Bring your facts.</span></div><div class="handle">@jomoclimate</div><div class="d">Tobi and Amara are JOMO's AI characters</div></div>
+<script src="__JS__"></script>
+<script>
+const PLAN = __PLAN__, TOTAL = __TOTAL__;
+const stage = document.getElementById('stage');
+const tobi = Puppet.make(stage, 'tobi', {dir: '__PUP__', x: -20, y: 790, w: 640, parts: ['closed', 'mouth', 'eyes'], seed: 3, sway: 0.9, lean: 1.8});
+const amara = Puppet.make(stage, 'amara', {dir: '__PUP__', x: 430, y: 800, w: 620, parts: ['mouth', 'eyes'], seed: 11, sway: 0.6, lean: -1.4});
+const C = {tobi, amara};
+for (const l of PLAN) C[l.who].speech.push({start: l.start, env: l.env});
+const amaraIn = (PLAN.find(l => l.who === 'amara') || {start: 2}).start - 0.6;
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), ease = x => 1 - Math.pow(1 - cl(x), 3);
+const back = x => { x = cl(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const $ = id => document.getElementById(id);
+window.render = t => {
+  const a = ease(t / 0.6); $('label').style.opacity = a; $('title').style.opacity = ease((t - 0.15) / 0.6);
+  $('title').style.transform = `translateY(${40 * (1 - ease((t - 0.15) / 0.6))}px)`;
+  Puppet.pose(tobi, t, {enterX: -700 * (1 - ease((t - 0.2) / 0.8)), restClosed: false});
+  Puppet.pose(amara, t, {enterX: 700 * (1 - ease((t - amaraIn) / 0.7))});
+  // subtitle bubble for the current line
+  const cur = PLAN.find(l => t >= l.start - 0.15 && t < l.start + l.dur + 0.3);
+  const sub = $('sub');
+  if (cur) {
+    const p = back((t - cur.start + 0.15) / 0.3);
+    sub.style.opacity = cl((t - cur.start + 0.15) / 0.1); sub.style.transform = `scale(${0.9 + 0.1 * p})`;
+    const isT = cur.who === 'tobi';
+    sub.style.background = isT ? '#A5CD39' : '#1E2220'; sub.style.color = isT ? '#1E2220' : '#F4F6EC';
+    $('who').textContent = isT ? 'Tobi' : 'Amara'; $('who').style.color = isT ? '#1E2220' : '#A5CD39';
+    $('txt').textContent = cur.text;
+  } else sub.style.opacity = 0;
+  $('end').style.opacity = ease((t - (TOTAL - 1.5)) / 0.4);
+};
+window.render(0);
+</script></body></html>
