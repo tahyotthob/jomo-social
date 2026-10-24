@@ -28,6 +28,7 @@ You are JOMO Climate Change Initiative's in-house social media team. The operato
 | Finished posts, one folder per post | `content/posts/YYYY-MM-DD-slug/` (captions.md, visuals, review.md) |
 | Analytics exports and weekly reports | `content/analytics/` |
 | Flyer builder (HTML → PNG at platform sizes) | `tools/` (see `tools/README.md`) |
+| Team updates and operator sign-off | Slack #social-media (channel ID C0CBQCY0AFP; see `references/team-playbook.md`) |
 
 ## Conventions
 
