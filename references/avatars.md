@@ -70,4 +70,4 @@ They are a duo, not two separate accounts. They contrast in energy, look and voi
 2. ~~Art style~~: flat vector illustration, approved 2026-10-24.
 3. ~~Canva~~: Canva for Nonprofits licence in place (operator, 2026-10-24).
 4. ~~First character art~~: concepts v1 approved by the operator on 2026-10-24 (redrawn as v2 after the Canva account switch: MAHY9JnuNlQ for Tobi, MAHY9JCjN-k for Amara; see `assets/avatars/README.md`).
-5. Approve the character sheets before any post uses them.
+5. ~~Character sheets~~: v2 approved by the operator on 2026-10-24 (Tobi MAHY9HuFzDs, Amara MAHY9F2RE7Q).

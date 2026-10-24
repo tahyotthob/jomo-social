@@ -32,4 +32,4 @@ The prompts are the same as v1 (`references/avatars.md`). The v1 media ids above
 | | Tobi | Amara |
 |---|---|---|
 | Concept (approved look, redrawn) | MAHY9JnuNlQ · https://www.canva.com/M/MAHY9JnuNlQ · `concepts-v2/tobi-v2-preview.png` | MAHY9JCjN-k · https://www.canva.com/M/MAHY9JCjN-k · `concepts-v2/amara-v2-preview.png` |
-| Character sheet (waiting on operator approval) | MAHY9HuFzDs · https://www.canva.com/M/MAHY9HuFzDs · `sheets-v2/tobi-sheet-v2-preview.png` | MAHY9F2RE7Q · https://www.canva.com/M/MAHY9F2RE7Q · `sheets-v2/amara-sheet-v2-preview.png` |
+| Character sheet (approved by the operator, 2026-10-24) | MAHY9HuFzDs · https://www.canva.com/M/MAHY9HuFzDs · `sheets-v2/tobi-sheet-v2-preview.png` | MAHY9F2RE7Q · https://www.canva.com/M/MAHY9F2RE7Q · `sheets-v2/amara-sheet-v2-preview.png` |

@@ -32,11 +32,11 @@ write("av1-01", pg(f"""
 
 write("av1-02", pg(f"""
  <img class="av" src="{AMARA}" style="right:60px;bottom:120px;height:960px">
- {chip(560, 1000, dark=False)}
+ {chip(500, 1000, dark=False)}
  <div style="position:relative;z-index:4;max-width:540px">
   <div class="label">What WHO says</div>
   <div class="h" style="font-size:118px;margin-top:40px">The smoke<br>doesn't<br><span class="acc">disappear.</span></div>
-  <div class="body" style="margin-top:44px;font-size:42px">Burning waste releases air pollutants that harm health and the climate.</div>
+  <div class="body" style="margin-top:44px;font-size:42px">Burning waste releases air pollutants. Some harm both health and the climate.</div>
   <div class="src" style="margin-top:40px">Source: World Health Organization, <i>Open waste burning: sectoral solutions for air pollution and health</i>, July 2025</div>
  </div>
 """, "ink", 2, T))
