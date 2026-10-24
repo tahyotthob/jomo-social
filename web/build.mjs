@@ -82,7 +82,7 @@ function parseCaptionSections(text) {
     };
     for (const line of lines) {
       const c = line.match(/^Caption — ([A-Za-z]+)[^:]*:\s*(.*)$/);
-      const a = line.match(/^Alt text[^:]*:\s*(.*)$/);
+      const a = line.match(/(?:^|\.\s+)Alt text[^:]*:\s*(.*)$/);
       if (c) { flush(); cur = c[1]; if (c[2]) buf.push(c[2]); continue; }
       if (a) { flush(); cur = "__alt"; if (a[1]) buf.push(a[1]); continue; }
       if (cur !== null && stop.test(line)) { flush(); continue; }
@@ -96,6 +96,88 @@ function parseCaptionSections(text) {
     if (Object.keys(captions).length) sections.push({ heading: heading.replace(/^(Video [AB]):?/, "$1:"), when, platforms, pillar, hook, visual, captions, altText });
   }
   return sections;
+}
+
+// Channel posts: one entry per platform per slot, so a caption is never shared between channels.
+// A slot is a "### <when> · <platforms> · <pillar>" heading; "## " headings above it name a group (e.g. "Video A").
+const PLATFORM_NAMES = [["Instagram", /instagram/i], ["Facebook", /facebook/i], ["LinkedIn", /linkedin/i], ["X", /(^|[^a-z])x([^a-z]|$)|twitter/i]];
+const platformOf = (s) => (PLATFORM_NAMES.find(([, re]) => re.test(s)) || [])[0] || "";
+function parsePlatforms(str) {
+  const items = str.split("+").map((x) => x.trim()).filter(Boolean).map((item) => {
+    const platform = platformOf(item);
+    const format = item.replace(/instagram|facebook|linkedin|twitter/ig, "").replace(/(^|\s)X(\s|$)/, " ").replace(/[()]/g, "").trim();
+    return { platform, format };
+  }).filter((x) => x.platform);
+  const last = items[items.length - 1];
+  if (last && /stor|reel|carousel/i.test(last.format)) for (const it of items) if (!it.format) it.format = last.format;
+  return items;
+}
+function mediaForVisual(visual, media) {
+  const names = media.map((m) => path.basename(m.file));
+  const hits = new Set(names.filter((n) => visual.includes(n)));
+  // "elnino-01.png to elnino-06.png": everything numbered in between
+  for (const m of visual.matchAll(/`?(?:[\w./-]*\/)?([\w-]*?)(\d+)\.(png|jpe?g)`?\s+(?:to|-|–)\s+`?(?:[\w./-]*\/)?([\w-]*?)(\d+)\.\3`?/g)) {
+    const [, pre, a, ext, , b] = m;
+    for (const n of names) { const k = n.match(new RegExp(`^${pre.replace(/[-]/g, "\\-")}(\\d+)\\.${ext}$`)); if (k && +k[1] >= +a && +k[1] <= +b) hits.add(n); }
+  }
+  return media.filter((m) => hits.has(path.basename(m.file)));
+}
+function parseChannelPosts(text, media, calRows, postStatus) {
+  const out = [];
+  let group = "", prevAlt = "";
+  const chunks = text.split(/^(?=##+ )/m);
+  for (const chunk of chunks) {
+    const g = chunk.match(/^## (.+)$/m);
+    if (g && !chunk.startsWith("###")) { group = g[1].replace(/:\s*$/, "").trim(); continue; }
+    const slot = (chunk.match(/^### (.+)$/m) || [])[1];
+    if (!slot) continue;
+    const [when = "", platformsStr = "", ...rest] = slot.split(" · ");
+    const pillar = rest.join(" · ");
+    const hook = (chunk.match(/^Hook:\s*(.+)$/m) || [])[1] || "";
+    const visual = (chunk.match(/^Visual:\s*(.+)$/m) || [])[1] || "";
+    const dm = when.match(/(\d{4}-\d{2}-\d{2}),?\s*(\d{1,2}:\d{2})?/);
+    const date = dm?.[1] || "", time = dm?.[2] || "";
+    // blocks: "Caption — Instagram (reel):", "Post 1:", "Post:", "Alt text…:"
+    const blocks = []; let cur = null;
+    // a caption may carry its own "Sources:" line (it's part of the post); notes after alt text are not
+    const stop = /^(Visual:|Hook:|AI label|Visual decision|---\s*$|\((\d|Approx|Under|roughly|about|Each)|\*\*)/i;
+    const altStop = /^(Sources?:|Story text)/i;
+    for (const line of chunk.split("\n").slice(1)) {
+      const c = line.match(/^Caption — ([^(:]+?)\s*(?:\(([^)]*)\))?\s*:\s*(.*)$/);
+      const t = line.match(/^Post(?:\s+(\d+))?:\s*(.*)$/);
+      const a = line.match(/(?:^|\.\s+)Alt text[^:]*:\s*(.*)$/);
+      if (c) { cur = { kind: "caption", platform: platformOf(c[1]) || c[1].trim(), label: (c[2] || "").trim(), lines: [c[3]] }; blocks.push(cur); continue; }
+      if (t) { cur = { kind: "post", n: +(t[1] || 1), lines: [t[2]] }; blocks.push(cur); continue; }
+      if (a) { cur = { kind: "alt", lines: [a[1]] }; blocks.push(cur); continue; }
+      if (cur && (stop.test(line) || (cur.kind === "alt" && altStop.test(line)))) { cur = null; continue; }
+      if (cur) cur.lines.push(line);
+    }
+    const body = (b) => b.lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+    let alt = blocks.filter((b) => b.kind === "alt").map(body).filter(Boolean).join("\n\n");
+    if (/^as for /i.test(alt)) alt = prevAlt; else if (alt) prevAlt = alt;
+    const declared = parsePlatforms(platformsStr);
+    const captionPlats = [...new Set(blocks.filter((b) => b.kind === "caption").map((b) => b.platform))];
+    const posts = blocks.filter((b) => b.kind === "post");
+    const plats = [...declared];
+    for (const pl of captionPlats) if (!plats.some((d) => d.platform === pl)) plats.push({ platform: pl, format: "" });
+    if (posts.length && !plats.some((d) => d.platform === "X")) plats.push({ platform: "X", format: "" });
+    const slotMedia = mediaForVisual(visual, media);
+    for (const { platform, format } of plats) {
+      let variants = blocks.filter((b) => b.kind === "caption" && b.platform === platform).map((b) => ({ label: b.label, text: body(b) })).filter((v) => v.text);
+      let thread = [];
+      if (platform === "X" && !variants.length && posts.length) {
+        if (posts.length > 1) { thread = posts.map(body); variants = [{ label: `thread of ${posts.length}`, text: thread.map((t, i) => `${i + 1}/${thread.length}\n${t}`).join("\n\n") }]; }
+        else variants = [{ label: "", text: body(posts[0]) }];
+      }
+      const fmtLabel = format || (variants.length === 1 && variants[0].label) || "";
+      const cal = calRows.find((r) => r.Date === date && (!time || r["Time (WAT)"] === time) && new RegExp(platform === "X" ? "(^|[^a-z])x([^a-z]|$)" : platform, "i").test(r.Platform));
+      out.push({ platform, format: fmtLabel, group, when, date, time, pillar, hook, visual, variants, thread, altText: alt,
+        media: slotMedia.map((m) => m.file), status: cal?.Status || postStatus });
+    }
+  }
+  // number them in posting order, and give each a stable id
+  out.forEach((c, i) => { c.n = i + 1; c.id = `${String(i + 1).padStart(2, "0")}-${c.platform.toLowerCase()}${c.format ? "-" + c.format.toLowerCase().replace(/[^\w]+/g, "-").replace(/^-|-$/g, "") : ""}`; });
+  return out;
 }
 
 function verdictOf(reviewText) {
@@ -167,6 +249,7 @@ for (const dir of fs.readdirSync(POSTS, { withFileTypes: true }).filter((d) => d
   let captionSets = [];
   let verdict = "";
   let primaryCaptionsDate = "";
+  let primaryCaptionsText = "", primaryCaptionsFile = "";
   for (const f of mds) {
     const rel = path.join("content/posts", dir, f);
     const text = read(path.join(full, f));
@@ -177,7 +260,7 @@ for (const dir of fs.readdirSync(POSTS, { withFileTypes: true }).filter((d) => d
     if (/^captions/.test(f)) {
       const sets = parseCaptionSections(text).map((s) => ({ ...s, file: f, updated: base.updated }));
       // the most recently edited captions file is the current one and names the post
-      if (sets.length && (!primaryCaptionsDate || base.updated > primaryCaptionsDate)) { captionSets = sets; primaryCaptionsDate = base.updated; title = titleOf(text, title); }
+      if (sets.length && (!primaryCaptionsDate || base.updated > primaryCaptionsDate)) { captionSets = sets; primaryCaptionsDate = base.updated; primaryCaptionsText = text; primaryCaptionsFile = f; title = titleOf(text, title); }
       messages.push({ ...base, title: titleOf(text, f), body: stripHeader(text), kind: "captions", sets });
     } else if (/^review/.test(f)) {
       verdict = verdictOf(text) || verdict;
@@ -204,13 +287,22 @@ for (const dir of fs.readdirSync(POSTS, { withFileTypes: true }).filter((d) => d
     if (!messages.some((m) => m.kind === "signoff")) messages.push({ file: "calendar", role: "Operator", created: `${r.Date}T${r["Time (WAT)"] || "09:00"}:00+01:00`, updated: "",
       title: `${r.Status}: ${r.Hook}`, body: `${r.Platform} · ${r.Date} ${r["Time (WAT)"]} WAT\n\n${r.Notes || ""}`.trim(), kind: "signoff" });
   }
+  const channels = primaryCaptionsText ? parseChannelPosts(primaryCaptionsText, media, calRows, status) : [];
+  // a slot that names no files: use the calendar's asset for that slot, else every visual in the folder
+  const visuals = media.filter((m) => m.type !== "captions");
+  for (const c of channels) if (!c.media.length) {
+    const row = calRows.find((r) => r.Date === c.date && r["Time (WAT)"] === c.time);
+    const named = row ? visuals.filter((m) => path.basename(m.file) === path.basename(row["Asset link"] || "")) : [];
+    c.media = (named.length ? named : visuals.filter((m) => m.current)).map((m) => m.file);
+  }
   const rank = (m) => ROLE_ORDER.indexOf(m.role) < 0 ? 99 : ROLE_ORDER.indexOf(m.role);
   messages.sort((a, b) => (a.created || "").slice(0, 10).localeCompare((b.created || "").slice(0, 10)) || rank(a) - rank(b) || (a.created || "").localeCompare(b.created || ""));
   const first = captionSets[0] || {};
   posts.push({
     slug: dir, date: dir.slice(0, 10), title, status, verdict,
-    hook: first.hook || calRows[0]?.Hook || "", when: first.when || "", platforms: first.platforms || calRows[0]?.Platform || "",
-    pillar: first.pillar || calRows[0]?.Pillar || "", captionSets, media, messages, calendar: calRows,
+    hook: first.hook || calRows[0]?.Hook || "", when: first.when || "",
+    platforms: channels.length ? [...new Set(channels.map((c) => c.platform))].join(" · ") : first.platforms || calRows[0]?.Platform || "",
+    pillar: first.pillar || calRows[0]?.Pillar || "", captionSets, channels, captionsFile: primaryCaptionsFile, media, messages, calendar: calRows,
   });
 }
 
