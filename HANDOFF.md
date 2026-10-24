@@ -20,7 +20,7 @@ Read `CLAUDE.md` first, then use the `jomo-social-team` skill (`.claude/skills/j
 
 ## Open items
 
-0. **Week of 26 Oct:** 13 posts drafted and reviewed (plan: `content/posts/2026-10-26-week-plan.md`), waiting on the operator's approval of each slot. The YCEF apply page gets the new close date (Tue 3 Nov) on Sun 25 Oct (operator). Oniwaya is in Agege, Lagos (operator, 2026-10-24). No boosting this week.
+0. **Week of 26 Oct:** 13 posts approved by the operator on 2026-10-24 (plan: `content/posts/2026-10-26-week-plan.md`). Set each calendar row to Scheduled or Posted as it goes out. The YCEF apply page gets the new close date (Tue 3 Nov) on Sun 25 Oct (operator). Oniwaya is in Agege, Lagos (operator, 2026-10-24). No boosting this week.
 
 0. **YCEF deadline may move to Tue 3 Nov 2026, 11:59 PM WAT** (operator, 2026-10-24). In Zambia (CAT, UTC+2) that is **12:59 AM on Wed 4 Nov**. Announce Mon 26 Oct and repurpose the missed countdown, X and LinkedIn drafts for the new date. Before then: check the website form stays open, then update `references/brand-guide.md`.
 0. **Two JOMO avatars, Amara and Tobi:** draft personas in `references/avatars.md`. **Paused by the operator (2026-10-24) until the Canva for Nonprofits licence comes through.** Plan: illustrated adult characters made in Canva (apply for Canva for Nonprofits), animated with `tools/video/`, voiced with CapCut "Commercial use" text-to-speech.
