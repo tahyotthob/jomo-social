@@ -109,11 +109,11 @@ def face_closeups(stage, outdir, extra=()):
             if fn: fn(n, False)
     return imgs
 
-if __name__ == "__main__":
+def _main():
     blend, stage = sys.argv[1], sys.argv[2]; what = sys.argv[3] if len(sys.argv) > 3 else "all"
     bpy.ops.wm.open_mainfile(filepath=blend); toonify()
     outdir = RENDERS / stage; outdir.mkdir(parents=True, exist_ok=True)
-    if what in ("turntable", "all"): print("wrote", turntable(stage, outdir))
+    if what in ("turntable", "all", "rig", "rigdeformed"): print("wrote", turntable(stage, outdir))
     if what in ("poses", "all"):
         sc = bpy.context.scene
         if not sc.camera: setup(sc)
@@ -130,3 +130,81 @@ if __name__ == "__main__":
         S1 = sheet(imgs, 6, outdir / f"{stage}_poses_body.png", f"{stage}: front, side and back")
         S2 = sheet(faces, 2, outdir / f"{stage}_poses_face.png", f"{stage}: faces")
         print("wrote", S1, S2)
+
+# ---------------- rig previews (stage 2+) ----------------
+import posing
+
+def bone_widget(rig):
+    """Octahedral bones as a real mesh so Cycles can render them: red = deform, blue = controls."""
+    name = f"WIDGET_{rig.name}"
+    old = bpy.data.objects.get(name)
+    if old: bpy.data.objects.remove(old)
+    bm = bmesh.new(); dg = bpy.context.evaluated_depsgraph_get(); mw = rig.matrix_world
+    for pb in rig.pose.bones:
+        h = mw @ pb.head; t = mw @ pb.tail; v = t - h; L = v.length
+        if L < 1e-5: continue
+        q = v.normalized().to_track_quat("Z", "Y"); r = 0.10 * L if pb.bone.use_deform else 0.05 * L
+        pts = [Vector((0, 0, 0)), Vector((r, 0, 0.18 * L)), Vector((0, r, 0.18 * L)), Vector((-r, 0, 0.18 * L)), Vector((0, -r, 0.18 * L)), Vector((0, 0, L))]
+        vs = [bm.verts.new(h + q @ p) for p in pts]
+        mi = 0 if pb.bone.use_deform else 1
+        for a, b in ((1, 2), (2, 3), (3, 4), (4, 1)):
+            for f in (bm.faces.new((vs[0], vs[b], vs[a])), bm.faces.new((vs[5], vs[a], vs[b]))): f.material_index = mi
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    for col in ("#E0402A", "#2A6FE0"):
+        m = bpy.data.materials.new("W" + col); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
+        e = nt.nodes.new("ShaderNodeEmission"); e.inputs["Color"].default_value = hexcol(col); o = nt.nodes.new("ShaderNodeOutputMaterial")
+        nt.links.new(e.outputs[0], o.inputs["Surface"]); me.materials.append(m)
+    ob = bpy.data.objects.new(name, me); bpy.context.scene.collection.objects.link(ob); return ob
+
+def char_meshes():
+    return [o for o in bpy.data.objects if o.type == "MESH" and not o.name.startswith("WIDGET")]
+
+def rig_sheet(stage, outdir, deformed=False):
+    """For each test pose: characters (if weighted) with bones overlaid; also an IK check."""
+    sc = bpy.context.scene; cam = sc.camera or setup(sc); sc.render.resolution_x, sc.render.resolution_y = 900, 1000
+    tmp = outdir / "_ps"; tmp.mkdir(exist_ok=True); imgs = []
+    rigs = [bpy.data.objects["tobi_rig"], bpy.data.objects["amara_rig"]]
+    cases = list(posing.TEST_POSES.items()) + [("IK legs+arms", None)]
+    for lab, fn in cases:
+        for rig in rigs:
+            for k in list(rig.keys()):
+                if k.startswith("ik_"): rig[k] = 0.0
+            if fn:
+                pose, loc = fn()
+                if lab == "deep squat":
+                    hz = rig.data.bones["hips"].head_local.z; loc = {"hips": (0, 0.06, -0.40 * hz)}
+                posing.apply_pose(rig, pose, loc)
+            else:   # IK: lift the left foot onto a step, pull the right hand up to the face
+                posing.apply_pose(rig, {}, {"IK_foot.L": (0, -0.15, 0.28), "IK_hand.R": (0.25, -0.25, 0.55)})
+                rig["ik_leg_L"] = 1.0; rig["ik_arm_R"] = 1.0
+            rig.update_tag()
+        bpy.context.view_layer.update()
+        for yaw, view in ((0, "front"), (60, "3/4")):
+            aim(cam, (0, 0, 0.92), yaw=yaw, scale=2.3)
+            ws = [bone_widget(r) for r in rigs]
+            for w in ws: w.hide_render = True
+            for o in char_meshes(): o.hide_render = False
+            sc.render.film_transparent = False
+            a = render_to(sc, tmp / "a.png") if deformed or True else None
+            for o in char_meshes(): o.hide_render = True
+            for w in ws: w.hide_render = False
+            sc.render.film_transparent = True; sc.render.filepath = str(tmp / "b.png"); bpy.ops.render.render(write_still=True)
+            b = Image.open(tmp / "b.png").convert("RGBA")
+            for o in char_meshes(): o.hide_render = False
+            for w in ws: bpy.data.objects.remove(w)
+            base = a.convert("RGBA")
+            if not deformed:   # unweighted meshes stay at rest: fade them so the posed bones read
+                base = Image.blend(base, Image.new("RGBA", base.size, (244, 246, 236, 255)), 0.55)
+            comp = Image.alpha_composite(base, b).convert("RGB")
+            imgs.append(label(comp, f"{lab} ({view})"))
+    for rig in rigs:
+        posing.apply_pose(rig, {})
+        for k in list(rig.keys()):
+            if k.startswith("ik_"): rig[k] = 0.0
+    sc.render.film_transparent = False
+    return sheet(imgs, 4, outdir / f"{stage}_poses_rig.png", f"{stage}: rig test poses (red = deform bones, blue = IK/controls)")
+
+if __name__ == "__main__":
+    _main()
+    if len(sys.argv) > 3 and sys.argv[3] in ("rig", "rigdeformed"):
+        print("wrote", rig_sheet(sys.argv[2], RENDERS / sys.argv[2], deformed=sys.argv[3] == "rigdeformed"))

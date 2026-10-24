@@ -28,3 +28,13 @@ Decisions made while building the 3D versions of Tobi and Amara, so anyone can s
 - **Known minor issue:** at rest, tiny skin slivers can show where Amara's shirt hem meets her trousers at the hips. They aren't visible at normal framing.
 - **Skin modifier gotcha:** every separate piece (each shoe, for example) needs its own root vertex, or the modifier silently drops that piece.
 - **Material slots gotcha:** material slots must exist on a mesh before writing a bmesh into it. Otherwise Blender clamps every face to slot 0.
+
+## Stage 2: shared rig
+- **One rig definition for both characters:** `blender/scripts/s2_rig.py` builds `tobi_rig` and `amara_rig` from each character's own joints, but with identical bone names, hierarchy and rolls. Any Action made on one plays on the other.
+- **Bones (61, 52 deform):** `root` → `hips` → `spine_01..03` → `neck` → `head`; per side `shoulder`, `upper_arm`, `forearm`, `hand`, five fingers × 3 (`thumb/index/middle/ring/pinky_01..03`), `thigh`, `shin`, `foot`, `toe`. Controls (no deform): `IK_hand`, `IK_foot`, `pole_elbow`, `pole_knee` (.L/.R), all children of `root`.
+- **Root bone for locomotion:** sits on the floor at the character's origin, pointing back (+Y). Walk/run cycles animate in place; moving `root` moves the whole character.
+- **IK:** 2-bone IK on forearms and shins, with poles behind the elbows and in front of the knees. Each limb has an FK/IK switch as a custom property on the rig (`ik_arm_L`, `ik_arm_R`, `ik_leg_L`, `ik_leg_R`), driving the IK and hand/foot rotation-copy influence. **Default is FK (0)** so the library Actions are plain bone rotations that export cleanly to .glb/.fbx; IK is for hand-posing in Blender (plants, contacts).
+- **Rolls:** every limb, spine and finger bone has its local Z facing forward; feet and toes have Z up. This makes one rotation mean the same thing on both characters.
+- **Posing in rig space:** `blender/scripts/posing.py` writes poses as rotations around the rig's X/Y/Z axes and converts them to each bone's local quaternion, with automatic left→right mirroring. All test poses and animations use it.
+- **Parenting gotcha:** meshes are reparented from the stage 1 group empty to the rig with an identity parent-inverse; reassigning `matrix_world` before the rig's matrix updates left them offset from the bones.
+- **Check:** `blender/renders/stage2/stage2_poses_rig.png` shows rest, arms overhead, deep squat, torso twist and an IK test (bones only; meshes not bound yet). Bones sit inside the meshes and every pose bends the right way.
