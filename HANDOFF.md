@@ -6,8 +6,8 @@ Read `CLAUDE.md` first, then use the `jomo-social-team` skill (`.claude/skills/j
 
 - **YCEF motion-graphics reels** posted on 2026-10-24 on Instagram, Facebook, LinkedIn and X: "Your street has a climate problem." and "Three weekends. One street. Your fix." Files, captions and review notes are in `content/posts/2026-10-22-ycef-videos/`. Calendar rows are Posted. The code-made music track was approved as a one-off exception to safety check 9.
 - **AI content rule** (safety checklist item 8): AI avatars and AI visuals are allowed when labelled, never presented as real JOMO people, events or results, with no AI people who look under 18 and no removal of a tool's AI mark. The earlier AI remakes (`video-a-ycef-promo*`, `video-b-ycef-ai-avatar*`) are superseded and must not be posted.
-- **Super El Niño heat posts** approved by the operator on 2026-10-24 (all four slots: IG+FB carousel Sat 24 Oct 18:00, X thread Sat 18:30, LinkedIn Sun 25 Oct 10:00, IG+FB story Sun 16:00 WAT). Files in `content/posts/2026-10-24-super-el-nino/`. Calendar rows are Approved; set them to Scheduled or Posted once they go out. Organic only; the operator does not plan to boost (2026-10-24).
-- **Zambia Independence Day post** approved by the operator on 2026-10-24 (Instagram + Facebook, LinkedIn, X at 15:00 WAT). Files in `content/posts/2026-10-24-zambia-independence/`.
+- **Super El Niño heat posts** approved by the operator on 2026-10-24 (all four slots: IG+FB carousel Sat 24 Oct 18:00, X thread Sat 18:30, LinkedIn Sun 25 Oct 10:00, IG+FB story Sun 16:00 WAT). Files in `content/posts/2026-10-24-super-el-nino/`. Posted on 2026-10-24 (operator). Organic only; the operator does not plan to boost (2026-10-24).
+- **Zambia Independence Day post** approved by the operator on 2026-10-24 (Instagram + Facebook, LinkedIn, X at 15:00 WAT). Files in `content/posts/2026-10-24-zambia-independence/`. Posted on 2026-10-24 (operator).
 - **Social Studio**, a read-only viewer of the team's work (threads per post, videos, per-platform captions with copy and download, a zip kit per post): https://jomo-social-studio.vercel.app. Code in `web/`, built by `web/build.mjs`, configured by `vercel.json`. The Vercel project `jomo-social-studio` is linked to this repo and redeploys on every push to `main`. If a deploy ever doesn't start, a manual production deployment of `main` works.
 - **Slack:** #social-media (channel ID C0CBQCY0AFP) in the "J'omo Climate Change Initiative" workspace. The rules for posting there are in `references/team-playbook.md`.
 
@@ -19,6 +19,8 @@ Read `CLAUDE.md` first, then use the `jomo-social-team` skill (`.claude/skills/j
 - The operator is Olusegun Olusoji-Ojelade. Nothing is published or scheduled until he approves that specific post.
 
 ## Open items
+
+0. **Week of 26 Oct:** 13 posts drafted and reviewed (plan: `content/posts/2026-10-26-week-plan.md`), waiting on the operator's approval of each slot. The YCEF apply page gets the new close date (Tue 3 Nov) on Sun 25 Oct (operator). Oniwaya is in Agege, Lagos (operator, 2026-10-24). No boosting this week.
 
 0. **YCEF deadline may move to Tue 3 Nov 2026, 11:59 PM WAT** (operator, 2026-10-24). In Zambia (CAT, UTC+2) that is **12:59 AM on Wed 4 Nov**. Announce Mon 26 Oct and repurpose the missed countdown, X and LinkedIn drafts for the new date. Before then: check the website form stays open, then update `references/brand-guide.md`.
 0. **Two JOMO avatars, Amara and Tobi:** draft personas in `references/avatars.md`. **Paused by the operator (2026-10-24) until the Canva for Nonprofits licence comes through.** Plan: illustrated adult characters made in Canva (apply for Canva for Nonprofits), animated with `tools/video/`, voiced with CapCut "Commercial use" text-to-speech.
