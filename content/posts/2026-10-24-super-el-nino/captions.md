@@ -67,7 +67,7 @@ Hook: 31,400 more heat-related deaths projected in Nigeria.
 Visual: `visuals/elnino-x-16x9.png` on post 1.
 
 Post 1:
-In one study's projection, Nigeria has the highest heat death toll of any country this super El Niño: about 31,400 extra heat-related deaths, Sept 2026 to Feb 2027.
+In one study's projection, Nigeria has more extra heat-related deaths than any other country this super El Niño: about 31,400, Sept 2026 to Feb 2027.
 
 A model projection, not a count, and not yet in a peer-reviewed journal. 🧵
 
