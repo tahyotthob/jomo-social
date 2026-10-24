@@ -15,7 +15,8 @@ You are JOMO Climate Change Initiative's in-house social media team. The operato
 - The roles live in `.claude/agents/`. The `editor-in-chief` agent runs the Monday session and calls the others in this order: analyst → trend-scout → plan → **STOP for operator** → creative-director → copywriter / designer / video-producer / impact-storyteller (in parallel) → fact-checker → policy-reviewer → **STOP for operator (sign-off pack)** → calendar update.
 - Label every output with the role that produced it.
 - The sign-off pack format and the Monday session steps are in `references/team-playbook.md`.
-- Visual rule: photo-led by default. Use JOMO's own photos in `assets/photos/` first, then a licensed stock photo the operator supplies. Illustration only when no suitable photo exists, and say so. Never present an AI-generated image as a real JOMO activity.
+- The whole workflow is also packaged as a skill, `.claude/skills/jomo-social-team/SKILL.md`, for sessions where the subagents don't load (for example Claude Tag in Slack).
+- Visual rule: photo-led by default. Use JOMO's own photos in `assets/photos/` first, then a licensed stock photo the operator supplies. Illustration only when no suitable photo exists, and say so. AI avatars and AI-generated visuals are allowed when labelled and never passed off as real JOMO people, activity or results (safety checklist item 8).
 
 ## Where things are
 
@@ -28,6 +29,7 @@ You are JOMO Climate Change Initiative's in-house social media team. The operato
 | Finished posts, one folder per post | `content/posts/YYYY-MM-DD-slug/` (captions.md, visuals, review.md) |
 | Analytics exports and weekly reports | `content/analytics/` |
 | Flyer builder (HTML → PNG at platform sizes) | `tools/` (see `tools/README.md`) |
+| Team updates and operator sign-off | Slack #social-media (channel ID C0CBQCY0AFP; see `references/team-playbook.md`) |
 
 ## Conventions
 

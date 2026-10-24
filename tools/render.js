@@ -5,8 +5,8 @@ const fs = require('fs'); const path = require('path');
   const dir = path.join(__dirname, 'html'); const out = path.join(__dirname, 'png');
   fs.mkdirSync(out, { recursive: true });
   for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.html')).sort()) {
-    const wide = f.includes('16x9'); const tall = f.includes('9x16');
-    const p = await b.newPage({ viewport: { width: wide ? 1600 : 1080, height: wide ? 900 : (tall ? 1920 : 1350) } });
+    const wide = f.includes('16x9'); const tall = f.includes('9x16'); const sq = f.includes('1x1');
+    const p = await b.newPage({ viewport: { width: wide ? 1600 : 1080, height: wide ? 900 : (sq ? 1080 : (tall ? 1920 : 1350)) } });
     await p.goto('file://' + path.join(dir, f)); await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(150);
     // overflow check: any element extending past the footer line or right edge
