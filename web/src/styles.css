@@ -86,6 +86,8 @@ h3 { font-size: 17px; }
 .badge.approved, .badge.posted, .badge.scheduled, .badge.pass { background: rgba(52,199,89,.15); color: #1e8f3f; }
 .badge.fix, .badge.in-review { background: rgba(255,159,10,.16); color: #b26500; }
 .badge.block { background: rgba(255,59,48,.14); color: #c62a21; }
+.badge.pending { background: rgba(0,113,227,.13); color: #0060c7; }
+:root[data-theme="dark"] .badge.pending { color: #5aa9ff; }
 :root[data-theme="dark"] .badge.approved, :root[data-theme="dark"] .badge.pass { color: #5ddc7f; }
 :root[data-theme="dark"] .badge.fix, :root[data-theme="dark"] .badge.in-review { color: #ffb84d; }
 :root[data-theme="dark"] .badge.block { color: #ff6b63; }
@@ -133,6 +135,16 @@ h3 { font-size: 17px; }
 .feed .t { font-weight: 500; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .feed .s { font-size: 12px; color: var(--text-2); }
 .feed time { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+/* today's slots */
+.feed.today a { grid-template-columns: 56px 1fr auto; align-items: start; }
+.feed.today .thumb { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; background: var(--surface-2); display: grid; place-items: center; font-size: 12px; color: var(--text-2); }
+.feed.today .t { white-space: normal; font-size: 15px; }
+.feed.today .s { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.feed.today .tr { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.feed.today time { font-size: 13px; font-weight: 600; color: var(--text); }
+.feed.today a.st-pending { box-shadow: inset 3px 0 0 #0071e3; }
+.table tr.is-today td { background: rgba(0,113,227,.06); }
+.st-pending .dot { background: #0071e3; }
 
 /* chat thread */
 .thread { display: flex; flex-direction: column; gap: 18px; }
@@ -324,3 +336,9 @@ h3 { font-size: 17px; }
 .allfiles summary { cursor: pointer; list-style: none; }
 .allfiles summary::-webkit-details-marker { display: none; }
 .allfiles summary::after { content: " ▸"; } .allfiles[open] summary::after { content: " ▾"; }
+@media (max-width: 760px) {
+  .feed.today a { grid-template-columns: 48px 1fr auto; }
+  .feed.today .thumb { width: 48px; height: 48px; }
+  .feed.today time { display: block; }
+}
+.section-title.first { margin-top: 4px; }

@@ -41,6 +41,15 @@
     return window.DOMPurify ? DOMPurify.sanitize(html) : html;
   };
   const avatar = (role) => { const [ini, col] = ROLE_STYLE[role] || [role.slice(0, 2).toUpperCase(), "#8e8e93"]; return `<div class="avatar" style="background:${col}" title="${h(role)}">${ini}</div>`; };
+  // "today" is worked out in the browser in Lagos time, so the site changes over at midnight WAT without a rebuild.
+  // ?day=YYYY-MM-DD pretends it is another day (handy for checking a future day's list).
+  const todayKey = () => new URLSearchParams(location.search).get("day") || dayKey(new Date().toISOString());
+  // a slot due today that is signed off but not yet marked Posted in the calendar shows as Pending
+  const liveStatus = (status, date) => date && date === todayKey() && /^(approved|scheduled)$/i.test(status || "") ? "Pending" : status;
+  const todayRows = () => state.data.calendar.filter((r) => r.Date === todayKey()).sort((a, b) => (a["Time (WAT)"] || "").localeCompare(b["Time (WAT)"] || ""));
+  const pendingToday = () => todayRows().filter((r) => liveStatus(r.Status, r.Date) === "Pending");
+  const postStatus = (p) => (p.channels?.length ? p.channels.some((c) => liveStatus(c.status, c.date) === "Pending") : p.calendar.some((r) => liveStatus(r.Status, r.Date) === "Pending")) ? "Pending" : p.status;
+  const rowPost = (r) => { const slug = (r["Asset link"] || r["Caption link"] || "").match(/content\/posts\/([^/]+)/)?.[1]; return state.data.posts.find((p) => p.slug === slug); };
   const weekOf = (date) => { const d = new Date(date + "T12:00:00Z"); const day = (d.getUTCDay() + 6) % 7; d.setUTCDate(d.getUTCDate() - day); return d.toISOString().slice(0, 10); };
   const copy = async (text, label = "Copied") => { try { await navigator.clipboard.writeText(text); toast(label); } catch { toast("Copy failed"); } };
   const downloadBlob = (blob, name) => { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
@@ -81,9 +90,9 @@
       html += `<div class="side-group">Week of ${fmtDay(wk + "T12:00:00+01:00")}</div>`;
       for (const p of groups[wk]) {
         const c = cover(p);
-        html += `<a class="side-item ${statusClass(p.status)} ${page === "post" && id === p.slug ? "active" : ""}" href="#/post/${encodeURIComponent(p.slug)}">
+        html += `<a class="side-item ${statusClass(postStatus(p))} ${page === "post" && id === p.slug ? "active" : ""}" href="#/post/${encodeURIComponent(p.slug)}">
           ${c ? `<img class="thumb" src="${c}" alt="" loading="lazy">` : `<div class="thumb ph">${h(p.platforms.includes("X") ? "X" : "—")}</div>`}
-          <div><div class="t">${h(p.title)}</div><div class="s"><span class="dot"></span>${h(p.status)} · ${fmtDay(p.date + "T12:00:00+01:00")}</div></div></a>`;
+          <div><div class="t">${h(p.title)}</div><div class="s"><span class="dot"></span>${h(postStatus(p))} · ${fmtDay(p.date + "T12:00:00+01:00")}</div></div></a>`;
       }
     }
     if (state.data.plans.length) {
@@ -102,8 +111,11 @@
     const review = d.posts.filter((p) => /review|fix|block/i.test(p.status + p.verdict) && !/approved|posted/i.test(p.status)).length;
     const files = d.posts.reduce((s, p) => s + p.media.length, 0);
     const videos = d.posts.reduce((s, p) => s + p.media.filter((m) => m.type === "video").length, 0);
+    const today = todayRows(), pending = pendingToday();
     const feed = d.posts.flatMap((p) => p.messages.map((m) => ({ ...m, post: p }))).filter((m) => m.created).sort((a, b) => b.created.localeCompare(a.created)).slice(0, 12);
     $("#main").innerHTML = `<div class="wrap">
+      <div class="section-title first"><h2>Today · ${h(fmtDay(todayKey() + "T12:00:00+01:00"))}</h2><span class="small muted">${pending.length ? `${pending.length} pending` : today.length ? "All done" : ""}</span></div>
+      ${todayList(today)}
       <div class="hero"><h1>Everything the team has made.</h1><p>Threads from each role, the visuals and videos, and the captions ready to copy for every channel.</p></div>
       <div class="stats">
         <div class="stat"><div class="n">${d.posts.length}</div><div class="l">Posts in progress</div></div>
@@ -113,18 +125,32 @@
         <div class="stat"><div class="n">${files}</div><div class="l">Files ready to download</div></div>
       </div>
       <div class="section-title"><h2>Ready to post</h2><a href="#/posts" class="small">All posts</a></div>
-      ${cardGrid(d.posts.filter((p) => /approved|posted|scheduled/i.test(p.status)), "Nothing approved yet. Approved posts appear here with their download kits.")}
+      ${cardGrid(d.posts.filter((p) => /approved|posted|scheduled/i.test(p.status)).sort((a, b) => (postStatus(b) === "Pending") - (postStatus(a) === "Pending")), "Nothing approved yet. Approved posts appear here with their download kits.")}
       <div class="section-title"><h2>Latest activity</h2></div>
       <div class="feed">${feed.map((m) => `<a href="#/post/${encodeURIComponent(m.post.slug)}">${avatar(m.role)}<div><div class="t">${h(m.role)} · ${h(m.title)}</div><div class="s">${h(m.post.title)}</div></div><time>${h(fmtDay(m.created))}</time></a>`).join("")}</div>
       <div class="section-title"><h2>In the works</h2></div>
       ${cardGrid(d.posts.filter((p) => !/approved|posted|scheduled/i.test(p.status)), "No drafts right now.")}
     </div>`;
   }
+  // today's calendar slots, in posting order; each links to its post
+  function todayList(rows) {
+    if (!rows.length) return `<div class="empty">Nothing on the calendar for today.</div>`;
+    return `<div class="feed today">${rows.map((r) => {
+      const p = rowPost(r), st = liveStatus(r.Status, r.Date);
+      const asset = p && p.media.find((m) => `content/posts/${p.slug}/${m.file}` === r["Asset link"]);
+      const img = asset?.type === "image" ? asset.url : asset?.type === "video" ? poster(p, asset) || cover(p) : p && cover(p);
+      const plats = PLATFORMS.filter((x) => new RegExp(x === "X" ? "(^|[^a-z])x([^a-z]|$)" : x, "i").test(r.Platform));
+      const note = st === "Pending" ? "Signed off. Post it, then mark it Posted in the calendar." : /posted/i.test(st) ? "Posted." : "Not signed off yet: it can't go out until the operator approves it.";
+      return `<a class="${statusClass(st)}" href="${p ? `#/post/${encodeURIComponent(p.slug)}` : "#/calendar"}">
+        ${img ? `<img class="thumb" src="${img}" alt="" loading="lazy">` : `<div class="thumb ph">${h(plats[0] || "—")}</div>`}
+        <div><div class="t">${h(r.Hook.replace(/~~[^~]*~~\s*/g, ""))}</div><div class="s">${plats.map(chip).join(" ")} <span>${h(r.Format)}</span></div><div class="s">${h(note)}</div></div>
+        <div class="tr"><time>${h(r["Time (WAT)"] || "")}${r["Time (WAT)"] ? " WAT" : ""}</time>${badge(st)}</div></a>`; }).join("")}</div>`;
+  }
   function cardGrid(posts, empty) {
     if (!posts.length) return `<div class="empty">${h(empty)}</div>`;
     return `<div class="cards">${posts.map((p) => { const c = cover(p); return `<a class="card" href="#/post/${encodeURIComponent(p.slug)}">
       ${c ? `<img class="cover" src="${c}" alt="" loading="lazy">` : `<div class="cover ph">${h(p.platforms || "Text post")}</div>`}
-      <div class="cb"><div class="t">${h(p.title)}</div><div class="s">${badge(p.status)}<span>${h(fmtDay(p.date + "T12:00:00+01:00"))}</span></div></div></a>`; }).join("")}</div>`;
+      <div class="cb"><div class="t">${h(p.title)}</div><div class="s">${badge(postStatus(p))}<span>${h(fmtDay(p.date + "T12:00:00+01:00"))}</span></div></div></a>`; }).join("")}</div>`;
   }
   function renderPosts() {
     $(".shell").classList.add("no-inspector"); $("#inspector").innerHTML = "";
@@ -157,7 +183,7 @@
     }).join("");
     $("#main").innerHTML = `<div class="wrap">
       <div class="page-head"><div class="eyebrow">${h(p.pillar || "Post")}</div><h1>${h(p.title)}</h1>${p.hook ? `<div class="hook">${h(p.hook)}</div>` : ""}
-        <div class="meta">${badge(p.status)}${p.when ? `<span>${h(p.when)}</span>` : `<span>${h(fmtDay(p.date + "T12:00:00+01:00"))}</span>`}${p.platforms ? `<span>${h(p.platforms)}</span>` : ""}</div>
+        <div class="meta">${badge(postStatus(p))}${p.when ? `<span>${h(p.when)}</span>` : `<span>${h(fmtDay(p.date + "T12:00:00+01:00"))}</span>`}${p.platforms ? `<span>${h(p.platforms)}</span>` : ""}</div>
         <div class="seg seg-mobile"><button class="active" data-pane="thread">Thread</button><button data-pane="content">Content</button></div></div>
       <div class="thread">${thread || `<div class="empty">No messages yet.</div>`}</div></div>`;
     renderInspector(p);
@@ -203,7 +229,7 @@
     const videos = p.media.filter((m) => m.type === "video");
     const chans = p.channels || [];
     let html = `<div class="insp-title">Status</div><div class="kv">
-      <dt>Status</dt><dd>${badge(p.status)}</dd>${p.verdict ? `<dt>Review</dt><dd>${badge(p.verdict)}</dd>` : ""}
+      <dt>Status</dt><dd>${badge(postStatus(p))}</dd>${p.verdict ? `<dt>Review</dt><dd>${badge(p.verdict)}</dd>` : ""}
       ${chans.length ? `<dt>Channel posts</dt><dd>${chans.length}</dd>` : ""}${p.pillar ? `<dt>Pillar</dt><dd>${h(p.pillar)}</dd>` : ""}</div>`;
     const watch = (videos.some((v) => v.current) ? videos.filter((v) => v.current) : videos).slice(0, 2);
     if (watch.length) html += `<div class="insp-title">Watch</div>` + watch.map((v) => `<div class="player"><video src="${v.url}" controls preload="metadata" playsinline poster="${poster(p, v)}"></video></div>`).join("");
@@ -231,7 +257,7 @@
     const fmt = c.format || fmtOf(p, c);
     const tabs = c.variants.length > 1 ? `<div class="cap-tabs">${c.variants.map((v, k) => `<button class="${k ? "" : "active"}" data-v="${k}">${h(v.label || "Caption " + (k + 1))}</button>`).join("")}</div>` : "";
     return `<section class="chan" data-i="${i}" data-platform="${h(c.platform)}" style="--c:${PLATFORM_COLOR[c.platform] || "#8e8e93"}">
-      <header><div class="ch-top">${chip(c.platform)}<span class="ch-fmt">${h(fmt)}</span>${badge(c.status)}</div>
+      <header><div class="ch-top">${chip(c.platform)}<span class="ch-fmt">${h(fmt)}</span>${badge(liveStatus(c.status, c.date))}</div>
         <div class="ch-slot">${h(slotLabel(c))}${c.group ? ` · ${h(c.group)}` : ""}</div></header>
       ${ms.length ? `<div class="ch-media">${ms.map((m) => m.type === "video"
         ? `<div class="mi vid" data-src="${m.url}" data-type="video"><video src="${m.url}#t=0.5" preload="metadata" muted playsinline></video></div>`
@@ -261,7 +287,7 @@
   async function addChannel(zip, p, c, base) {
     const ms = mediaOf(p, c);
     const readme = [`${p.title}: ${c.platform}${c.format ? ` (${c.format})` : ""}`, "".padEnd(40, "="), "",
-      `Channel: ${c.platform}`, `Format: ${c.format || fmtOf(p, c)}`, `Slot: ${c.when || "not set"}`, `Status: ${c.status}`, !!c.group && `Part of: ${c.group}`, !!c.pillar && `Pillar: ${c.pillar}`, !!c.hook && `Hook: ${c.hook}`, "",
+      `Channel: ${c.platform}`, `Format: ${c.format || fmtOf(p, c)}`, `Slot: ${c.when || "not set"}`, `Status: ${liveStatus(c.status, c.date)}`, !!c.group && `Part of: ${c.group}`, !!c.pillar && `Pillar: ${c.pillar}`, !!c.hook && `Hook: ${c.hook}`, "",
       "Files", ...(c.variants.length ? c.variants.map((v) => `- ${c.variants.length > 1 ? `caption-${slug(v.label)}.txt` : "caption.txt"}: the ${c.platform} caption${v.label ? ` (${v.label})` : ""}, ready to paste`) : ["- no caption: the text is on the image"]),
       c.thread.length && `- thread/: posts 1 to ${c.thread.length}, one file each, in posting order`,
       !!c.altText && "- alt-text.txt: alt text for the visuals", ...ms.map((m) => `- media/${m.file.split("/").pop()}`), "",
@@ -305,7 +331,7 @@
     const rows = state.data.calendar;
     const cols = ["Date", "Time (WAT)", "Platform", "Pillar", "Hook", "Format", "Status", "Notes"];
     $("#main").innerHTML = `<div class="wrap"><div class="page-head"><h1>Calendar</h1><p class="muted">content/calendar/calendar.csv, the source of truth for what is planned and posted.</p></div>
-      <div class="tbl-wrap"><table class="table"><thead><tr>${cols.map((c) => `<th>${h(c)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => { const slug = (r["Asset link"] || r["Caption link"] || "").match(/content\/posts\/([^/]+)/)?.[1]; return `<tr>${cols.map((c) => `<td data-label="${h(c)}">${c === "Status" ? badge(r[c]) : c === "Hook" && slug ? `<a href="#/post/${encodeURIComponent(slug)}">${h(r[c])}</a>` : h(r[c])}</td>`).join("")}</tr>`; }).join("") || `<tr><td colspan="8" class="empty">The calendar is empty.</td></tr>`}</tbody></table></div></div>`;
+      <div class="tbl-wrap"><table class="table"><thead><tr>${cols.map((c) => `<th>${h(c)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => { const slug = (r["Asset link"] || r["Caption link"] || "").match(/content\/posts\/([^/]+)/)?.[1]; return `<tr class="${r.Date === todayKey() ? "is-today" : ""}">${cols.map((c) => `<td data-label="${h(c)}">${c === "Status" ? badge(liveStatus(r[c], r.Date)) : c === "Hook" && slug ? `<a href="#/post/${encodeURIComponent(slug)}">${h(r[c])}</a>` : h(r[c])}</td>`).join("")}</tr>`; }).join("") || `<tr><td colspan="8" class="empty">The calendar is empty.</td></tr>`}</tbody></table></div></div>`;
   }
 
   // ---------- boot
@@ -321,6 +347,11 @@
     const res = await fetch("data.json", { cache: "no-cache" });
     state.data = await res.json();
     render();
+    const n = pendingToday().length;
+    if (n) toast(`${n} post${n === 1 ? "" : "s"} pending today`);
+    // roll over to the next day's list at midnight WAT if the page stays open
+    let day = todayKey();
+    setInterval(() => { if (todayKey() !== day) { day = todayKey(); render(); } }, 60000);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 })();
