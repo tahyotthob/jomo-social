@@ -1,16 +1,16 @@
 # Captions: World Cities Day
 Role: Copywriter (hook by Creative Director, visuals by Designer)
 
-Big idea (Creative Director): the 2026 theme is about adequate housing. JOMO's way in is the street: a safe home is climate protection, and the drain outside is part of it. Reuses last week's unposted "Safe Homes" carousel and X post, reframed for World Cities Day. No evictions, demolitions, officials, policies or blame (Trend Scout flag).
+Big idea (Creative Director): the 2026 theme is about adequate housing. JOMO's way in is the street outside the home: water needs a way out, and the drain is where it starts. (After the policy review, the carousel no longer labels any real homes as safe or weak.) Reuses last week's unposted "Safe Homes" carousel and X post, reframed for World Cities Day. No evictions, demolitions, officials, policies or blame (Trend Scout flag).
 
 ### Sat 2026-10-31, 18:00 WAT · Instagram + Facebook · Partners and ecosystem (awareness day)
-Hook: ~~Just rain.~~ A safe home is climate protection.
-Visual: 5-slide 4:5 carousel, `visuals/w31-cities-01.png` to `w31-cities-05.png`. Slides 1 and 3 are labelled stock photos (Pexels), not JOMO activity.
+Hook: ~~Just rain.~~ Water needs a way out.
+Visual: 5-slide 4:5 carousel, `visuals/w31-cities-01.png` to `w31-cities-05.png`. Slides 1 and 3 are labelled stock photos (Pexels), not JOMO activity. Slide 3 is now a people-free photo (plastic-waste-riverbank-01.jpg, location not stated) after the policy review.
 
 Caption — Instagram:
-Just rain? A safe home is climate protection. 🏠🌱
+Just rain? Water needs a way out. 🌧️🌱
 
-It's World Cities Day. Heavy rain is a climate risk, and a weak home or a blocked drain is where it lands.
+It's World Cities Day. Heavy rain is a climate risk, and a blocked drain is where it lands.
 
 What a household or street can do:
 - Clear the drain outside your gate.
@@ -24,9 +24,9 @@ Slides 1 and 3 are stock photos, not JOMO activity. Slide 1 shows a flooded stre
 #WorldCitiesDay #ClimateAction #Lagos #Lusaka
 
 Caption — Facebook:
-Just rain? A safe home is climate protection. 🏠🌱
+Just rain? Water needs a way out. 🌧️🌱
 
-Today is World Cities Day. Heavy rain is a climate risk, and it becomes a problem where a home or a street can't cope: a weak structure, or a blocked drain with nowhere for water to go.
+Today is World Cities Day. Heavy rain is a climate risk, and it becomes a flood where water has nowhere to go: a blocked drain, a gutter full of waste.
 
 What a household or neighbourhood can do:
 - Clear the drain outside your gate.
@@ -40,9 +40,9 @@ The photos on slides 1 and 3 are stock photos, not JOMO activity. The first show
 #WorldCitiesDay #ClimateAction
 
 Alt text:
-- Slide 1: Stock photo. A flooded street in Lekki, Lagos: a man carrying a bag on his head wades through floodwater past old buildings and painted walls under a cloudy sky. Labels: "Stock photo · Lekki, Lagos" and a tape "World Cities Day · 31 Oct". Overlay: "Just rain." crossed out, then "A safe home is climate protection."
-- Slide 2: Lime slide: "Where it lands. Heavy rain is a climate risk. A weak home or a blocked drain is where it lands."
-- Slide 3: Stock photo. A man pushes a bicycle loaded with large sacks through shallow floodwater, two small figures wading behind. Label "Stock photo". Text: "Water needs a way out. Floods hit where water has nowhere to go."
+- Slide 1: Stock photo. A flooded street in Lekki, Lagos: a man carrying a bag on his head wades through floodwater past old buildings and painted walls under a cloudy sky. Labels: "Stock photo · Lekki, Lagos" and a tape "World Cities Day · 31 Oct". Overlay: "Just rain." crossed out, then "Water needs a way out."
+- Slide 2: Lime slide: "Where it lands. Heavy rain is a climate risk. A blocked drain is where it lands."
+- Slide 3: Stock photo, aerial view of a riverbank covered in plastic waste, no people. Label "Stock photo". Text: "What blocks it. Floods hit where water has nowhere to go."
 - Slide 4: Lime slide: "On your street: three things you can do. Clear the drain outside your gate. Report what you can't fix. Notice where water collects."
 - Slide 5: Dark slide: "World Cities Day. Liveable cities are built one street at a time. Where does water collect on yours?" White JOMO logo.
 
@@ -76,9 +76,11 @@ Visual: `visuals/w31-cities-x-16x9.png` (Pexels stock photo, labelled)
 Caption — X:
 When it rains, where does the water go on your street? 🌧️
 
-It's #WorldCitiesDay. Liveable cities are built one street at a time, starting with the drain outside your gate.
+It's World Cities Day. Liveable cities are built one street at a time, starting with the drain outside your gate.
 
 (Photo: stock, Lekki, Lagos)
+
+#WorldCitiesDay
 
 Alt text: Stock photo of a flooded street in Lekki, Lagos, with a man wading through water past old buildings. Labels "Stock photo · Lekki, Lagos" and "World Cities Day · 31 Oct". Text: "When it rains, where does the water go on your street?"
 

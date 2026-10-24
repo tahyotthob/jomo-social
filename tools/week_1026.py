@@ -3,6 +3,7 @@ Reuses the helpers and several layouts from week_1016.py with the new YCEF close
 from week_1016 import pg, st, photo, grad, stamp, item, tick, ONI, LEKKI, BIKE, URL, LOGO_L, LOGO_D
 from build import *
 
+PH_RIVER = "file:///home/user/jomo-social/assets/photos/web/plastic-waste-riverbank-01.jpg"
 CLOSE = "Tue 3 Nov"
 CLOSE_FULL = "Tue 3 Nov, 11:59&nbsp;PM&nbsp;WAT"
 ZAMBIA = "12:59 AM Wed 4 Nov in Zambia"
@@ -140,7 +141,7 @@ write("w29-oniwaya-02", pg(f"""
  <div class="tape" style="z-index:4;background:{LIME};color:{INK};left:590px;top:200px;font-size:26px;padding:12px 28px;transform:rotate(3deg)">After</div>
 """, "ink", 2, T))
 write("w29-oniwaya-03", pg(f"""
- <div class="label">What it took</div>
+ <div class="label">What clean-ups take</div>
  <div class="brico" style="font-size:104px;margin-top:36px">Volunteers, gloves and rakes. <span style="color:{OFF}">That's it.</span></div>
  {photo(ONI % '11', 90, 700, 900, 500, "50% 40%", "border-radius:28px")}
 """, "lime", 3, T))
@@ -198,7 +199,8 @@ write("w30-tgif-story-9x16", pg(f"""
  <style>.foot{{bottom:260px}}</style><div style="height:240px"></div>
  <div class="label">TGIF &middot; one thing for the weekend</div>
  <div class="h" style="font-size:170px;margin-top:40px">Check the<br>drain outside<br><span class="acc">your gate.</span></div>
- <div class="body" style="margin-top:50px;font-size:50px">Bottles, nylon, sachets: put on gloves and pull them out before the next rain.</div>
+ <div class="body" style="margin-top:50px;font-size:50px">Bottles, nylon, sachets: when it&rsquo;s dry, put on gloves, pull them out and bag them for the bin.</div>
+ <div class="body" style="margin-top:30px;font-size:46px;font-weight:700;color:{LIME}">Never step into a deep or flowing drain.</div>
 """, "ink", 0, 0, 1080, 1920))
 
 # ===== 11. Sat 31: World Cities Day carousel (safe homes), 4:5 =====
@@ -208,18 +210,18 @@ write("w31-cities-01", pg(f"""
  <div class="chip" style="left:90px;top:90px">Stock photo &middot; Lekki, Lagos</div>
  <div class="tape" style="background:{LIME};color:{INK};right:90px;top:170px;transform:rotate(4deg);font-size:24px">World Cities Day &middot; 31 Oct</div>
  <div class="c" style="position:absolute;left:90px;right:90px;bottom:160px">
-  <div class="h" style="font-size:134px">{st('Just rain.', th=11)}<br><span class="acc">A safe home<br>is climate<br>protection.</span></div></div>
+  <div class="h" style="font-size:150px">{st('Just rain.', th=11)}<br><span class="acc">Water needs<br>a way out.</span></div></div>
 """, "ink", 1, T))
 write("w31-cities-02", pg(f"""
  <div class="label">Where it lands</div>
  <div class="h" style="font-size:136px;margin-top:70px">Heavy rain is<br>a climate risk.</div>
- <div class="h" style="font-size:136px;margin-top:50px;color:{OFF}">A weak home<br>or a blocked<br>drain is where<br>it lands.</div>
+ <div class="h" style="font-size:136px;margin-top:50px;color:{OFF}">A blocked<br>drain is where<br>it lands.</div>
  {sprout(300, color1=OFF, color2=LEAF, extra="right:-50px;top:70px;transform:rotate(16deg);opacity:.9")}
 """, "lime", 2, T))
 write("w31-cities-03", pg(f"""
- <div style="position:absolute;z-index:0;left:0;top:0;width:1080px;height:1350px;background:{INK}"></div>{photo(BIKE, 0, 330, 1080, 1020, "50% 70%")}{grad('top', 40, 1, 330, 1020)}{grad('bottom', 14, .85)}
+ <div style="position:absolute;z-index:0;left:0;top:0;width:1080px;height:1350px;background:{INK}"></div>{photo(PH_RIVER, 0, 330, 1080, 1020, "50% 50%")}{grad('top', 40, 1, 330, 1020)}{grad('bottom', 14, .85)}
  <div class="chip" style="left:90px;bottom:160px">Stock photo</div>
- <div class="c"><div class="label">Water needs a way out</div>
+ <div class="c"><div class="label">What blocks it</div>
   <div class="h" style="font-size:124px;margin-top:40px">Floods hit where<br>water has<br><span class="acc">nowhere to go.</span></div></div>
 """, "ink", 3, T))
 write("w31-cities-04", pg(f"""
