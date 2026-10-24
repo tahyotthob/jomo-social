@@ -204,7 +204,26 @@ def rig_sheet(stage, outdir, deformed=False):
     sc.render.film_transparent = False
     return sheet(imgs, 4, outdir / f"{stage}_poses_rig.png", f"{stage}: rig test poses (red = deform bones, blue = IK/controls)")
 
+EXPRESSIONS = [("blink", {"blink": 1}), ("smile", {"smile": 1}), ("laugh", {"smile": 1, "open": 0.8}),
+               ("frown", {"frown": 1}), ("sad", {"sad": 1}), ("surprise", {"surprise": 1}),
+               ("A", {"vis_A": 1}), ("E", {"vis_E": 1}), ("O", {"vis_O": 1}), ("U", {"vis_U": 1}),
+               ("M/B/P", {"vis_MBP": 1}), ("F/V", {"vis_FV": 1})]
+
+def expression_sheet(stage, outdir):
+    """Face rig check: each expression set through the rig's face properties."""
+    def setter(props):
+        def fn(n, on):
+            rig = bpy.data.objects[f"{n}_rig"]
+            for k, v in props.items(): rig[k] = v if on else 0.0
+            for o in rig.children: o.update_tag()
+            bpy.context.view_layer.update()
+        return fn
+    faces = face_closeups(stage, outdir, [(lab, setter(p)) for lab, p in EXPRESSIONS])
+    faces = [f.resize((400, 400)) for f in faces]
+    return sheet(faces, len(EXPRESSIONS) + 1, outdir / f"{stage}_poses_face.png", f"{stage}: face rig (Tobi top, Amara bottom)")
+
 if __name__ == "__main__":
     _main()
     if len(sys.argv) > 3 and sys.argv[3] in ("rig", "rigdeformed"):
         print("wrote", rig_sheet(sys.argv[2], RENDERS / sys.argv[2], deformed=sys.argv[3] == "rigdeformed"))
+        if sys.argv[3] == "rigdeformed": print("wrote", expression_sheet(sys.argv[2], RENDERS / sys.argv[2]))
