@@ -61,3 +61,40 @@ Decisions made while building the 3D versions of Tobi and Amara, so anyone can s
   - Cycles/export: Principled BSDF, base colour = palette, roughness 1, metallic 0. glTF and FBX carry this one; engines add their own toon shader on top of the palette if wanted.
 - **Amara's inner mouth:** the middle 70% of her mouth is now the dark mouth colour, with her lip colour at the corners, so open-mouth and speech shapes read clearly (flagged in stage 3).
 - **Check:** `blender/renders/stage4/stage4_turntable.png` and `stage4_poses_body.png` match the stage 1–3 colours exactly (the palette reproduces the swatches), with no magenta anywhere.
+
+## Stage 5: animation library
+- **17 Actions, 24 fps, all in `blender/work/stage5.blend` (and the final export):**
+
+  | Action | Frames | Loop |
+  |---|---|---|
+  | `idle` | 96 | loop |
+  | `walk` | 32 | loop |
+  | `run` | 20 | loop |
+  | `jump` | 44 | one-shot |
+  | `wave` | 56 | one-shot |
+  | `talk` | 96 | loop, with speech mouth shapes |
+  | `celebrate` | 64 | one-shot |
+  | `sit_down` | 48 | one-shot |
+  | `stand_up` | 48 | one-shot |
+  | `point` | 44 | one-shot |
+  | `clap` | 36 | loop |
+  | `dance` | 48 | loop, 120 bpm, 4 beats |
+  | `react_surprise` | 48 | one-shot |
+  | `react_sad` | 60 | one-shot |
+  | `react_laugh` | 54 | one-shot |
+  | `tobi_selfie_hype` | 84 | Tobi's signature |
+  | `amara_fact_check` | 96 | Amara's signature |
+
+- **Signature animations, from the personas:**
+  - **Tobi, adventurous and influential:** `tobi_selfie_hype` raises his phone for a selfie, leans in, throws a peace sign and winks.
+  - **Amara, nerdy rule-follower:** `amara_fact_check` lifts her tablet, pushes her glasses up with her index finger, reads, nods "verified" twice and taps the screen.
+- **One Action, both characters:** every Action keys pose bones by name, plus the rig's face properties. Both rigs come from the same code with the same rolls, so the same keys play on either. The previews show both characters playing each Action side by side.
+- **Authored on Tobi:** contact poses (clap, hand on belly, peace sign, selfie) are solved on Tobi's rig. On Amara the contacts land within a few centimetres; the measured distance between her palms in `clap` is 3.7 cm.
+- **Contacts solved, not eyeballed:** a small Nelder–Mead solver (`posing.reach`) finds the 7 arm angles that put a hand or fingertip on a target, optionally with the palm facing a set direction. Amara's signature is solved on her own rig: the finger target is measured from her glasses' bridge, and the tap target is measured from the tablet screen as she holds it.
+- **FK keys only:** IK is off (0) in every Action. The library is plain bone rotations, which export to glTF and FBX exactly, with no constraint baking.
+- **Locomotion in place:** `walk` and `run` don't move the root bone; a game or web player moves the character. The intended speed is stored on the Action as `root_speed_m_s` (walk 1.3 m/s, run 3.6 m/s). Feet can slide slightly at other speeds.
+- **Loops:** loops have identical first and last keys; their frame range stops one frame before the last key, and they're flagged `use_cyclic`. Each Action also stores `fps`, `loop` and `frames` as custom properties.
+- **Hips translations are in metres (Tobi):** used for jumps, sitting and bounce. On Amara, who is 8% shorter, they read the same. Sitting drops the hips 0.40 m and back 0.40 m, about one thigh length, so the feet stay put.
+- **Faces in Actions:** expressions and speech shapes are keyed on the rig's face properties (`smile`, `vis_A` and so on). They're baked to shape-key animation at export (stage 6).
+- **Previews:** `blender/scripts/preview_anim.py` writes a key-frame contact sheet per Action (`blender/renders/stage5/anim_*.png`) and an MP4 per Action (`blender/export/previews/*.mp4`). Loops play three times; one-shots hold the last frame for half a second. Sitting Actions show a stool so the pose reads. The camera is a 3/4 view, so the arm nearest the lens looks foreshortened; front and side views were also checked.
+- **Props on borrowed signatures:** props stay with their own character. When Amara plays `tobi_selfie_hype`, her tablet hand rises and the tablet passes near her head; when Tobi plays `amara_fact_check`, he "reads" his phone. That's expected: each signature is designed for its owner's props.

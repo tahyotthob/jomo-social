@@ -66,3 +66,77 @@ def pose_twist():
 
 TEST_POSES = {"rest": lambda: ({}, {}), "arms overhead": lambda: (pose_arms_up(), {}),
               "deep squat": lambda: pose_squat(), "torso twist": lambda: (pose_twist(), {})}
+
+# --- reach solver: find arm angles that put a hand (or fingertip) on a target ---
+def nelder_mead(f, x0, step=12.0, iters=500, tol=1e-7):
+    n = len(x0); pts = [list(x0)] + [[x0[j] + (step if j == i else 0) for j in range(n)] for i in range(n)]
+    vals = [f(p) for p in pts]
+    for _ in range(iters):
+        order = sorted(range(n + 1), key=lambda i: vals[i]); pts = [pts[i] for i in order]; vals = [vals[i] for i in order]
+        if vals[-1] - vals[0] < tol: break
+        c = [sum(p[j] for p in pts[:-1]) / n for j in range(n)]
+        xr = [c[j] + (c[j] - pts[-1][j]) for j in range(n)]; fr = f(xr)
+        if fr < vals[0]:
+            xe = [c[j] + 2 * (c[j] - pts[-1][j]) for j in range(n)]; fe = f(xe)
+            pts[-1], vals[-1] = (xe, fe) if fe < fr else (xr, fr)
+        elif fr < vals[-2]: pts[-1], vals[-1] = xr, fr
+        else:
+            xc = [c[j] + 0.5 * (pts[-1][j] - c[j]) for j in range(n)]; fc = f(xc)
+            if fc < vals[-1]: pts[-1], vals[-1] = xc, fc
+            else:
+                pts = [pts[0]] + [[pts[0][j] + 0.5 * (p[j] - pts[0][j]) for j in range(n)] for p in pts[1:]]
+                vals = [vals[0]] + [f(p) for p in pts[1:]]
+    i = min(range(n + 1), key=lambda i: vals[i]); return pts[i], vals[i]
+
+ARM_DOF = [("upper_arm", "x"), ("upper_arm", "y"), ("upper_arm", "z"), ("forearm", "x"), ("forearm", "z"), ("hand", "x"), ("hand", "z")]
+
+def arm_entries(x):
+    """Solver vector -> left-arm pose entries (rig-space degrees, applied after the A-pose rest)."""
+    out = {}
+    for (b, a), v in zip(ARM_DOF, x): out.setdefault(f"{b}.L", []).append((a, v))
+    return out
+
+def palm_normal(rig, side, ref=None):
+    """Palm direction (armature space) of the posed hand: the palm faces down-in at rest.
+    ref: any other rest-space direction carried by the hand (e.g. a held tablet's screen normal)."""
+    b = rig.data.bones[f"hand{side}"]; d = (b.tail_local - b.head_local).normalized()
+    n0 = -(d.cross(Vector((0, 1, 0)))).normalized()
+    if side == ".R": n0 = -(Vector((0, 1, 0)).cross(d)).normalized()
+    if ref is not None: n0 = Vector(ref).normalized()
+    pb = rig.pose.bones[f"hand{side}"]
+    return (pb.matrix.to_3x3() @ b.matrix_local.to_3x3().inverted() @ n0).normalized()
+
+def reach(rig, base, target, side="L", tip="hand", normal=None, x0=None, wn=0.02, reg=2e-7, ref=None):
+    """Solve the 7 arm angles so bone `tip` (tail) of that side reaches `target` (armature space, metres)
+    with the palm facing `normal`. base: the rest of the pose. Returns left-convention arm entries,
+    ready to pass through side(..., side)."""
+    import bpy
+    meshes = [o for o in rig.children if o.type == "MESH"]
+    for o in meshes:
+        for m in o.modifiers: m.show_viewport = False
+    s = "." + side; tgt = Vector(target); nt = Vector(normal).normalized() if normal else None
+    def f(x):
+        e = arm_entries(x); e = e if side == "L" else _flip(e)
+        p = {k: v for k, v in base.items() if not any(k.startswith(b) for b in ("upper_arm" + s, "forearm" + s, "hand" + s))}
+        p.update(e)
+        apply_pose(rig, p); bpy.context.view_layer.update()
+        c = (rig.pose.bones[f"{tip}{s}"].tail - tgt).length_squared
+        if nt is not None: c += wn * (1 - palm_normal(rig, s, ref).dot(nt))
+        return c + reg * sum(v * v for v in x)
+    best, val = nelder_mead(f, list(x0 or [-30, 20, 0, -60, 0, 0, 0]))
+    best, val = nelder_mead(f, best, step=4)   # restart to polish
+    for o in meshes:
+        for m in o.modifiers: m.show_viewport = True
+    return arm_entries([round(v, 1) for v in best]), val
+
+def _flip(pose):
+    out = {}
+    for b, rots in pose.items():
+        nb = b[:-2] + (".R" if b.endswith(".L") else ".L") if b.endswith((".L", ".R")) else b
+        out[nb] = [(mirror_axis(a), d) for a, d in rots]
+    return out
+
+def carried(rig, side, rest_point):
+    """Where a point carried rigidly by the hand (rest armature space) is in the current pose."""
+    b = rig.data.bones[f"hand{side}"]; pb = rig.pose.bones[f"hand{side}"]
+    return (pb.matrix @ b.matrix_local.inverted()) @ Vector(rest_point)
