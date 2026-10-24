@@ -121,7 +121,7 @@ def quad_sphere(cuts=7):
 
 def head_mesh(name):
     c = CHARS[name]; hd = c["head"]; w, d, h, jaw = hd["w"], hd["d"], hd["h"], hd["jaw"]
-    bm = quad_sphere(7)
+    bm = quad_sphere(9)   # 9 cuts: smoother skull silhouette, keeps each character inside the 8k-15k triangle target
     for v in bm.verts:
         x, y, z = v.co
         sx = 1 - jaw * max(0, -z) ** 1.6          # narrower jaw

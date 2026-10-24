@@ -12,3 +12,5 @@ tools/video/avatar/_plan.json
 blender/work/
 blender/renders/*/_tt/
 blender/renders/*/_ps/
+blender/renders/*/_anim/
+*.blend1

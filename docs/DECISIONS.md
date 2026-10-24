@@ -98,3 +98,20 @@ Decisions made while building the 3D versions of Tobi and Amara, so anyone can s
 - **Faces in Actions:** expressions and speech shapes are keyed on the rig's face properties (`smile`, `vis_A` and so on). They're baked to shape-key animation at export (stage 6).
 - **Previews:** `blender/scripts/preview_anim.py` writes a key-frame contact sheet per Action (`blender/renders/stage5/anim_*.png`) and an MP4 per Action (`blender/export/previews/*.mp4`). Loops play three times; one-shots hold the last frame for half a second. Sitting Actions show a stool so the pose reads. The camera is a 3/4 view, so the arm nearest the lens looks foreshortened; front and side views were also checked.
 - **Props on borrowed signatures:** props stay with their own character. When Amara plays `tobi_selfie_hype`, her tablet hand rises and the tablet passes near her head; when Tobi plays `amara_fact_check`, he "reads" his phone. That's expected: each signature is designed for its owner's props.
+
+## Stage 6: export
+- **Files:**
+  - `blender/export/jomo_characters.blend`: both characters, rigs, face drivers, all 17 Actions, and the palette packed in.
+  - `blender/export/tobi.glb` / `amara.glb` and `tobi.fbx` / `amara.fbx`: one character per file, centred at the origin.
+  - `blender/export/previews/*.mp4`: one per Action.
+- **Bones exported:** deform bones plus `root`, 53 in total. `root` is now flagged deform so engines get a locomotion root. IK and pole controls are Blender-only and stay out of the exports.
+- **Animations in the exports:** each Action becomes an NLA track. glTF exports by track name; FBX exports one take per strip.
+- **Face animation in the exports:** the rig's face-property curves are copied onto each face mesh's shape keys as NLA tracks with the same names, and the face drivers are removed in the export copy. The exporters then merge body and face into one clip per animation.
+- **Export material:** exports carry the Principled/palette output. The EEVEE toon output stays in the .blend only, because exporters can't read Shader-to-RGB.
+- **Round-trip check (`blender/scripts/verify_export.py`):** re-imports both .glb files into an empty scene and checks bones (53), meshes (11), triangles, shape keys and all 17 animations. It then renders `blender/renders/stage6/stage6_turntable.png` and `stage6_poses_from_glb.png` from the imported files.
+  - A hand position after round-trip matched the source to the millimetre.
+  - Morph weights play back: `celebrate` frame 15 gives `smile` 1.0 and `open` 0.75.
+- **FBX check:** re-imported FBX has 53 bones, 11 meshes, shape keys on the 3 face meshes, and 17 body takes plus their face takes.
+- **Importer quirk, not a file problem:** Blender's glTF importer adds an empty above each mesh that has animated morph weights, and an `Icosphere` it uses to display bones.
+- **Head resolution raised after the first export check:** the clean-up in stage 4 left Tobi at 7,752 and Amara at 7,828 triangles, just under the 8k–15k target. The head quad-sphere went from 7 to 9 cuts, which also smooths the skull silhouette. Everything was rebuilt from the scripts (`blender/scripts/build_all.sh`): Tobi is now **8,652** and Amara **8,720** triangles, with 0 overlapping UVs. The stage 1–2 check sheets show the earlier head; stage 3, 5 and 6 sheets and all MP4s were re-rendered on the final meshes.
+- **One-command rebuild:** `bash blender/scripts/build_all.sh` rebuilds stages 1–6, re-checks UVs and the exports, and re-renders the animation sheets and MP4s. Add `--no-previews` to skip the renders.
