@@ -38,6 +38,12 @@
   <main class="main" id="main"></main>
   <aside class="inspector" id="inspector"></aside>
 </div>
+<nav class="tabbar" id="tabbar" aria-label="Main">
+  <a href="#/" data-route="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span>Overview</span></a>
+  <a href="#/posts" data-route="post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v10H9l-4 4z"/></svg><span>Posts</span></a>
+  <a href="#/plans" data-route="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/></svg><span>Plans</span></a>
+  <a href="#/calendar" data-route="calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span>Calendar</span></a>
+</nav>
 <div class="scrim" id="scrim"></div>
 <div class="lightbox" id="lightbox" hidden><button class="close" aria-label="Close">×</button><div class="lb-body"></div></div>
 <div class="toast" id="toast" hidden></div>

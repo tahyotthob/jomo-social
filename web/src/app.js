@@ -44,7 +44,7 @@
   }
   function render() {
     state.route = parseRoute();
-    document.querySelectorAll("#nav a").forEach((a) => a.classList.toggle("active", a.dataset.route === state.route.page || (state.route.page === "posts" && a.dataset.route === "post") || (state.route.page === "plans" && a.dataset.route === "plan")));
+    document.querySelectorAll("#nav a, #tabbar a").forEach((a) => a.classList.toggle("active", a.dataset.route === state.route.page || (state.route.page === "posts" && a.dataset.route === "post") || (state.route.page === "plans" && a.dataset.route === "plan")));
     document.body.classList.remove("menu-open");
     const shell = $(".shell");
     shell.classList.remove("no-inspector", "no-sidebar", "show-inspector");
@@ -249,7 +249,7 @@
     const rows = state.data.calendar;
     const cols = ["Date", "Time (WAT)", "Platform", "Pillar", "Hook", "Format", "Status", "Notes"];
     $("#main").innerHTML = `<div class="wrap"><div class="page-head"><h1>Calendar</h1><p class="muted">content/calendar/calendar.csv, the source of truth for what is planned and posted.</p></div>
-      <div class="tbl-wrap"><table class="table"><thead><tr>${cols.map((c) => `<th>${h(c)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => { const slug = (r["Asset link"] || r["Caption link"] || "").match(/content\/posts\/([^/]+)/)?.[1]; return `<tr>${cols.map((c) => `<td>${c === "Status" ? badge(r[c]) : c === "Hook" && slug ? `<a href="#/post/${encodeURIComponent(slug)}">${h(r[c])}</a>` : h(r[c])}</td>`).join("")}</tr>`; }).join("") || `<tr><td colspan="8" class="empty">The calendar is empty.</td></tr>`}</tbody></table></div></div>`;
+      <div class="tbl-wrap"><table class="table"><thead><tr>${cols.map((c) => `<th>${h(c)}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => { const slug = (r["Asset link"] || r["Caption link"] || "").match(/content\/posts\/([^/]+)/)?.[1]; return `<tr>${cols.map((c) => `<td data-label="${h(c)}">${c === "Status" ? badge(r[c]) : c === "Hook" && slug ? `<a href="#/post/${encodeURIComponent(slug)}">${h(r[c])}</a>` : h(r[c])}</td>`).join("")}</tr>`; }).join("") || `<tr><td colspan="8" class="empty">The calendar is empty.</td></tr>`}</tbody></table></div></div>`;
   }
 
   // ---------- boot
