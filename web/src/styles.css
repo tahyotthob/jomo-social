@@ -71,7 +71,7 @@ h3 { font-size: 17px; }
 .side-item { display: grid; grid-template-columns: 44px 1fr; gap: 10px; padding: 9px 10px; border-radius: 12px; color: var(--text); transition: background .15s; align-items: center; }
 .side-item:hover { background: var(--surface-2); }
 .side-item.active { background: var(--surface); box-shadow: var(--shadow); }
-.side-item .thumb { width: 44px; height: 44px; border-radius: 10px; background: var(--surface-2); object-fit: cover; }
+.side-item .thumb { width: 44px; height: 44px; border-radius: 10px; background: var(--surface-2); object-fit: contain; }
 .side-item .thumb.ph { display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 11px; font-weight: 600; }
 .side-item .t { font-weight: 600; font-size: 14px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .side-item .s { font-size: 12px; color: var(--text-2); display: flex; align-items: center; gap: 6px; margin-top: 2px; white-space: nowrap; overflow: hidden; }
@@ -121,7 +121,7 @@ h3 { font-size: 17px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
 .card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; color: var(--text); transition: transform .2s, box-shadow .2s; display: block; }
 .card:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(0,0,0,.05), 0 16px 36px rgba(0,0,0,.1); }
-.card .cover { aspect-ratio: 4/5; background: var(--surface-2); object-fit: cover; width: 100%; }
+.card .cover { aspect-ratio: 1/1; background: var(--surface-2); object-fit: contain; width: 100%; }
 .card .cover.ph { display: flex; align-items: center; justify-content: center; color: var(--text-3); font-weight: 600; font-size: 13px; }
 .card .cb { padding: 14px 16px 16px; }
 .card .cb .t { font-weight: 600; font-size: 15px; line-height: 1.3; }
@@ -171,8 +171,8 @@ h3 { font-size: 17px; }
 .clamp::after { content: ""; position: absolute; inset: auto 0 0 0; height: 90px; background: linear-gradient(transparent, var(--bubble)); }
 .more { margin-top: 8px; font-weight: 600; font-size: 13px; color: var(--link); }
 .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 4px; }
-.media-grid .mi { border-radius: 10px; overflow: hidden; background: var(--surface-2); aspect-ratio: 4/5; position: relative; cursor: zoom-in; }
-.media-grid .mi img, .media-grid .mi video { width: 100%; height: 100%; object-fit: cover; }
+.media-grid .mi { border-radius: 10px; overflow: hidden; background: var(--surface-2); aspect-ratio: 1/1; position: relative; cursor: zoom-in; }
+.media-grid .mi img, .media-grid .mi video { width: 100%; height: 100%; object-fit: contain; }
 .media-grid .mi .cap { position: absolute; inset: auto 0 0 0; padding: 18px 8px 6px; font-size: 11px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.65)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .media-grid .mi.vid::before { content: "▶"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 26px; text-shadow: 0 2px 8px rgba(0,0,0,.5); z-index: 1; pointer-events: none; }
 
@@ -194,7 +194,7 @@ h3 { font-size: 17px; }
 .kv dt { color: var(--text-2); margin: 0; } .kv dd { margin: 0; }
 .files { display: flex; flex-direction: column; gap: 6px; }
 .file-row { display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; padding: 6px 8px 6px 6px; border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
-.file-row img, .file-row .ph { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--text-3); }
+.file-row img, .file-row .ph { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--text-3); }
 .file-row .n { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .file-row .z { font-size: 11px; color: var(--text-3); }
 .file-row a.dl { width: 32px; height: 32px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-2); }
