@@ -45,7 +45,7 @@ What fellows do:
 Who can apply: university students and grassroots community volunteers aged 18 and over, in Nigeria 🇳🇬 and Zambia 🇿🇲.
 The programme: 50 fellows, 3 virtual weekends. Weekend 1 is Fri 13 Nov 2026.
 
-Know someone who keeps saying "someone should fix this"? This is for them.
+If you keep saying "someone should fix this", this is for you.
 
 Apply here: https://jomoclimatechange.org/events?apply=ycef
 

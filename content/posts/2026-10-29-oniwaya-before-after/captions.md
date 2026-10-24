@@ -10,7 +10,7 @@ Visual: 4-slide 4:5 carousel, `visuals/w29-oniwaya-01.png` to `w29-oniwaya-04.pn
 Caption — Instagram:
 Blocked. Cleaned up. One drain in Oniwaya. 🌱
 
-From our archive: a JOMO clean-up in Oniwaya. A few volunteers with gloves and rakes cleaned up this drain. That's it.
+From our archive: a JOMO clean-up in Oniwaya. Volunteers with gloves and rakes cleaned up this drain. That's it.
 
 A blocked drain is where rainwater has nowhere to go. Clearing one is a start.
 
