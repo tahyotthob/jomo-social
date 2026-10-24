@@ -14,9 +14,10 @@ Every post should serve at least one of these.
 
 ## Programmes and partners
 
-- **Running now:** JOMO's Pods (the podcast) and the Young Climate Educators Fellowship (YCEF). YCEF applications open Mon 12 Oct 2026 and close Mon 26 Oct 2026; Weekend 1 is Fri 13 Nov 2026. YCEF is a 3-weekend virtual programme for 50 fellows across Nigeria and Zambia, open to university students and grassroots community volunteers aged 18 and over. Fellows research hyper-local climate challenges, design youth-led "sustenance engineering" projects and learn to pitch for seed funding. Never promise funding: there is no funding guarantee and no pitch competition.
-- **YCEF application link:** https://jomoclimatechange.org/events?apply=ycef (use this in every YCEF call to action; confirmed working by the operator, 2026-10-23). Applications close Mon 26 Oct 2026 at 11:59 PM WAT (operator, 2026-10-23).
+- **Running now:** JOMO's Pods (the podcast) and the Young Climate Educators Fellowship (YCEF). YCEF applications opened Mon 12 Oct 2026 and now close **Tue 3 Nov 2026** (extended from Mon 26 Oct; operator, 2026-10-24); Weekend 1 is Fri 13 Nov 2026. YCEF is a 3-weekend virtual programme for 50 fellows across Nigeria and Zambia, open to university students and grassroots community volunteers aged 18 and over. Fellows research hyper-local climate challenges, design youth-led "sustenance engineering" projects and learn to pitch for seed funding. Never promise funding: there is no funding guarantee and no pitch competition.
+- **YCEF application link:** https://jomoclimatechange.org/events?apply=ycef (use this in every YCEF call to action; confirmed working by the operator, 2026-10-23). Applications close **Tue 3 Nov 2026 at 11:59 PM WAT**, which is 12:59 AM on Wed 4 Nov in Zambia (operator, 2026-10-24; the earlier close of Mon 26 Oct was extended). Say both times when a post speaks to Zambia.
 - **Past work to use as proof:** tree planting, community and market clean-ups, school sensitisation, the "My Photo With Earth" campaign.
+- **Why JOMO built YCEF (operator, 2026-10-24):** to scale JOMO's impact. Many young people want to solve problems in their communities but don't know how to go about it or where to start.
 - **Partners JOMO can name:** Oxygen X (Access Holdings), the Rotary Club of Mende, the Lagos State environmental agency (confirm exact name and handle before tagging), The Slum Organisation.
 - Credit a government agency by name for its work; never praise or criticise officials personally.
 
