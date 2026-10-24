@@ -12,7 +12,7 @@ def rel(html):  # keep content above the photo layer
 
 write("elnino-01", page(photo_bg() + rel(f"""
   <div class="label">Climate, explained locally</div>
-  <div class="h" style="font-size:150px;margin-top:70px">Super<br>El Ni&ntilde;o<br>is here.</div>
+  <div class="h" style="font-size:150px;margin-top:70px;line-height:1.12">Super<br>El Ni&ntilde;o<br>is here.</div>
   <div class="h acc" style="font-size:112px;margin-top:40px">Is your family<br>ready for<br>the heat?</div>
 """) + f"""
   <div class="tape" style="background:{LIME};color:{INK};left:90px;bottom:190px;transform:rotate(-4deg)">Swipe &rarr;</div>
@@ -52,7 +52,7 @@ write("elnino-05", page(f"""
   <div class="label">5 heat-smart habits</div>
   <div class="h" style="font-size:112px;margin-top:40px">Heat no be<br>small thing.</div>
   <div style="margin-top:20px">
-    {check("Drink water all day: at least 2 to 3 litres")}
+    {check("Adults: drink water all day,<br>at least 2 to 3 litres")}
     {check("Skip hard work in the hottest hours.<br>Find shade.")}
     {check("Open windows at night, close them<br>and block the sun by day")}
     {check("Light, loose clothes. Cool showers.")}
@@ -62,7 +62,7 @@ write("elnino-05", page(f"""
 
 write("elnino-06", page(f"""
   <div class="label">Know the danger signs</div>
-  <div class="h" style="font-size:118px;margin-top:50px">Confused?<br>Fainting? Hot,<br><span class="acc">dry skin?</span></div>
+  <div class="h" style="font-size:118px;margin-top:50px">Confused?<br>Fainting?<br><span class="acc">Hot, dry skin?</span></div>
   <div class="body" style="margin-top:44px;font-weight:700">That's an emergency. Get medical help fast and cool the person down.</div>
   <div class="body" style="margin-top:50px;font-size:36px;max-width:860px">A projection is not destiny. This week, check on one older neighbour, and follow NiMet for heat updates in your state.</div>
   {sprout(260, extra="right:-30px;top:120px;transform:rotate(14deg);opacity:.9")}
@@ -76,10 +76,10 @@ write("elnino-x-16x9", page(photo_bg("center 50%", ".55,.9") + rel(f"""
 """), "ink", 0, 0, 1600, 900))
 
 write("elnino-story-9x16", page(f"""
-  <div style="height:360px"></div>
+  <style>.foot{{bottom:260px}}</style><div style="height:290px"></div>
   <div class="label">Super El Ni&ntilde;o &middot; heat check</div>
   <div class="h" style="font-size:170px;margin-top:50px">Who are you<br><span class="acc">checking on</span><br>this week?</div>
   <div class="body" style="margin-top:70px;font-size:54px">Grandma. The baby. The neighbour who lives alone. The worker out in the sun all day.</div>
-  <div class="body" style="margin-top:60px;font-weight:700;font-size:54px">Water. Shade. A cool room.<br>And a knock on the door.</div>
+  <div class="body" style="margin-top:60px;font-weight:700;font-size:54px">Shade. A cool room.<br>And a knock on the door.</div>
 """, "ink", 0, 0, 1080, 1920))
 print("ok")

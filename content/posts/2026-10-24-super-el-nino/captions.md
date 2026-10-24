@@ -57,7 +57,7 @@ Alt text (one per slide):
 2. Lime green slide. Large "31,400", then "more heat-related deaths in Nigeria. September 2026 to February 2027, compared with an average year. Source: Climate Impact Lab, University of Chicago, Sept 2026. A model projection, not a count. Method not yet published in a peer-reviewed journal."
 3. Dark slide. "Wait, what is El Niño? A natural warming of the Pacific Ocean that shifts weather around the world. This one is unusually strong. US weather agency NOAA puts the chance of a strong to very strong El Niño through January–March 2027 at more than 83%. Researchers call this heat a 'postcard from the future': close to what climate change is projected to bring in about 20 years."
 4. Light slide. "Who to look out for": people over 65; babies and young children; people with heart, lung or kidney conditions; outdoor workers, such as farmers; anyone who lives alone.
-5. Lime slide. "Heat no be small thing." Five ticks: drink water all day, at least 2 to 3 litres; skip hard work in the hottest hours, find shade; open windows at night, close them and block the sun by day; light, loose clothes, cool showers; never leave a child in a parked car.
+5. Lime slide. "Heat no be small thing." Five ticks: adults: drink water all day, at least 2 to 3 litres; skip hard work in the hottest hours, find shade; open windows at night, close them and block the sun by day; light, loose clothes, cool showers; never leave a child in a parked car.
 6. Dark slide with a lime leaf shape. "Confused? Fainting? Hot, dry skin? That's an emergency. Get medical help fast and cool the person down. A projection is not destiny. This week, check on one older neighbour, and follow NiMet for heat updates in your state."
 
 ---
@@ -126,7 +126,7 @@ Alt text: Lime green graphic. Large "31,400", then "more heat-related deaths in 
 Hook: Who are you checking on this week?
 Visual: `visuals/elnino-story-9x16.png`. Add the "Question" sticker in the app (prompt: "Your best tip for staying cool?") in the empty space below the text, and a link sticker (label "WHO heat advice", URL https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health) in the empty space above the "Super El Niño · heat check" label. Keep both stickers clear of the text and out of the top and bottom 250px. If Facebook stories doesn't offer the Question sticker, post the Facebook story with the link sticker only.
 
-Story text is on the image. Alt text: Dark story. "Super El Niño · heat check. Who are you checking on this week? Grandma. The baby. The neighbour who lives alone. The worker out in the sun all day. Water. Shade. A cool room. And a knock on the door."
+Story text is on the image. Alt text: Dark story. "Super El Niño · heat check. Who are you checking on this week? Grandma. The baby. The neighbour who lives alone. The worker out in the sun all day. Shade. A cool room. And a knock on the door."
 
 ---
 
