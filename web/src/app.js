@@ -3,6 +3,15 @@
   const $ = (s, el = document) => el.querySelector(s);
   const h = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const PLATFORMS = ["Instagram", "Facebook", "LinkedIn", "X"];
+  const PLATFORM_COLOR = { Instagram: "#d62976", Facebook: "#1877f2", LinkedIn: "#0a66c2", X: "#000000" };
+  const POSTING = {
+    Instagram: "Schedule in Meta Business Suite, or post in the Instagram app when it needs stickers. Links go in the bio, not the caption.",
+    Facebook: "Schedule in Meta Business Suite. Links work in the caption.",
+    LinkedIn: "Post as the JOMO page and use LinkedIn's scheduler.",
+    X: "Post by hand. For a thread, post 1 with the image, then reply to it with each next post in order.",
+  };
+  const chip = (plat) => `<span class="chip" style="--c:${PLATFORM_COLOR[plat] || "#8e8e93"}">${h(plat)}</span>`;
+  const slug = (s) => String(s || "").toLowerCase().replace(/[^\w]+/g, "-").replace(/^-|-$/g, "");
   const ROLE_STYLE = {
     "Editor-in-Chief": ["EC", "#1d1d1f"], "Analyst": ["AN", "#5e5ce6"], "Trend Scout": ["TS", "#0a84ff"], "Creative Director": ["CD", "#bf5af2"],
     "Copywriter": ["CW", "#7aa31e"], "Designer": ["DS", "#ff9f0a"], "Video Producer": ["VP", "#ff375f"], "Impact Storyteller": ["IS", "#ac8e68"],
@@ -124,7 +133,7 @@
   function renderSearch() {
     $(".shell").classList.add("no-inspector"); $("#inspector").innerHTML = "";
     const q = state.q.toLowerCase();
-    const hits = state.data.posts.filter((p) => [p.title, p.hook, p.slug, p.pillar, p.platforms, ...p.captionSets.flatMap((s) => Object.values(s.captions)), ...p.messages.map((m) => m.body)].join(" ").toLowerCase().includes(q));
+    const hits = state.data.posts.filter((p) => [p.title, p.hook, p.slug, p.pillar, p.platforms, ...p.captionSets.flatMap((s) => Object.values(s.captions)), ...(p.channels || []).flatMap((c) => c.variants.map((v) => v.text)), ...p.messages.map((m) => m.body)].join(" ").toLowerCase().includes(q));
     $("#main").innerHTML = `<div class="wrap"><div class="page-head"><h1>Results for “${h(state.q)}”</h1><p class="muted">${hits.length} post${hits.length === 1 ? "" : "s"}</p></div>${cardGrid(hits, "Nothing matches.")}</div>`;
   }
 
@@ -140,6 +149,7 @@
       const long = (m.body || "").length > 1800;
       let body = "";
       if (m.kind === "media") body = mediaGrid(m.media);
+      else if (m.kind === "captions" && m.file === p.captionsFile && p.channels?.length) body = channelSummary(p);
       else if (m.kind === "captions" && m.sets?.length) body = captionBlocks(m.sets);
       else body = `<div class="md ${long ? "clamp" : ""}" data-i="${i}">${md(m.body)}</div>${long ? `<button class="more" data-more="${i}">Show more</button>` : ""}`;
       return `${sep}<div class="msg ${m.role === "Operator" ? "operator" : ""}">${avatar(m.role)}<div class="bubble">
@@ -155,6 +165,13 @@
     $("#main").querySelectorAll(".seg-mobile button").forEach((b) => b.addEventListener("click", () => { $(".shell").classList.toggle("show-inspector", b.dataset.pane === "content"); $(".seg-mobile .active").classList.remove("active"); b.classList.add("active"); }));
     bindMedia($("#main"));
     $("#main").querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copy(b.dataset.copy, "Caption copied")));
+  }
+  // one block per channel post in the thread: never two platforms in one block
+  function channelSummary(p) {
+    return p.channels.map((c) => `<div class="capset"><div class="cs-head">${chip(c.platform)} ${h(c.format || fmtOf(p, c))}${c.group ? ` <span class="cs-group">${h(c.group)}</span>` : ""}</div>
+      <div class="cs-meta">${h([c.when, c.pillar].filter(Boolean).join(" · "))}</div>
+      ${c.variants.map((v) => `<div class="cs-block"><div class="cs-label">${h(c.platform)}${v.label && v.label !== c.format ? ` · ${h(v.label)}` : ""}<button class="cs-copy" data-copy="${h(v.text)}">Copy</button></div><pre>${h(v.text)}</pre></div>`).join("")
+        || `<div class="cs-block"><div class="cs-label">${h(c.platform)}</div><pre>No caption: the text is on the image.${c.visual ? " " + h(c.visual) : ""}</pre></div>`}</div>`).join("");
   }
   function captionBlocks(sets) {
     return sets.map((st) => `<div class="capset">${sets.length > 1 ? `<div class="cs-head">${h(st.heading)}</div>` : ""}
@@ -177,60 +194,97 @@
     lb.hidden = false;
   }
 
-  // ---------- inspector: content and downloads
+  // ---------- inspector: one card per channel post, each with its own caption and kit
+  const fmtOf = (p, c) => { const ms = mediaOf(p, c); return ms.some((m) => m.type === "video") ? "Video" : ms.length > 1 ? `Carousel, ${ms.length} slides` : ms.length ? "Image" : "Text"; };
+  const mediaOf = (p, c) => c.media.map((f) => p.media.find((m) => m.file === f)).filter(Boolean);
+  const slotLabel = (c) => c.date ? `${fmtDay(c.date + "T12:00:00+01:00")}${c.time ? " · " + c.time + " WAT" : ""}` : c.when;
+  const dl = (m) => `<a class="dl" href="${m.url}" download title="Download ${h(m.file)}"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M6 9l4 4 4-4M4 16h12"/></svg></a>`;
   function renderInspector(p) {
-    const sets = p.captionSets;
     const videos = p.media.filter((m) => m.type === "video");
-    const dl = (m) => `<a class="dl" href="${m.url}" download title="Download"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v10M6 9l4 4 4-4M4 16h12"/></svg></a>`;
+    const chans = p.channels || [];
     let html = `<div class="insp-title">Status</div><div class="kv">
       <dt>Status</dt><dd>${badge(p.status)}</dd>${p.verdict ? `<dt>Review</dt><dd>${badge(p.verdict)}</dd>` : ""}
-      ${p.when ? `<dt>Slot</dt><dd>${h(p.when)}</dd>` : ""}${p.platforms ? `<dt>Platforms</dt><dd>${h(p.platforms)}</dd>` : ""}${p.pillar ? `<dt>Pillar</dt><dd>${h(p.pillar)}</dd>` : ""}</div>`;
+      ${chans.length ? `<dt>Channel posts</dt><dd>${chans.length}</dd>` : ""}${p.pillar ? `<dt>Pillar</dt><dd>${h(p.pillar)}</dd>` : ""}</div>`;
     const watch = (videos.some((v) => v.current) ? videos.filter((v) => v.current) : videos).slice(0, 2);
     if (watch.length) html += `<div class="insp-title">Watch</div>` + watch.map((v) => `<div class="player"><video src="${v.url}" controls preload="metadata" playsinline poster="${poster(p, v)}"></video></div>`).join("");
-    if (p.media.length) html += `<div class="insp-title">Files</div><div class="files">${p.media.map((m) => `<div class="file-row">${m.type === "image" ? `<img src="${m.url}" alt="">` : `<div class="ph">${m.type === "video" ? "MP4" : "SRT"}</div>`}<div><div class="n">${h(m.file)}${m.current && videos.length > 2 ? ` <span class="badge pass" style="padding:1px 7px;font-size:10px">current</span>` : ""}</div><div class="z">${mb(m.bytes)}</div></div>${dl(m)}</div>`).join("")}</div>`;
-    if (sets.length) {
-      html += `<div class="insp-title">Captions</div>`;
-      if (sets.length > 1) html += `<div class="cap-tabs" data-sets>${sets.map((s, i) => `<button class="${i ? "" : "active"}" data-set="${i}">${h(s.heading || "Set " + (i + 1))}</button>`).join("")}</div>`;
-      html += `<div id="capset"></div>`;
+    if (chans.length) {
+      const plats = PLATFORMS.filter((x) => chans.some((c) => c.platform === x));
+      html += `<div class="insp-title">Posts by channel</div>`;
+      if (plats.length > 1) html += `<div class="cap-tabs" data-filter><button class="active" data-f="">All ${chans.length}</button>${plats.map((x) => `<button data-f="${h(x)}">${h(x)} ${chans.filter((c) => c.platform === x).length}</button>`).join("")}</div>`;
+      html += `<div class="chans">${chans.map((c, i) => channelCard(p, c, i)).join("")}</div>`;
+      html += `<div class="kit"><button class="btn" id="kit-all">Download all ${chans.length} channel kits (.zip)</button><div class="note">One folder per channel post, each with its own caption, alt text, visuals and posting notes. Shared images are copied into every folder that uses them.</div></div>`;
     }
-    html += `<div class="kit"><button class="btn primary" id="kit">Download kit (.zip)</button><div class="note">Captions as text files per platform, alt text, every visual and video, and a README with the slot and status.</div></div>`;
-    $("#inspector").innerHTML = html;
-    $("#inspector").querySelectorAll("[data-set]").forEach((b) => b.addEventListener("click", () => { $(".cap-tabs .active", $("#inspector"))?.classList.remove("active"); b.classList.add("active"); renderCapSet(p, +b.dataset.set); }));
-    if (sets.length) renderCapSet(p, 0);
-    $("#kit").addEventListener("click", () => buildKit(p));
+    if (p.media.length) html += `<details class="allfiles"><summary class="insp-title">All files in this post (${p.media.length})</summary><div class="files">${p.media.map((m) => `<div class="file-row">${m.type === "image" ? `<img src="${m.url}" alt="">` : `<div class="ph">${m.type === "video" ? "MP4" : "SRT"}</div>`}<div><div class="n">${h(m.file)}</div><div class="z">${mb(m.bytes)}</div></div>${dl(m)}</div>`).join("")}</div></details>`;
+    if (!chans.length) html += `<div class="kit"><button class="btn primary" id="kit-all">Download kit (.zip)</button><div class="note">Every visual and video in this post.</div></div>`;
+    const ins = $("#inspector");
+    ins.innerHTML = html;
+    ins.querySelectorAll("[data-f]").forEach((b) => b.addEventListener("click", () => {
+      ins.querySelector("[data-filter] .active")?.classList.remove("active"); b.classList.add("active");
+      ins.querySelectorAll(".chan").forEach((el) => (el.hidden = !!b.dataset.f && el.dataset.platform !== b.dataset.f));
+    }));
+    ins.querySelectorAll(".chan").forEach((el) => bindChannel(p, chans[+el.dataset.i], el));
+    bindMedia(ins);
+    $("#kit-all").addEventListener("click", (e) => buildKit(p, chans, e.currentTarget));
   }
-  function renderCapSet(p, i) {
-    const s = p.captionSets[i];
-    const plats = [...PLATFORMS.filter((x) => s.captions[x]), ...Object.keys(s.captions).filter((x) => !PLATFORMS.includes(x))];
-    const first = plats[0];
-    const box = $("#capset");
-    box.innerHTML = `<div class="cap-tabs" data-plats>${plats.map((x) => `<button class="${x === first ? "active" : ""}" data-plat="${h(x)}">${h(x)}</button>`).join("")}${s.altText ? `<button data-plat="__alt">Alt text</button>` : ""}</div>
-      <div class="cap-box"><pre id="captext"></pre><div class="cap-actions"><button class="btn sm primary" id="copycap">Copy</button><button class="btn sm" id="dlcap">Download .txt</button></div></div>`;
-    const show = (plat) => { const t = plat === "__alt" ? s.altText : s.captions[plat]; $("#captext").textContent = t; box.dataset.plat = plat; };
-    box.querySelectorAll("[data-plat]").forEach((b) => b.addEventListener("click", () => { box.querySelector("[data-plats] .active")?.classList.remove("active"); b.classList.add("active"); show(b.dataset.plat); }));
-    $("#copycap").addEventListener("click", () => copy($("#captext").textContent, "Caption copied"));
-    $("#dlcap").addEventListener("click", () => dlText($("#captext").textContent, `${p.slug}-${box.dataset.plat === "__alt" ? "alt-text" : box.dataset.plat.toLowerCase()}.txt`));
-    show(first);
+  function channelCard(p, c, i) {
+    const ms = mediaOf(p, c);
+    const fmt = c.format || fmtOf(p, c);
+    const tabs = c.variants.length > 1 ? `<div class="cap-tabs">${c.variants.map((v, k) => `<button class="${k ? "" : "active"}" data-v="${k}">${h(v.label || "Caption " + (k + 1))}</button>`).join("")}</div>` : "";
+    return `<section class="chan" data-i="${i}" data-platform="${h(c.platform)}" style="--c:${PLATFORM_COLOR[c.platform] || "#8e8e93"}">
+      <header><div class="ch-top">${chip(c.platform)}<span class="ch-fmt">${h(fmt)}</span>${badge(c.status)}</div>
+        <div class="ch-slot">${h(slotLabel(c))}${c.group ? ` · ${h(c.group)}` : ""}</div></header>
+      ${ms.length ? `<div class="ch-media">${ms.map((m) => m.type === "video"
+        ? `<div class="mi vid" data-src="${m.url}" data-type="video"><video src="${m.url}#t=0.5" preload="metadata" muted playsinline></video></div>`
+        : `<div class="mi" data-src="${m.url}" data-type="image"><img src="${m.url}" alt="${h(m.file)}" loading="lazy"></div>`).join("")}</div>
+        <div class="ch-files">${ms.map((m) => `<span>${h(m.file.split("/").pop())}${dl(m)}</span>`).join("")}</div>` : `<div class="note">No visual: text only.</div>`}
+      ${tabs}
+      ${c.variants.length ? `<div class="cap-box"><div class="ch-label">${h(c.platform)} caption</div><pre class="ch-text"></pre>
+        <div class="cap-actions"><button class="btn sm primary" data-act="copy">Copy caption</button><button class="btn sm" data-act="txt">.txt</button></div></div>`
+        : `<div class="cap-box"><div class="ch-label">No caption</div><pre>The text is on the image.</pre></div>`}
+      ${c.thread.length ? `<details class="ch-more"><summary>Copy one post at a time</summary>${c.thread.map((t, k) => `<div class="cs-block"><div class="cs-label">Post ${k + 1} of ${c.thread.length}<button class="cs-copy" data-copy="${h(t)}">Copy</button></div><pre>${h(t)}</pre></div>`).join("")}</details>` : ""}
+      ${c.altText ? `<details class="ch-more"><summary>Alt text</summary><div class="cs-block"><div class="cs-label">Alt text<button class="cs-copy" data-copy="${h(c.altText)}">Copy</button></div><pre>${h(c.altText)}</pre></div></details>` : ""}
+      ${c.visual ? `<details class="ch-more"${c.variants.length ? "" : " open"}><summary>Posting notes</summary><div class="note ch-notes">${h(c.visual)}</div></details>` : ""}
+      <button class="btn sm ch-kit" data-act="kit">Download ${h(c.platform)} kit (.zip)</button>
+    </section>`;
   }
-  async function buildKit(p) {
-    const btn = $("#kit"); btn.disabled = true; btn.textContent = "Preparing…";
+  function bindChannel(p, c, el) {
+    let v = 0;
+    const show = () => { const pre = el.querySelector(".ch-text"); if (pre) pre.textContent = c.variants[v]?.text || ""; };
+    el.querySelectorAll("[data-v]").forEach((b) => b.addEventListener("click", () => { el.querySelector("[data-v].active")?.classList.remove("active"); b.classList.add("active"); v = +b.dataset.v; show(); }));
+    el.querySelector('[data-act="copy"]')?.addEventListener("click", () => copy(c.variants[v].text, `${c.platform} caption copied`));
+    el.querySelector('[data-act="txt"]')?.addEventListener("click", () => dlText(c.variants[v].text, `${p.slug}-${c.id}${c.variants.length > 1 ? "-" + slug(c.variants[v].label) : ""}.txt`));
+    el.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copy(b.dataset.copy, "Copied")));
+    el.querySelector('[data-act="kit"]').addEventListener("click", (e) => buildKit(p, [c], e.currentTarget));
+    show();
+  }
+  // a kit holds exactly one channel post per folder; several channels → one folder each
+  async function addChannel(zip, p, c, base) {
+    const ms = mediaOf(p, c);
+    const readme = [`${p.title}: ${c.platform}${c.format ? ` (${c.format})` : ""}`, "".padEnd(40, "="), "",
+      `Channel: ${c.platform}`, `Format: ${c.format || fmtOf(p, c)}`, `Slot: ${c.when || "not set"}`, `Status: ${c.status}`, !!c.group && `Part of: ${c.group}`, !!c.pillar && `Pillar: ${c.pillar}`, !!c.hook && `Hook: ${c.hook}`, "",
+      "Files", ...(c.variants.length ? c.variants.map((v) => `- ${c.variants.length > 1 ? `caption-${slug(v.label)}.txt` : "caption.txt"}: the ${c.platform} caption${v.label ? ` (${v.label})` : ""}, ready to paste`) : ["- no caption: the text is on the image"]),
+      c.thread.length && `- thread/: posts 1 to ${c.thread.length}, one file each, in posting order`,
+      !!c.altText && "- alt-text.txt: alt text for the visuals", ...ms.map((m) => `- media/${m.file.split("/").pop()}`), "",
+      "How to post", `- ${POSTING[c.platform] || "Post as planned."}`, "- Add the alt text where the platform offers it.", !!c.visual && `- Notes: ${c.visual}`, "",
+      `Exported ${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos", dateStyle: "medium", timeStyle: "short" })} WAT from JOMO Social Studio`].filter((x) => typeof x === "string").join("\n");
+    zip.file(`${base}README.txt`, readme + "\n");
+    c.variants.forEach((v) => zip.file(`${base}${c.variants.length > 1 ? `caption-${slug(v.label)}` : "caption"}.txt`, v.text + "\n"));
+    c.thread.forEach((t, k) => zip.file(`${base}thread/post-${k + 1}-of-${c.thread.length}.txt`, t + "\n"));
+    if (c.altText) zip.file(`${base}alt-text.txt`, c.altText + "\n");
+    for (const m of ms) zip.file(`${base}media/${m.file.split("/").pop()}`, await (await fetch(m.url)).blob());
+  }
+  async function buildKit(p, chans, btn) {
+    const label = btn.textContent; btn.disabled = true; btn.textContent = "Preparing…";
     try {
       const zip = new JSZip();
-      const readme = [`${p.title}`, "".padEnd(p.title.length, "="), "", `Status: ${p.status}${p.verdict ? ` (review: ${p.verdict})` : ""}`, p.when ? `Slot: ${p.when}` : "", p.platforms ? `Platforms: ${p.platforms}` : "", p.pillar ? `Pillar: ${p.pillar}` : "", p.hook ? `Hook: ${p.hook}` : "", "",
-        "Contents", "- captions/: one text file per platform, ready to paste", "- alt-text.txt: alt text for the visuals", "- media/: visuals and videos at platform sizes", "",
-        "Posting checklist", "- Instagram and Facebook: Meta Business Suite planner; put the link in the bio for Instagram", "- LinkedIn: post as the JOMO page with the built-in scheduler", "- X: post by hand, under 280 characters", "- Add alt text on every platform that offers it", "",
-        `Exported ${new Date().toISOString().slice(0, 16).replace("T", " ")} from JOMO Social Studio`].join("\n");
-      zip.file("README.txt", readme);
-      p.captionSets.forEach((s, i) => {
-        const base = p.captionSets.length > 1 ? `${(s.heading || "set-" + (i + 1)).replace(/[^\w]+/g, "-").replace(/^-|-$/g, "").toLowerCase()}/` : "";
-        for (const [plat, text] of Object.entries(s.captions)) zip.file(`${base}captions/${plat.toLowerCase()}.txt`, text + "\n");
-        if (s.altText) zip.file(`${base}alt-text.txt`, s.altText + "\n");
-      });
-      for (const m of p.media) { const r = await fetch(m.url); zip.file(`media/${m.file}`, await r.blob()); }
-      downloadBlob(await zip.generateAsync({ type: "blob" }), `${p.slug}-kit.zip`);
-      toast("Kit downloaded");
+      let name;
+      if (!chans.length) { for (const m of p.media) zip.file(`media/${m.file}`, await (await fetch(m.url)).blob()); name = `${p.slug}-kit.zip`; }
+      else if (chans.length === 1) { await addChannel(zip, p, chans[0], ""); name = `${p.slug}-${chans[0].id}-kit.zip`; }
+      else { for (const c of chans) await addChannel(zip, p, c, `${c.id}/`); name = `${p.slug}-all-channels-kit.zip`; }
+      downloadBlob(await zip.generateAsync({ type: "blob" }), name);
+      toast(chans.length === 1 ? `${chans[0].platform} kit downloaded` : "Kit downloaded");
     } catch (e) { console.error(e); toast("Could not build the kit"); }
-    btn.disabled = false; btn.textContent = "Download kit (.zip)";
+    btn.disabled = false; btn.textContent = label;
   }
 
   // ---------- plans and calendar
