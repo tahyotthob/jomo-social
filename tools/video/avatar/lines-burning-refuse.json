@@ -1,0 +1,68 @@
+[
+ {
+  "id": "01",
+  "who": "tobi",
+  "text": "My uncle says burning the refuse heap is the cleanest way to clear it.",
+  "gestures": {
+   "tobi": "point"
+  }
+ },
+ {
+  "id": "02",
+  "who": "amara",
+  "text": "Source, please.",
+  "gestures": {
+   "amara": "finger",
+   "tobi": "nod"
+  }
+ },
+ {
+  "id": "03",
+  "who": "amara",
+  "text": "The World Health Organization says burning waste releases air pollutants. Some harm both our health and the climate.",
+  "gestures": {
+   "amara": "tap"
+  }
+ },
+ {
+  "id": "04",
+  "who": "amara",
+  "text": "Breathing the smoke can cause coughing, skin irritation and breathing problems.",
+  "gestures": {
+   "amara": "finger"
+  }
+ },
+ {
+  "id": "05",
+  "who": "tobi",
+  "text": "Ehn? So wetin we go do?",
+  "gestures": {
+   "tobi": "surprise"
+  }
+ },
+ {
+  "id": "06",
+  "who": "amara",
+  "text": "Bag it. Keep it covered until it's collected. And keep plastics, tyres and nylon out of any fire.",
+  "gestures": {
+   "amara": "tap",
+   "tobi": "nod"
+  }
+ },
+ {
+  "id": "07",
+  "who": "tobi",
+  "text": "Who's coming?",
+  "gestures": {
+   "tobi": "wave"
+  }
+ },
+ {
+  "id": "08",
+  "who": "amara",
+  "text": "And bring your facts.",
+  "gestures": {
+   "amara": "nod"
+  }
+ }
+]

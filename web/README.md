@@ -11,6 +11,8 @@ A static site that shows what the social media team has made: one chat-style thr
 - `content/calendar/calendar.csv`: the Calendar page, and the status of each post.
 - Message dates come from git history, with the folder date as the fallback.
 
+**Today's posts.** The Overview opens with today's slots from the calendar (Lagos time, worked out in the browser, so it changes over at midnight WAT without a rebuild). A slot dated today that is Approved or Scheduled but not yet Posted shows as **Pending** everywhere: on the Overview, in the sidebar, on the post and its channel cards, and in the Calendar. Change its status to `Posted` in `content/calendar/calendar.csv` once it is out. To preview another day's list, add `?day=YYYY-MM-DD` to the address.
+
 `src/` holds the page: `index.html`, `app.js`, `styles.css` and the vendored libraries (marked, DOMPurify, JSZip). "Download kit" builds a zip in the browser with one caption file per platform, the alt text, every media file and a README.
 
 ## Deploy on Vercel

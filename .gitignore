@@ -4,3 +4,13 @@ tools/png/
 __pycache__/
 .DS_Store
 web/dist/
+
+tools/video/avatar/_frames/
+tools/video/avatar/_reel.html
+tools/video/avatar/_chars/
+tools/video/avatar/_plan.json
+blender/work/
+blender/renders/*/_tt/
+blender/renders/*/_ps/
+blender/renders/*/_anim/
+*.blend1
