@@ -1,7 +1,7 @@
 # JOMO avatars: Amara and Tobi (draft v0.1, 2026-10-24)
 Role: Creative Director, with the Copywriter
 
-Status: **draft personas, waiting on operator approval.** No art has been made yet. Nothing here goes out until the operator approves the personas and then each post.
+Status: **draft personas, paused by the operator on 2026-10-24 until the Canva for Nonprofits licence is approved.** No art has been made yet. Nothing here goes out until the operator approves the personas and then each post.
 
 ## The idea
 

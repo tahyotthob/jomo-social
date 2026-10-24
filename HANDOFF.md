@@ -20,7 +20,7 @@ Read `CLAUDE.md` first, then use the `jomo-social-team` skill (`.claude/skills/j
 ## Open items
 
 0. **YCEF deadline may move to Tue 3 Nov 2026, 11:59 PM WAT** (operator, 2026-10-24). In Zambia (CAT, UTC+2) that is **12:59 AM on Wed 4 Nov**. Announce Mon 26 Oct and repurpose the missed countdown, X and LinkedIn drafts for the new date. Before then: check the website form stays open, then update `references/brand-guide.md`.
-0. **Two JOMO avatars, Amara and Tobi:** draft personas in `references/avatars.md`, waiting on operator approval. Plan: illustrated adult characters made in Canva (apply for Canva for Nonprofits), animated with `tools/video/`, voiced with CapCut "Commercial use" text-to-speech.
+0. **Two JOMO avatars, Amara and Tobi:** draft personas in `references/avatars.md`. **Paused by the operator (2026-10-24) until the Canva for Nonprofits licence comes through.** Plan: illustrated adult characters made in Canva (apply for Canva for Nonprofits), animated with `tools/video/`, voiced with CapCut "Commercial use" text-to-speech.
 
 1. **Week of 16 Oct drafts** (`content/posts/2026-10-1*` and `2026-10-2[0-2]-*`) are reviewed but **unapproved**, and their dates have passed (the Friday 16 and Sunday 18 slots and the YCEF countdown days). Decide whether to re-date, rework or drop them. They still show as In review in Social Studio.
 2. **Held-back posts:** three JOMO's Pods posts (waiting on the episode date and topic) and the Rotary tree-planting LinkedIn post (waiting on Rotary's approval to be named).
