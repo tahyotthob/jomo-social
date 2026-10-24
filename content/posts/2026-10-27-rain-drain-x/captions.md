@@ -16,4 +16,4 @@ Before the next downpour: is the drain outside your gate clear? 🌱
 
 Alt text: A volunteer in a yellow-green JOMO vest and red gloves, seen from above with the face hidden, clearing plastic and mud from a drain. Text: "Climate, explained locally. Still raining in Lagos? Is your drain ready?" Label: "Oniwaya clean-up · From our archive".
 
-Sources: NiMet 2026 Seasonal Climate Prediction, as reported by NAN on 2026-02-11: https://nannews.ng/nimet-predicts-longer-than-normal-rainy-season-in-13-states/ (Lagos among states with a delayed end to the season; fact-checker to confirm the wording). Photo: consent log, age confirmed by the operator on 2026-10-23.
+Sources: NiMet 2026 Seasonal Climate Prediction, as reported by NAN on 2026-02-11: https://nannews.ng/nimet-predicts-longer-than-normal-rainy-season-in-13-states/ (NAN: "a delayed end of season is expected in Lagos…"; confirmed 2026-10-24; also https://guardian.ng/news/lagos-12-other-states-to-experience-longer-rainfall-in-2026-nimet/). Photo: consent log, age confirmed by the operator on 2026-10-23.

@@ -89,7 +89,7 @@ write("w27-drain-x-16x9", pg(f"""
 # ===== 5. Wed 28: Source, please (Media and Information Literacy Week), 4:5 =====
 T = 6
 write("w28-source-01", pg(f"""
- <div class="label">Media and Information Literacy Week</div>
+ <div class="label">Global Media and Information Literacy Week</div>
  <div class="h" style="font-size:210px;margin-top:60px;line-height:.95">Source,<br><span class="acc">please.</span></div>
  <div class="body" style="margin-top:60px;max-width:880px;font-size:54px">3 checks before you share a climate stat.</div>
  {sprout(360, extra="right:-60px;bottom:150px;transform:rotate(-12deg)")}
@@ -107,12 +107,13 @@ write("w28-source-03", check(2, "Count or<br><span class='acc'>projection?</span
 write("w28-source-04", check(3, "When and<br>where?", "Check the date and the place. A photo from another year or another country can look like today.", "off"))
 write("w28-source-05", pg(f"""
  <div class="label">We checked ours</div>
- <div class="h" style="font-size:230px;margin-top:40px;line-height:1">31,400</div>
+ <div class="h" style="font-size:200px;margin-top:30px;line-height:1"><span style="font-size:110px">About </span>31,400</div>
  <div class="body" style="margin-top:30px;font-size:42px;max-width:880px">Last week we shared this El Ni&ntilde;o figure for Nigeria. Here's what the checks found:</div>
  <div style="margin-top:30px">
   {tick("Who: University of Chicago's<br>Climate Impact Lab")}
-  {tick("A projection of extra deaths,<br>not a count")}
+  {tick("A projection of extra heat-related<br>deaths vs an average year,<br>not a count")}
   {tick("Sept 2026 to Feb 2027, Nigeria")}
+  {tick("Method not yet published in<br>a peer-reviewed journal")}
  </div>
 """, "lime", 5, T))
 write("w28-source-06", pg(f"""
@@ -140,13 +141,13 @@ write("w29-oniwaya-02", pg(f"""
 """, "ink", 2, T))
 write("w29-oniwaya-03", pg(f"""
  <div class="label">What it took</div>
- <div class="brico" style="font-size:130px;margin-top:36px">Volunteers with gloves. <span style="color:{OFF}">That's it.</span></div>
- {photo(ONI % '11', 90, 650, 900, 550, "50% 40%", "border-radius:28px")}
+ <div class="brico" style="font-size:104px;margin-top:36px">Volunteers, gloves and rakes. <span style="color:{OFF}">That's it.</span></div>
+ {photo(ONI % '11', 90, 700, 900, 500, "50% 40%", "border-radius:28px")}
 """, "lime", 3, T))
 write("w29-oniwaya-04", pg(f"""
  <div class="label">Your turn</div>
  <div class="brico" style="font-size:118px;margin-top:40px">Which drain on <span style="color:{LIME}">your street</span> needs this?</div>
- <div class="body" style="margin-top:36px;font-weight:700;font-size:42px">YCEF applications close {CLOSE_FULL}.</div>
+ <div class="body" style="margin-top:36px;font-weight:700;font-size:42px">YCEF applications close {CLOSE_FULL} ({ZAMBIA}).</div>
  <div style="margin-top:28px;background:{LIME};color:{INK};font-weight:900;font-size:34px;padding:24px 28px;border-radius:16px;display:inline-block">{URL}</div>
  <img src="{LOGO_L}" style="position:absolute;left:90px;bottom:170px;width:340px">
 """, "ink", 4, T))
@@ -163,7 +164,7 @@ write("w29-cop31-01", pg(f"""
 write("w29-cop31-02", pg(f"""
  <div class="label">What is a COP?</div>
  <div class="h" style="font-size:136px;margin-top:60px">The yearly UN<br>climate<br>conference.</div>
- <div class="body" style="margin-top:60px;max-width:900px;font-size:50px">COP stands for &ldquo;Conference of the Parties&rdquo;: the countries that signed the UN climate convention. They meet once a year to agree on how the world responds to climate change.</div>
+ <div class="body" style="margin-top:60px;max-width:900px;font-size:50px">COP stands for &ldquo;Conference of the Parties&rdquo;: the countries that have joined the UN climate convention. They meet once a year to agree on how the world responds to climate change.</div>
 """, "lime", 2, T))
 write("w29-cop31-03", pg(f"""
  <div class="label">When and where</div>

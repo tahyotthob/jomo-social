@@ -57,7 +57,7 @@ World Cities Day: liveable cities are built one street at a time.
 
 This year's theme is "Regenerating the City: Adequate Housing for All". From where we stand, regeneration often starts small: a drain that's cleared before the rain, waste that stops piling up, a corner where water no longer collects.
 
-That's the kind of work JOMO volunteers have done on Lagos streets since 2020, and it's why we built the Young Climate Educators Fellowship (YCEF): many young people want to fix the problems on their streets but don't know where to start. YCEF applications close Tue 3 Nov.
+JOMO has been youth-led since 2020, and community and market clean-ups like these are part of our work. It's also why we built the Young Climate Educators Fellowship (YCEF): many young people want to solve problems in their communities but don't know how to go about it or where to start. YCEF applications close Tue 3 Nov.
 
 What's one small change that made your street more liveable?
 
@@ -84,4 +84,4 @@ Alt text: Stock photo of a flooded street in Lekki, Lagos, with a man wading thr
 
 ---
 
-Sources: UN, World Cities Day (31 Oct; 2026 theme "Regenerating the City: Adequate Housing for All"): https://www.un.org/en/observances/cities-day. Stock photos: `assets/photos/web/SOURCES.csv` (Pexels License). "Youth-led since 2020" and "Lagos-born": `references/brand-guide.md` and `voice.md`. "Volunteers have done this on Lagos streets since 2020" rests on the 2020 Oniwaya clean-up archive (fact-checker to confirm Oniwaya is in Lagos, or soften). YCEF facts: brand guide.
+Sources: UN, World Cities Day (31 Oct; 2026 theme "Regenerating the City: Adequate Housing for All"): https://www.un.org/en/observances/cities-day. Stock photos: `assets/photos/web/SOURCES.csv` (Pexels License). "Youth-led since 2020" and clean-ups as past work: `references/brand-guide.md`. The YCEF reason is the operator's wording (brand guide). YCEF facts: brand guide.
