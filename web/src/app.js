@@ -21,7 +21,9 @@
   // cover-video-a-motion.jpg is the poster for video-a-ycef-motion.mp4: same letter, same "motion" or not
   const poster = (p, v) => { const letter = (v.file.match(/video-([a-z])/) || [])[1]; const motion = /motion/.test(v.file);
     return (p.media.find((m) => m.type === "image" && /cover/.test(m.file) && (!letter || m.file.includes(`video-${letter}`)) && /motion/.test(m.file) === motion) || p.media.find((m) => m.type === "image" && /cover/.test(m.file)) || {}).url || ""; };
-  const cover = (p) => (p.media.find((m) => /cover/.test(m.file) && m.type === "image") || p.media.find((m) => m.type === "image"))?.url;
+  // the first frame of a post: its cover, else slide 1, else the first image
+  const cover = (p) => (p.media.find((m) => m.type === "image" && m.current && /cover/.test(m.file)) || p.media.find((m) => m.type === "image" && /cover/.test(m.file))
+    || p.media.find((m) => m.type === "image" && /slide-01|image-/.test(m.file)) || p.media.find((m) => m.type === "image"))?.url;
   const toast = (t) => { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => (el.hidden = true), 1800); };
   const md = (text) => {
     if (!window.marked) return `<pre>${h(text)}</pre>`;
