@@ -50,3 +50,14 @@ Decisions made while building the 3D versions of Tobi and Amara, so anyone can s
 - **One face control per expression:** each shape key is driven by a rig custom property of the same name (0 to 1) on `NAME_rig`. Animations key the rig's properties, so one Action drives body and face on either character. Drivers don't export to glTF/FBX, so stage 6 bakes them into per-mesh shape-key animation.
 - **Blink:** the eye squashes to a thin line slightly below centre, like a closed lid. There is no separate eyelid mesh at this poly budget.
 - **Known, for stage 4:** Amara's open-mouth shapes are in her lip colour, so they read with low contrast. Stage 4 gives both mouths a dark inner colour.
+
+## Stage 4: UVs, palette atlas, materials
+- **Palette atlas, not painted textures:** `blender/textures/jomo_palette.png` is 256×256 px, an 8×8 grid of flat 32 px swatches, one per palette colour, in `common.py` order. Unused cells are magenta so a stray UV shows up immediately. It's tiny, needs no painting, and keeps every colour exactly on brand.
+- **One UV map per mesh (`UVMap`), non-overlapping:** each colour's faces are unwrapped on their own (Smart UV Project at 35°, then a minimum-stretch unwrap per island) and packed into that colour's cell, 3 px inside the cell edge so mipmaps don't bleed. The UVs are real unwraps, so the same map can carry a painted or baked texture later.
+- **Overlap check:** `blender/scripts/uv_check.py` tests every UV triangle against every other (exact 2D test). The final count is 0 overlapping faces on all 22 meshes. Any face that folds onto another is cut into its own island and unwrapped again; that happened at Tobi's thumb roots, where the Skin modifier pinches the geometry. Layout: `blender/renders/stage4/stage4_uv_layout.png`.
+- **Mesh clean-up:** 160 duplicate or zero-area faces from the bandana's solidify step and 13 from the glasses were removed before unwrapping. No visible change.
+- **One material per character:** `M_tobi_toon` and `M_amara_toon`, palette texture with nearest-pixel sampling. Each has two outputs:
+  - EEVEE: toon (Diffuse → Shader to RGB → two-step ramp × palette).
+  - Cycles/export: Principled BSDF, base colour = palette, roughness 1, metallic 0. glTF and FBX carry this one; engines add their own toon shader on top of the palette if wanted.
+- **Amara's inner mouth:** the middle 70% of her mouth is now the dark mouth colour, with her lip colour at the corners, so open-mouth and speech shapes read clearly (flagged in stage 3).
+- **Check:** `blender/renders/stage4/stage4_turntable.png` and `stage4_poses_body.png` match the stage 1–3 colours exactly (the palette reproduces the swatches), with no magenta anywhere.
