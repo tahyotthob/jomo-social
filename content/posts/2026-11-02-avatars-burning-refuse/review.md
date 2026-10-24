@@ -87,3 +87,7 @@ IG has 4 (#SourcePlease #ClimateAction #CleanAir #Nigeria), inside the 3–5 rul
 
 - Slide 2 now reads "Burning waste releases air pollutants. Some harm both health and the climate." (WHO's "some of which" wording). The "AI avatar" tag moved clear of Amara's trousers. A logo on slide 5 was tried and dropped because it crowded the speech bubbles (optional under the brand guide). Alt text matches.
 - Operator item 1 is already cleared: the operator approved both v2 character sheets on 2026-10-24 ("Approve both sheets").
+
+## Operator change (2026-10-24)
+
+The operator asked to remove the "AI avatar" tags because they made the post messy. They are replaced by one small on-image line on slides 1 and 5 ("Tobi and Amara are JOMO's AI characters"), plus the caption disclosure and the platform AI label. This still meets checklist item 8 ("show a label on the content itself and say it in the caption"), in a lighter form. The policy reviewer should confirm before sign-off.

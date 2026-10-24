@@ -24,15 +24,15 @@ T = 5
 write("av1-01", pg(f"""
  <div class="label">Source, please &middot; with Tobi and Amara</div>
  <div class="h" style="font-size:96px;margin-top:26px">Burning refuse: <span class="acc">clean fix or smoke trap?</span></div>
- <div class="bub bl" style="--b:{LIME};background:{LIME};color:{INK};left:90px;top:400px;width:540px;font-size:34px"><span class="who">Tobi &middot; AI avatar</span>My uncle says burning the refuse heap is the cleanest way to clear it.</div>
- <div class="bub br" style="--b:{INK};background:{INK};color:{OFF};right:90px;top:400px;width:340px;font-size:34px"><span class="who" style="color:{LIME}">Amara &middot; AI avatar</span>Source, please.</div>
+ <div class="bub bl" style="--b:{LIME};background:{LIME};color:{INK};left:90px;top:400px;width:540px;font-size:34px"><span class="who">Tobi</span>My uncle says burning the refuse heap is the cleanest way to clear it.</div>
+ <div class="bub br" style="--b:{INK};background:{INK};color:{OFF};right:90px;top:400px;width:340px;font-size:34px"><span class="who" style="color:{LIME}">Amara</span>Source, please.</div>
  <img class="av" src="{TOBI}" style="left:150px;bottom:125px;height:600px">
  <img class="av" src="{AMARA}" style="right:150px;bottom:125px;height:600px">
+ <div class="src" style="position:absolute;z-index:6;right:90px;bottom:128px;font-size:20px;opacity:.6">Tobi and Amara are JOMO's AI characters</div>
 """, "off", 1, T))
 
 write("av1-02", pg(f"""
  <img class="av" src="{AMARA}" style="right:60px;bottom:120px;height:960px">
- {chip(500, 1000, dark=False)}
  <div style="position:relative;z-index:4;max-width:540px">
   <div class="label">What WHO says</div>
   <div class="h" style="font-size:118px;margin-top:40px">The smoke<br>doesn't<br><span class="acc">disappear.</span></div>
@@ -55,7 +55,6 @@ def tick(txt):
  <div style="font-size:40px;font-weight:700;line-height:1.22;padding-top:2px">{txt}</div></div>'''
 write("av1-04", pg(f"""
  <img class="av" src="{TOBI}" style="left:30px;bottom:120px;height:900px">
- {chip(330, 1080)}
  <div style="position:absolute;z-index:4;left:500px;right:80px;top:90px">
   <div class="label">Do this instead</div>
   <div class="h" style="font-size:104px;margin-top:30px">So wetin<br><span class="acc">we go do?</span></div>
@@ -66,8 +65,8 @@ write("av1-04", pg(f"""
 """, "off", 4, T))
 
 write("av1-05", pg(f"""
- <div class="bub bl" style="--b:{LIME};background:{LIME};color:{INK};left:90px;top:110px;width:430px"><span class="who">Tobi &middot; AI avatar</span>Who's coming?</div>
- <div class="bub br" style="--b:{OFF};background:{OFF};color:{INK};right:90px;top:250px;width:430px"><span class="who">Amara &middot; AI avatar</span>And bring your facts.</div>
+ <div class="bub bl" style="--b:{LIME};background:{LIME};color:{INK};left:90px;top:110px;width:430px"><span class="who">Tobi</span>Who's coming?</div>
+ <div class="bub br" style="--b:{OFF};background:{OFF};color:{INK};right:90px;top:250px;width:430px"><span class="who">Amara</span>And bring your facts.</div>
  <img class="av" src="{TOBI}" style="left:130px;bottom:210px;height:620px">
  <img class="av" src="{AMARA}" style="right:170px;bottom:210px;height:620px">
  <div class="src" style="position:absolute;z-index:6;left:90px;right:90px;bottom:150px;font-size:26px;text-align:center;opacity:.9">Tobi and Amara are JOMO's AI characters, not real people.</div>
