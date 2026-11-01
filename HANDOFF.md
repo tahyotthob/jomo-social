@@ -20,6 +20,8 @@ Read `CLAUDE.md` first, then use the `jomo-social-team` skill (`.claude/skills/j
 
 ## Open items
 
+0. **Week of 1 Nov** (plan `content/posts/2026-11-02-week-plan.md`, approved with all posts by the operator, 2026-11-01). Week of 26 Oct: only 6 of 14 posts went out; the calendar marks each one Posted or not posted, and the unposted Oniwaya, TGIF and facilitators posts were re-dated into this week. Set each row to Posted as it goes out. **Facilitators carousel (Mon 2 Nov):** approved, but photo consent (consent-log rows say "awaiting operator confirmation") and each facilitator's OK on their slide are still to be confirmed before it goes out. **COP31 (9 to 20 Nov):** the posts promise plain-language follow-ups, so next week's plan needs them.
+
 0. **Week of 26 Oct:** 13 posts approved by the operator on 2026-10-24 (plan: `content/posts/2026-10-26-week-plan.md`). Set each calendar row to Scheduled or Posted as it goes out. The YCEF apply page gets the new close date (Tue 3 Nov) on Sun 25 Oct (operator). Oniwaya is in Agege, Lagos (operator, 2026-10-24). No boosting this week.
 
 0. **YCEF deadline may move to Tue 3 Nov 2026, 11:59 PM WAT** (operator, 2026-10-24). In Zambia (CAT, UTC+2) that is **12:59 AM on Wed 4 Nov**. Announce Mon 26 Oct and repurpose the missed countdown, X and LinkedIn drafts for the new date. Before then: check the website form stays open, then update `references/brand-guide.md`.
