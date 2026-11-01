@@ -17,3 +17,7 @@ Role: Policy and Safety Reviewer (fact-check by Fact-checker)
 | 9 | Copyright | JOMO's own photo. The small "World Clean Up Day" logo at the foot of the original is cropped out |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-01)
+
+Approved by the operator, with the cleaned cut-out.
