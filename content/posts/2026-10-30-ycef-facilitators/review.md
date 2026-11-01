@@ -56,3 +56,7 @@ Every claim on the slides and in the captions, checked against the facilitators'
 1. Confirm the photo consent.
 2. Ask each facilitator to approve their slide.
 3. Approve or move the Fri 30 Oct slot.
+
+## Operator sign-off (2026-11-01)
+
+Approved by the operator ("Approve all"). Before it goes out: confirm photo consent (consent log) and each facilitator's OK on their slide.
