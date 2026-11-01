@@ -60,3 +60,5 @@ Every claim on the slides and in the captions, checked against the facilitators'
 ## Operator sign-off (2026-11-01)
 
 Approved by the operator ("Approve all"). Before it goes out: confirm photo consent (consent log) and each facilitator's OK on their slide.
+
+Photo consent for both facilitators confirmed by the operator, 2026-11-01.
