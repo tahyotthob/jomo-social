@@ -14,3 +14,7 @@ Fact-check: close date, WAT and Zambia times, link, 3 weekends, 50 fellows, Nige
 | 12 | Links | Same YCEF link as all YCEF posts (confirmed by the operator, 2026-10-23) |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-01)
+
+Approved by the operator ("Approve all").
