@@ -20,7 +20,7 @@ Read `CLAUDE.md` first, then use the `jomo-social-team` skill (`.claude/skills/j
 
 ## Open items
 
-0. **YCEF facilitators bio carousel** (`content/posts/2026-10-30-ycef-facilitators/`, drafted 2026-10-28): cover plus one bio slide each for Dr. Akpem Terese Shadrach and Gome Ng'ona, built from their bios and photos in the Drive folder "YCEF Facilitator Profile and Pictures" (`tools/facilitators.py`). Review verdict FIX (applied). Waiting on the operator: approve the post and the proposed Fri 30 Oct slot, confirm photo consent (consent-log rows are marked "awaiting operator confirmation"), and have each facilitator approve their slide.
+0. **Week of 1 Nov** (plan `content/posts/2026-11-02-week-plan.md`, approved with all posts by the operator, 2026-11-01). Week of 26 Oct: only 6 of 14 posts went out; the calendar marks each one Posted or not posted, and the unposted Oniwaya, TGIF and facilitators posts were re-dated into this week. Set each row to Posted as it goes out. **Facilitators carousel (Mon 2 Nov):** approved, but photo consent (consent-log rows say "awaiting operator confirmation") and each facilitator's OK on their slide are still to be confirmed before it goes out. **COP31 (9 to 20 Nov):** the posts promise plain-language follow-ups, so next week's plan needs them.
 
 0. **Week of 26 Oct:** 13 posts approved by the operator on 2026-10-24 (plan: `content/posts/2026-10-26-week-plan.md`). Set each calendar row to Scheduled or Posted as it goes out. The YCEF apply page gets the new close date (Tue 3 Nov) on Sun 25 Oct (operator). Oniwaya is in Agege, Lagos (operator, 2026-10-24). No boosting this week.
 
