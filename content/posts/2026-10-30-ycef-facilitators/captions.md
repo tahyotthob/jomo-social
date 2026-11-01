@@ -84,4 +84,4 @@ Apply by Tue 3 Nov, 11:59 PM WAT: https://jomoclimatechange.org/events?apply=yce
 
 Alt text: Dark graphic titled "Meet your facilitators" for the Young Climate Educators Fellowship, with portrait photos of Dr. Akpem Terese Shadrach in a navy suit, Gome Ng'ona in a navy sweater and Muhammad Daniyal Kamal in a white shirt and green graduation stole, with their names and roles.
 
-Sources: facilitator bios in Drive (see `review.md` for the line-by-line check); YCEF details and link from `references/brand-guide.md`. The X caption is about 250 characters, counting the link as 23. No funding promise.
+Sources: facilitator bios in Drive (see `review.md` for the line-by-line check); YCEF details and link from `references/brand-guide.md`. The X caption is about 270 characters, counting the link as 23. No funding promise.
