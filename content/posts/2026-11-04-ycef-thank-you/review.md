@@ -11,3 +11,7 @@ Fact-check: Weekend 1, Fri 13 Nov 2026, and "50 places" match `references/brand-
 | 8 | AI content | None |
 
 Verdict: **PASS**, as long as the [NUMBER] line is either filled in by the operator or removed before posting.
+
+## Operator sign-off (2026-11-01)
+
+Approved by the operator ("Approve all"). No application number given, so the optional line was removed.
