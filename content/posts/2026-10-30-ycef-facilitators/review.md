@@ -62,3 +62,23 @@ Every claim on the slides and in the captions, checked against the facilitators'
 Approved by the operator ("Approve all"). Before it goes out: confirm photo consent (consent log) and each facilitator's OK on their slide.
 
 Photo consent for both facilitators confirmed by the operator, 2026-11-01.
+
+## Update 2026-11-01: third facilitator, Muhammad Daniyal Kamal (Fact-checker, Policy and Safety Reviewer)
+
+The operator added his folder to the Drive folder "YCEF Facilitator Profile and Pictures" (`Muhammad Daniyal Kamal Profile`, `IMG-20261028-WA0011.jpg`). He's added as slide 4, on the cover, and in every caption ("three of your facilitators").
+
+| Claim | Source line | Result |
+|---|---|---|
+| Climate advocate and sustainability leader from Pakistan | "a passionate climate advocate and sustainability leader from Pakistan" | Matches |
+| Co-founder, RE-AD: Resilience and Adaptation: youth-led, climate education, disaster risk reduction, water stewardship, students across Pakistan | "In 2023, he co-founded RE-AD: Resilience and Adaptation, a youth-led organization dedicated to climate education, disaster risk reduction, environmental conservation, and water stewardship among students across Pakistan" | Matches (environmental conservation left out for space) |
+| Official delegate for Pakistan at COP16 of the UN Convention to Combat Desertification, Riyadh | "official delegate at the 16th Conference of the Parties (COP16) to the United Nations Convention to Combat Desertification, held in Riyadh, Saudi Arabia" | Matches. It's named as the desertification COP so it isn't confused with the climate COP |
+| Secretary SDGs, The Buraaq Association (2023–2025), leading youth initiatives on the UN SDGs | "appointed Secretary SDGs (2023–2025) ... led numerous initiatives promoting the United Nations Sustainable Development Goals" | Matches |
+| Bachelor's in Environmental Sciences, Quaid-i-Azam University, Islamabad | stated in bio | Matches |
+
+**Left out:**
+- "currently pursuing his academic journey in the People's Republic of China" (not needed).
+- "recognition from representatives and ministries of several countries" (unspecific).
+
+**Photo:** his headshot was cropped from the full-length original to head and shoulders. The graduation stole reads "Env. Sciences, Class of 2024" with his name, which matches the bio. His consent-log row says **awaiting operator confirmation** (the earlier confirmation covered the first two facilitators).
+
+**Verdict for the update: PASS**, once the operator confirms his photo consent and signs off the changed post.
