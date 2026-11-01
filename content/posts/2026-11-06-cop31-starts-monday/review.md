@@ -15,3 +15,7 @@ Fact-check:
 | 7 | Climate claims | General only |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-01)
+
+Approved by the operator ("Approve all").
