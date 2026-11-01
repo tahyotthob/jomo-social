@@ -82,3 +82,7 @@ The operator added his folder to the Drive folder "YCEF Facilitator Profile and 
 **Photo:** his headshot was cropped from the full-length original to head and shoulders. The graduation stole reads "Env. Sciences, Class of 2024" with his name, which matches the bio. His consent-log row says **awaiting operator confirmation** (the earlier confirmation covered the first two facilitators).
 
 **Verdict for the update: PASS**, once the operator confirms his photo consent and signs off the changed post.
+
+## Operator sign-off on the 4-slide version (2026-11-01)
+
+Approved by the operator. Photo consent for Muhammad Daniyal Kamal confirmed by the operator.
