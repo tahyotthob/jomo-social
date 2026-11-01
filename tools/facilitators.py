@@ -1,4 +1,4 @@
-"""YCEF facilitator bio flyers: a 3-slide carousel (cover + one bio each), 1080x1350.
+"""YCEF facilitator bio flyers: a 4-slide carousel (cover + one bio each), 1080x1350.
 Bios: the facilitators' own bios in the Drive folder "YCEF Facilitator Profile and Pictures", condensed.
 Photos: assets/photos/people/ycef-facilitators/ (consent rows in content/consent-log.csv).
 Run: python3 facilitators.py && node render.js
@@ -8,6 +8,8 @@ from build import *
 PH = ROOT.parent / "assets/photos/people/ycef-facilitators"
 SHADRACH = f"file://{PH}/akpem-terese-shadrach.jpg"
 GOME = f"file://{PH}/gome-ngona.jpg"
+DANIYAL = f"file://{PH}/muhammad-daniyal-kamal.jpg"   # cropped to head and shoulders from the full-length original
+T = 4
 
 EXTRA = f"""<style>
 .card {{ position:absolute; border-radius:30px; overflow:hidden; background:#fff; }}
@@ -21,31 +23,32 @@ EXTRA = f"""<style>
 .pt b {{ font-weight:900; }}
 </style>"""
 
-def bio(n, label, name_html, role, photo, pos, points, total=3):
+def bio(n, label, name_html, role, photo, pos, points, total=T, name_size=100):
     pts = "".join(f'<div class="pt"><div class="dot"></div><div>{p}</div></div>' for p in points)
     return page(f"""{EXTRA}
   <div class="label">{label}</div>
-  <div class="name" style="font-size:100px;margin-top:40px;width:470px">{name_html}</div>
-  <div class="role" style="margin-top:28px;width:470px">{role}</div>
+  <div class="name" style="font-size:{name_size}px;margin-top:40px;width:440px">{name_html}</div>
+  <div class="role" style="margin-top:28px;width:420px">{role}</div>
   <div style="position:absolute;right:66px;top:114px;width:440px;height:560px;border-radius:30px;background:{LIME}"></div>
   <div class="card" style="right:90px;top:90px;width:440px;height:560px"><img src="{photo}" style="object-position:{pos}"></div>
   <div class="pts" style="top:700px">{pts}</div>
 """, "off", n, total)
 
-# 1. Cover: both facilitators
-def portrait(photo, pos, name, sub, left):
-    return f'''<div class="card" style="left:{left}px;top:540px;width:430px;height:470px"><img src="{photo}" style="object-position:{pos}"></div>
-  <div style="position:absolute;left:{left}px;top:1036px;width:430px">
-    <div class="name" style="font-size:50px">{name}</div>
-    <div style="font-size:24px;font-weight:700;letter-spacing:.06em;margin-top:10px;color:{LIME}">{sub}</div></div>'''
+# 1. Cover: all three facilitators
+def portrait(photo, pos, name, sub, left, w=280):
+    return f'''<div class="card" style="left:{left}px;top:520px;width:{w}px;height:470px"><img src="{photo}" style="object-position:{pos}"></div>
+  <div style="position:absolute;left:{left}px;top:1012px;width:{w}px">
+    <div class="name" style="font-size:40px">{name}</div>
+    <div style="font-size:19px;font-weight:700;letter-spacing:.05em;margin-top:10px;color:{LIME}">{sub}</div></div>'''
 
 write("ycef-facilitators-01", page(f"""{EXTRA}
   <div class="label">Young Climate Educators Fellowship</div>
   <div class="brico" style="font-size:150px;margin-top:50px">Meet your<br><span style="color:{LIME}">facilitators.</span></div>
   {sprout(200, extra="right:-30px;top:-30px;transform:rotate(-12deg)")}
-  {portrait(SHADRACH, "50% 12%", "Dr. Akpem Terese<br>Shadrach", "VETERINARIAN &amp;<br>SOCIAL ENTREPRENEUR", 90)}
-  {portrait(GOME, "50% 14%", "Gome<br>Ng&rsquo;ona", "YOUTH ADVOCATE<br>ZAMBIA", 560)}
-""", "ink", 1, 3))
+  {portrait(SHADRACH, "50% 12%", "Dr. Akpem<br>Terese Shadrach", "VETERINARIAN &amp;<br>SOCIAL ENTREPRENEUR", 90)}
+  {portrait(GOME, "50% 14%", "Gome<br>Ng&rsquo;ona", "YOUTH ADVOCATE<br>ZAMBIA", 400)}
+  {portrait(DANIYAL, "50% 10%", "Muhammad<br>Daniyal Kamal", "CLIMATE ADVOCATE<br>PAKISTAN", 710)}
+""", "ink", 1, T))
 
 # 2. Dr. Akpem Terese Shadrach
 write("ycef-facilitators-02", bio(2, "YCEF facilitator",
@@ -68,4 +71,14 @@ write("ycef-facilitators-03", bio(3, "YCEF facilitator",
     "Passionate about <b>climate education and storytelling</b>",
     "Helps young people turn climate knowledge into <b>practical, community-led solutions</b>",
   ]))
+# 4. Muhammad Daniyal Kamal
+write("ycef-facilitators-04", bio(4, "YCEF facilitator",
+  "Muhammad<br>Daniyal<br><span style='color:" + OLIVE + "'>Kamal</span>",
+  "Climate advocate and sustainability leader from Pakistan",
+  DANIYAL, "50% 12%", [
+    "<b>Co-founder, RE-AD: Resilience and Adaptation</b>, a youth-led group for climate education, disaster risk reduction and water stewardship for students across Pakistan",
+    "<b>Official delegate for Pakistan at COP16</b> of the UN Convention to Combat Desertification, Riyadh",
+    "<b>Secretary SDGs, The Buraaq Association</b> (2023&ndash;2025), leading youth initiatives on the UN SDGs",
+    "Bachelor&rsquo;s in <b>Environmental Sciences</b>, Quaid-i-Azam University, Islamabad",
+  ], name_size=84))
 print("facilitators ok")
