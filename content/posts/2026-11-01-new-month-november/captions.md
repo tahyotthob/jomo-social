@@ -9,7 +9,7 @@ Big idea (Creative Director): the operator's own new-month format (giant month n
 
 It replaces the plain "2 days left" story and X post (operator, 2026-11-01). The YCEF countdown rides along in the caption and on the story.
 
-Photo: `oniwaya-cleanup-10.jpg` (three JOMO volunteers at the Oniwaya clean-up, Agege, Lagos), background removed with rembg. The cut-out is in `assets/photos/cutouts/`.
+Photo: `oniwaya-cleanup-10.jpg` (three JOMO volunteers at the Oniwaya clean-up, Agege, Lagos), background removed with `tools/cutout.py` (rembg with the BiRefNet portrait model, stray specks removed, edges cleaned so no fringe from the old background shows). The cut-out is in `assets/photos/cutouts/`.
 
 ### Sun 2026-11-01, 19:30 WAT · Instagram + Facebook · Youth and volunteer voices
 Hook: ~~October.~~ Happy new month. Welcome to November.
