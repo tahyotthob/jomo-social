@@ -18,3 +18,7 @@ Fact-check:
 | 9 | Copyright | Pexels licence, as in the original post |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-01)
+
+Approved by the operator ("Approve all").
