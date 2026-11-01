@@ -3,7 +3,10 @@ Role: Copywriter (hook by Creative Director, visuals by Designer)
 
 Big idea (Creative Director): proof of what a few people with gloves can do on one street. Show the drain, not people to blame. Ends on YCEF with the new date. Reuses last week's unposted carousel; slide 3 now uses oniwaya-cleanup-11.jpg (the photo with the operator's confirmed age), and its text describes what the clean-up took (INDEX.csv shows volunteers with rakes as well as gloves).
 
-### Thu 2026-10-29, 18:00 WAT · Instagram + Facebook · Impact proof
+### Sun 2026-11-01, 18:00 WAT · Instagram + Facebook · Impact proof
+
+Re-dated from Thu 29 Oct, which didn't go out (week plan of 1 Nov, approved 2026-11-01). Captions unchanged: "apply by Tue 3 Nov" still holds.
+
 Hook: ~~Blocked.~~ Cleaned up. One drain in Oniwaya.
 Visual: 4-slide 4:5 carousel, `visuals/w29-oniwaya-01.png` to `w29-oniwaya-04.png` (oniwaya-cleanup-01.jpg and -11.jpg, from our 2020 archive)
 

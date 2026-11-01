@@ -3,9 +3,9 @@ Role: Copywriter (hook by Creative Director, visuals by Designer)
 
 Bios condensed from the facilitators' own bios in the Drive folder "YCEF Facilitator Profile and Pictures" (`Doc's BIO.docx`, `Gome Ng'ona Bio`). Photos from the same folder, saved in `assets/photos/people/ycef-facilitators/`.
 
-Proposed slot: Fri 30 Oct, the day's open feed slot (only the TGIF story is booked). The operator decides.
+Slot: Mon 2 Nov (week plan of 1 Nov, approved 2026-11-01), the day before YCEF closes. The post itself still needs the operator's sign-off, photo consent and each facilitator's OK.
 
-### Fri 2026-10-30, 11:00 WAT · Instagram + Facebook (carousel) · Opportunities and calls to action
+### Mon 2026-11-02, 18:00 WAT · Instagram + Facebook (carousel) · Opportunities and calls to action
 Hook: Meet your facilitators.
 Visual: `visuals/ycef-facilitators-01.png` to `visuals/ycef-facilitators-03.png` (cover, Dr. Shadrach, Gome Ng'ona)
 
@@ -41,7 +41,7 @@ Apply: https://jomoclimatechange.org/events?apply=ycef
 
 Alt text: Slide 1: dark graphic titled "Meet your facilitators" for the Young Climate Educators Fellowship, with portrait photos of Dr. Akpem Terese Shadrach, veterinarian and social entrepreneur, in a navy suit and blue tie, and Gome Ng'ona, youth advocate from Zambia, in a navy sweater. Slide 2: Dr. Akpem Terese Shadrach's photo and bio: founder of Vet Konect, trained and mentored 30,000+ young people in digital skills, lead facilitator for Jobberman Nigeria in Benue State, 2023 Mandela Washington Fellow and 2024 Top Agri-food Pioneer (World Food Prize Foundation). Slide 3: Gome Ng'ona's photo and bio: background in education, climate advocacy and community engagement; youth-led climate action, malaria elimination advocacy and environmental sustainability; passionate about climate education and storytelling.
 
-### Fri 2026-10-30, 10:00 WAT · LinkedIn (document carousel) · Opportunities and calls to action
+### Mon 2026-11-02, 11:00 WAT · LinkedIn (document carousel) · Opportunities and calls to action
 Hook: Meet your facilitators.
 Visual: `visuals/ycef-facilitators-01.png` to `visuals/ycef-facilitators-03.png` (upload as a PDF document post, or as three images)
 
@@ -61,7 +61,7 @@ Apply: https://jomoclimatechange.org/events?apply=ycef
 
 Alt text: as for the Instagram carousel above.
 
-### Fri 2026-10-30, 15:00 WAT · X · Opportunities and calls to action
+### Mon 2026-11-02, 13:00 WAT · X · Opportunities and calls to action
 Hook: Meet your facilitators.
 Visual: `visuals/ycef-facilitators-01.png`
 
