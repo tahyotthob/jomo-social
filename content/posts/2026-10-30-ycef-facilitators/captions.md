@@ -18,7 +18,7 @@ Gome Ng’ona is a Zambian cultural heritage practitioner and youth advocate who
 
 Muhammad Daniyal Kamal is a climate advocate from Pakistan, co-founder of the youth-led RE-AD: Resilience and Adaptation, and was an official delegate at COP16 of the UN Convention to Combat Desertification.
 
-Swipe to read their bios ➡️
+Swipe to meet them ➡️
 
 Young Climate Educators Fellowship (YCEF): 3 virtual weekends, 50 fellows, Nigeria and Zambia, 18+. Applications close Tue 3 Nov, 11:59 PM WAT (12:59 AM Wed 4 Nov in Zambia).
 
@@ -35,7 +35,7 @@ Gome Ng’ona is a Zambian cultural heritage practitioner and youth advocate who
 
 Muhammad Daniyal Kamal is a climate advocate from Pakistan, co-founder of the youth-led RE-AD: Resilience and Adaptation, and was an official delegate at COP16 of the UN Convention to Combat Desertification.
 
-Swipe to read their bios.
+Swipe to meet them.
 
 Young Climate Educators Fellowship (YCEF): 3 virtual weekends, 50 fellows, Nigeria and Zambia, 18+. Applications close Tue 3 Nov, 11:59 PM WAT (12:59 AM Wed 4 Nov in Zambia).
 
@@ -43,7 +43,7 @@ Apply: https://jomoclimatechange.org/events?apply=ycef
 
 #YCEF #ClimateAction #YouthLed
 
-Alt text: Slide 1: dark graphic titled "Meet your facilitators" for the Young Climate Educators Fellowship, with portrait photos of Dr. Akpem Terese Shadrach, veterinarian and social entrepreneur, in a navy suit and blue tie, Gome Ng'ona, youth advocate from Zambia, in a navy sweater, and Muhammad Daniyal Kamal, climate advocate from Pakistan, in a white shirt and green Environmental Sciences graduation stole. Slide 2: Dr. Akpem Terese Shadrach's photo and bio: founder of Vet Konect, trained and mentored 30,000+ young people in digital skills, lead facilitator for Jobberman Nigeria in Benue State, 2023 Mandela Washington Fellow and 2024 Top Agri-food Pioneer (World Food Prize Foundation). Slide 3: Gome Ng'ona's photo and bio: background in education, climate advocacy and community engagement; youth-led climate action, malaria elimination advocacy and environmental sustainability; passionate about climate education and storytelling. Slide 4: Muhammad Daniyal Kamal's photo and bio: co-founder of RE-AD: Resilience and Adaptation; official delegate for Pakistan at COP16 of the UN Convention to Combat Desertification, Riyadh; Secretary SDGs, The Buraaq Association (2023–2025); Bachelor's in Environmental Sciences, Quaid-i-Azam University, Islamabad.
+Alt text: Slide 1: dark graphic, "Young Climate Educators Fellowship. Meet your facilitators.", with three cut-out portraits on lime panels: Dr. Akpem Terese Shadrach (veterinarian and social entrepreneur) in a navy suit and blue tie, Gome Ng'ona (youth advocate, Zambia) in a navy sweater, and Muhammad Daniyal Kamal (climate advocate, Pakistan) in a white shirt and green graduation stole. A lime bar reads "3 virtual weekends. Weekend 1: Fri 13 Nov". Slide 2: "Meet Shadrach. From animal health to 30,000+ young people trained." His bio card: veterinarian and social entrepreneur, founder of Vet Konect, a digital animal health platform for farmers and pet owners across Africa, 2023 Mandela Washington Fellow. Slide 3: "Meet Gome. Climate knowledge, turned into community-led solutions." His bio card: Zambian cultural heritage practitioner, development professional and youth advocate; youth-led climate action and malaria elimination advocacy; climate education and storytelling. Slide 4: "Meet Daniyal. Youth-led climate education, from Pakistan to a UN COP." His bio card: climate advocate with a degree in Environmental Sciences, co-founder of RE-AD: Resilience and Adaptation, official delegate at COP16 of the UN Convention to Combat Desertification.
 
 ### Mon 2026-11-02, 11:00 WAT · LinkedIn (document carousel) · Opportunities and calls to action
 Hook: Meet your facilitators.

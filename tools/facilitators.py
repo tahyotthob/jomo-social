@@ -1,84 +1,96 @@
-"""YCEF facilitator bio flyers: a 4-slide carousel (cover + one bio each), 1080x1350.
+"""YCEF facilitator flyers (Designer): a 4-slide carousel, 1080x1350. Cover + one slide each.
+Redesign after operator feedback with reference posts (2026-11-01):
+- everyone cut out onto the same brand backgrounds, so three very different photos read as one set;
+- short bios: one bold line plus two or three sentences, in a card;
+- name and role tags, an event bar with the YCEF dates, lime squiggles for energy.
 Bios: the facilitators' own bios in the Drive folder "YCEF Facilitator Profile and Pictures", condensed.
-Photos: assets/photos/people/ycef-facilitators/ (consent rows in content/consent-log.csv).
+Cut-outs: assets/photos/cutouts/ (made with tools/cutout.py; consent rows in content/consent-log.csv).
 Run: python3 facilitators.py && node render.js
 """
 from build import *
 
-PH = ROOT.parent / "assets/photos/people/ycef-facilitators"
-SHADRACH = f"file://{PH}/akpem-terese-shadrach.jpg"
-GOME = f"file://{PH}/gome-ngona.jpg"
-DANIYAL = f"file://{PH}/muhammad-daniyal-kamal.jpg"   # cropped to head and shoulders from the full-length original
+CUTS = ROOT.parent / "assets/photos/cutouts"
 T = 4
 
-EXTRA = f"""<style>
-.card {{ position:absolute; border-radius:30px; overflow:hidden; background:#fff; }}
-.card img {{ width:100%; height:100%; object-fit:cover; display:block; }}
-.name {{ font-family:Anton; text-transform:uppercase; line-height:1; letter-spacing:.01em; }}
-.role {{ font-weight:700; font-size:30px; line-height:1.3; }}
-.pts {{ position:absolute; left:90px; right:90px; }}
-.pt {{ display:flex; gap:26px; align-items:flex-start; padding:17px 0; border-top:2px solid rgba(30,34,32,.14); font-size:31px; line-height:1.3; }}
-.pt:first-child {{ border-top:0; }}
-.pt .dot {{ flex:none; width:22px; height:22px; border-radius:50%; background:{LIME}; margin-top:11px; }}
-.pt b {{ font-weight:900; }}
+STYLE = f"""<style>
+.squig {{ position:absolute; z-index:1; }}
+.panel {{ position:absolute; overflow:hidden; border-radius:26px; background:linear-gradient(170deg,{LIME} 0%,{LEAF} 60%,{OLIVE} 100%); }}
+.panel img {{ position:absolute; left:50%; transform:translateX(-50%); }}
+.nm {{ font-family:Anton; text-transform:uppercase; line-height:1.02; letter-spacing:.01em; }}
+.rl {{ font-weight:900; text-transform:uppercase; letter-spacing:.08em; color:{LIME}; }}
+.card {{ position:absolute; z-index:3; background:{OFF}; color:{INK}; border-radius:26px; padding:38px 40px; }}
+.card .hook {{ font-weight:900; font-size:36px; line-height:1.22; }}
+.card .bio {{ font-size:28px; line-height:1.42; margin-top:20px; }}
+.blob {{ position:absolute; z-index:1; }}
+.person {{ position:absolute; z-index:2; }}
+.tag {{ position:absolute; z-index:4; background:{LIME}; color:{INK}; padding:14px 24px 16px; transform:rotate(-2deg); }}
+.event {{ position:absolute; z-index:4; left:90px; right:90px; background:{LIME}; color:{INK}; border-radius:18px; padding:20px 28px;
+          display:flex; justify-content:space-between; align-items:center; font-weight:900; font-size:23px; letter-spacing:.04em; text-transform:uppercase; }}
+.event b {{ font-family:Anton; font-weight:400; font-size:34px; letter-spacing:.02em; }}
 </style>"""
 
-def bio(n, label, name_html, role, photo, pos, points, total=T, name_size=100):
-    pts = "".join(f'<div class="pt"><div class="dot"></div><div>{p}</div></div>' for p in points)
-    return page(f"""{EXTRA}
-  <div class="label">{label}</div>
-  <div class="name" style="font-size:{name_size}px;margin-top:40px;width:440px">{name_html}</div>
-  <div class="role" style="margin-top:28px;width:420px">{role}</div>
-  <div style="position:absolute;right:66px;top:114px;width:440px;height:560px;border-radius:30px;background:{LIME}"></div>
-  <div class="card" style="right:90px;top:90px;width:440px;height:560px"><img src="{photo}" style="object-position:{pos}"></div>
-  <div class="pts" style="top:700px">{pts}</div>
-""", "off", n, total)
+def squiggle(x, y, w, rot=0, col=LIME, stroke=26):
+    return f'''<svg class="squig" style="left:{x}px;top:{y}px;transform:rotate({rot}deg)" width="{w}" height="{w*0.45:.0f}" viewBox="0 0 220 100">
+      <path d="M10 70 C40 10 80 10 95 50 S150 95 165 45 S200 5 210 30" fill="none" stroke="{col}" stroke-width="{stroke}" stroke-linecap="round"/></svg>'''
 
-# 1. Cover: all three facilitators
-def portrait(photo, pos, name, sub, left, w=280):
-    return f'''<div class="card" style="left:{left}px;top:520px;width:{w}px;height:470px"><img src="{photo}" style="object-position:{pos}"></div>
-  <div style="position:absolute;left:{left}px;top:1012px;width:{w}px">
-    <div class="name" style="font-size:40px">{name}</div>
-    <div style="font-size:19px;font-weight:700;letter-spacing:.05em;margin-top:10px;color:{LIME}">{sub}</div></div>'''
+def blob(cx, cy, r, col=LIME):
+    # wavy badge shape, like a rosette
+    import math
+    pts = []
+    for i in range(0, 361, 6):
+        a = math.radians(i); rr = r * (1 + 0.06 * math.sin(10 * a))
+        pts.append(f"{cx + rr * math.cos(a):.1f},{cy + rr * math.sin(a):.1f}")
+    return f'<svg class="blob" style="left:0;top:0" width="1080" height="1350"><polygon points="{" ".join(pts)}" fill="{col}"/></svg>'
 
-write("ycef-facilitators-01", page(f"""{EXTRA}
-  <div class="label">Young Climate Educators Fellowship</div>
-  <div class="brico" style="font-size:150px;margin-top:50px">Meet your<br><span style="color:{LIME}">facilitators.</span></div>
-  {sprout(200, extra="right:-30px;top:-30px;transform:rotate(-12deg)")}
-  {portrait(SHADRACH, "50% 12%", "Dr. Akpem<br>Terese Shadrach", "VETERINARIAN &amp;<br>SOCIAL ENTREPRENEUR", 90)}
-  {portrait(GOME, "50% 14%", "Gome<br>Ng&rsquo;ona", "YOUTH ADVOCATE<br>ZAMBIA", 400)}
-  {portrait(DANIYAL, "50% 10%", "Muhammad<br>Daniyal Kamal", "CLIMATE ADVOCATE<br>PAKISTAN", 710)}
+PEOPLE = [
+    dict(slug="akpem-terese-shadrach", first="Shadrach", name="Dr. Akpem Terese Shadrach", short="Dr. Akpem<br>Terese Shadrach",
+         role="Veterinarian &amp; social entrepreneur", cover_w=360, cover_top=20, w=560, top=330,
+         hook="From animal health to 30,000+ young people trained.",
+         bio="Dr. Shadrach is a veterinarian and social entrepreneur. He founded Vet Konect, a digital animal health platform for farmers and pet owners across Africa, and is a 2023 Mandela Washington Fellow."),
+    dict(slug="gome-ngona", first="Gome", name="Gome Ng&rsquo;ona", short="Gome<br>Ng&rsquo;ona",
+         role="Youth advocate &middot; Zambia", cover_w=330, cover_top=24, w=520, top=380,
+         hook="Climate knowledge, turned into community-led solutions.",
+         bio="Gome is a Zambian cultural heritage practitioner, development professional and youth advocate. He has worked on youth-led climate action and malaria elimination advocacy, and loves climate education and storytelling."),
+    dict(slug="muhammad-daniyal-kamal", first="Daniyal", name="Muhammad Daniyal Kamal", short="Muhammad<br>Daniyal Kamal",
+         role="Climate advocate &middot; Pakistan", cover_w=300, cover_top=26, w=500, top=380,
+         hook="Youth-led climate education, from Pakistan to a UN COP.",
+         bio="Daniyal is a climate advocate with a degree in Environmental Sciences. He co-founded RE-AD: Resilience and Adaptation, a youth-led climate education organisation, and was an official delegate at COP16 of the UN Convention to Combat Desertification."),
+]
+
+def cut(p):
+    return f"file://{CUTS}/{p['slug']}-cutout.png"
+
+# ---------- 1. cover ----------
+panels = ""
+for i, p in enumerate(PEOPLE):
+    x = 90 + i * 310
+    panels += f'''<div class="panel" style="left:{x}px;top:470px;width:280px;height:450px">
+      <img src="{cut(p)}" style="top:{p['cover_top']}px;width:{p['cover_w']}px"></div>
+    <div style="position:absolute;left:{x}px;top:944px;width:280px">
+      <div class="nm" style="font-size:36px;color:{OFF}">{p['short']}</div>
+      <div class="rl" style="font-size:17px;margin-top:10px">{p['role']}</div></div>'''
+
+write("ycef-facilitators-01", page(f"""{STYLE}
+  {squiggle(860, 150, 210, -14)}
+  <div class="label" style="position:relative;z-index:3">Young Climate Educators Fellowship</div>
+  <div class="brico" style="position:relative;z-index:3;font-size:132px;margin-top:40px">Meet your<br><span style="color:{LIME}">facilitators.</span></div>
+  {panels}
+  <div class="event" style="top:1110px"><span>3 virtual weekends</span><span>Weekend 1: <b>Fri 13 Nov</b></span></div>
 """, "ink", 1, T))
 
-# 2. Dr. Akpem Terese Shadrach
-write("ycef-facilitators-02", bio(2, "YCEF facilitator",
-  "Dr. Akpem<br>Terese<br><span style='color:" + OLIVE + "'>Shadrach</span>",
-  "Veterinarian, social entrepreneur and youth trainer",
-  SHADRACH, "50% 15%", [
-    "<b>Founder, Vet Konect:</b> digital animal health coverage for livestock farmers and pet owners in Nigeria and other African countries",
-    "Has trained and mentored <b>30,000+ young people</b> in digital skills",
-    "<b>Lead facilitator, Jobberman Nigeria</b> in Benue State, coordinating 60+ digital skills trainers",
-    "<b>2023 Mandela Washington Fellow</b> and a 2024 Top Agri-food Pioneer (World Food Prize Foundation)",
-  ]))
-
-# 3. Gome Ng'ona
-write("ycef-facilitators-03", bio(3, "YCEF facilitator",
-  "Gome<br><span style='color:" + OLIVE + "'>Ng&rsquo;ona</span>",
-  "Zambian cultural heritage practitioner, development professional and youth advocate",
-  GOME, "50% 18%", [
-    "Background in <b>education, climate advocacy and community engagement</b>",
-    "Has worked on <b>youth-led climate action</b>, malaria elimination advocacy and environmental sustainability",
-    "Passionate about <b>climate education and storytelling</b>",
-    "Helps young people turn climate knowledge into <b>practical, community-led solutions</b>",
-  ]))
-# 4. Muhammad Daniyal Kamal
-write("ycef-facilitators-04", bio(4, "YCEF facilitator",
-  "Muhammad<br>Daniyal<br><span style='color:" + OLIVE + "'>Kamal</span>",
-  "Climate advocate and sustainability leader from Pakistan",
-  DANIYAL, "50% 12%", [
-    "<b>Co-founder, RE-AD: Resilience and Adaptation</b>, a youth-led group for climate education, disaster risk reduction and water stewardship for students across Pakistan",
-    "<b>Official delegate for Pakistan at COP16</b> of the UN Convention to Combat Desertification, Riyadh",
-    "<b>Secretary SDGs, The Buraaq Association</b> (2023&ndash;2025), leading youth initiatives on the UN SDGs",
-    "Bachelor&rsquo;s in <b>Environmental Sciences</b>, Quaid-i-Azam University, Islamabad",
-  ], name_size=84))
+# ---------- 2-4. one slide each ----------
+for n, p in enumerate(PEOPLE, start=2):
+    write(f"ycef-facilitators-0{n}", page(f"""{STYLE}
+  {squiggle(820, 30, 240, -12)}
+  <div class="blob" style="right:-120px;top:420px;width:640px;height:640px;border-radius:50%;background:{LIME}"></div>
+  <div style="position:absolute;z-index:2;right:0;top:0;width:560px;height:1210px;overflow:hidden">
+    <img src="{cut(p)}" style="position:absolute;right:{-60 if p['w'] > 540 else -30}px;top:{p['top']}px;width:{p['w']}px"></div>
+  <div class="label" style="position:relative;z-index:3">YCEF facilitator &middot; {n - 1} of 3</div>
+  <div class="brico" style="position:relative;z-index:3;font-size:120px;margin-top:30px">Meet<br><span style="color:{LIME}">{p['first']}.</span></div>
+  <div class="card" style="left:90px;top:440px;width:560px">
+    <div class="hook">{p['hook']}</div>
+    <div class="bio">{p['bio']}</div></div>
+  <div class="tag" style="left:90px;top:1030px"><div class="nm" style="font-size:40px">{p['name']}</div>
+    <div style="font-weight:900;font-size:19px;letter-spacing:.08em;text-transform:uppercase;margin-top:6px">{p['role']}</div></div>
+""", "ink", n, T))
 print("facilitators ok")

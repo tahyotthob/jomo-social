@@ -86,3 +86,26 @@ The operator added his folder to the Drive folder "YCEF Facilitator Profile and 
 ## Operator sign-off on the 4-slide version (2026-11-01)
 
 Approved by the operator. Photo consent for Muhammad Daniyal Kamal confirmed by the operator.
+
+## Redesign (2026-11-01), after operator feedback with reference posts
+
+**Design:**
+- All three facilitators are cut out (`tools/cutout.py`) onto the same lime and ink backgrounds.
+- Short bios sit in cards, with name and role tags.
+- The cover has an event bar: "3 virtual weekends · Weekend 1: Fri 13 Nov" (from `references/brand-guide.md`).
+
+**New hook lines:**
+
+| Line | Source | Result |
+|---|---|---|
+| "From animal health to 30,000+ young people trained." | veterinarian; "trained and mentored over 30,000+ youths" | Matches |
+| "Climate knowledge, turned into community-led solutions." | "translate climate knowledge into practical, community-led solutions" | Matches |
+| "Youth-led climate education, from Pakistan to a UN COP." | RE-AD is youth-led climate education; official delegate at COP16 of the UN Convention to Combat Desertification | Matches. The bio card names the desertification COP, so it isn't confused with the COP31 climate talks |
+
+**Bio cards:** every fact is from the lines already checked above, now shortened.
+
+Verdict: **PASS**. The post content changed, so it needs the operator's sign-off again.
+
+## Operator sign-off on the redesign (2026-11-02)
+
+Approved by the operator.
