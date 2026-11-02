@@ -105,3 +105,7 @@ Approved by the operator. Photo consent for Muhammad Daniyal Kamal confirmed by 
 **Bio cards:** every fact is from the lines already checked above, now shortened.
 
 Verdict: **PASS**. The post content changed, so it needs the operator's sign-off again.
+
+## Operator sign-off on the redesign (2026-11-02)
+
+Approved by the operator.
