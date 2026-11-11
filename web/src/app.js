@@ -265,9 +265,10 @@
         <div class="ch-files">${ms.map((m) => `<span>${h(m.file.split("/").pop())}${dl(m)}</span>`).join("")}</div>` : `<div class="note">No visual: text only.</div>`}
       ${tabs}
       ${c.variants.length ? `<div class="cap-box"><div class="ch-label">${h(c.platform)} caption</div><pre class="ch-text"></pre>
-        <div class="cap-actions"><button class="btn sm primary" data-act="copy">Copy caption</button><button class="btn sm" data-act="txt">.txt</button></div></div>`
+        <div class="cap-actions"><button class="btn sm" data-act="copy">Copy caption</button><button class="btn sm" data-act="txt">.txt</button></div></div>`
         : `<div class="cap-box"><div class="ch-label">No caption</div><pre>The text is on the image.</pre></div>`}
-      ${c.thread.length ? `<details class="ch-more"><summary>Copy one post at a time</summary>${c.thread.map((t, k) => `<div class="cs-block"><div class="cs-label">Post ${k + 1} of ${c.thread.length}<button class="cs-copy" data-copy="${h(t)}">Copy</button></div><pre>${h(t)}</pre></div>`).join("")}</details>` : ""}
+      ${COMPOSER[c.platform] ? `<div class="post-to"><button class="btn post-btn" data-act="post">Post to ${h(c.platform)}</button><div class="note post-hint" hidden></div></div>` : ""}
+      ${c.thread.length ? `<details class="ch-more ch-thread"><summary>Copy one post at a time</summary>${c.thread.map((t, k) => `<div class="cs-block"><div class="cs-label">Post ${k + 1} of ${c.thread.length}<button class="cs-copy" data-copy="${h(t)}">Copy</button></div><pre>${h(t)}</pre></div>`).join("")}</details>` : ""}
       ${c.altText ? `<details class="ch-more"><summary>Alt text</summary><div class="cs-block"><div class="cs-label">Alt text<button class="cs-copy" data-copy="${h(c.altText)}">Copy</button></div><pre>${h(c.altText)}</pre></div></details>` : ""}
       ${c.visual ? `<details class="ch-more"${c.variants.length ? "" : " open"}><summary>Posting notes</summary><div class="note ch-notes">${h(c.visual)}</div></details>` : ""}
       <button class="btn sm ch-kit" data-act="kit">Download ${h(c.platform)} kit (.zip)</button>
@@ -281,7 +282,87 @@
     el.querySelector('[data-act="txt"]')?.addEventListener("click", () => dlText(c.variants[v].text, `${p.slug}-${c.id}${c.variants.length > 1 ? "-" + slug(c.variants[v].label) : ""}.txt`));
     el.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copy(b.dataset.copy, "Copied")));
     el.querySelector('[data-act="kit"]').addEventListener("click", (e) => buildKit(p, [c], e.currentTarget));
+    el.querySelector('[data-act="post"]')?.addEventListener("click", (e) => postTo(p, c, v, e.currentTarget, el));
+    // on a phone, load the images now so the share sheet can open the moment the button is tapped
+    if (onPhone()) loadFiles(postMedia(p, c).filter((m) => m.type === "image")).catch(() => {});
     show();
+  }
+
+  // ---------- "Post to …": hand the visuals and caption to the platform; the operator still presses Post there.
+  // Phone: the share sheet sends the visuals straight into the app (X also takes the text); the caption is on the clipboard.
+  // Computer: the visuals download, the caption is copied, and the platform opens in a new tab (X with post 1 filled in).
+  // Instagram and Facebook don't let any website fill in the caption for you, so it is always one paste away.
+  const COMPOSER = {
+    Instagram: () => "https://www.instagram.com/",
+    Facebook: () => "https://www.facebook.com/",
+    LinkedIn: () => "https://www.linkedin.com/feed/",
+    X: (text) => `https://x.com/intent/post?text=${encodeURIComponent(text)}`,
+  };
+  const MIME = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", mp4: "video/mp4", mov: "video/quicktime" };
+  const onPhone = () => !!navigator.canShare && matchMedia("(pointer: coarse)").matches;
+  const postMedia = (p, c) => mediaOf(p, c).filter((m) => m.type === "image" || m.type === "video");
+  const fileReady = new Map(), fileLoading = new Map();
+  const loadFiles = (ms) => Promise.all(ms.map((m) => {
+    if (fileReady.has(m.url)) return fileReady.get(m.url);
+    if (!fileLoading.has(m.url)) fileLoading.set(m.url, fetch(m.url).then((r) => { if (!r.ok) throw new Error(r.status); return r.blob(); }).then((b) => {
+      const name = m.file.split("/").pop(); const f = new File([b], name, { type: MIME[name.split(".").pop().toLowerCase()] || b.type });
+      fileReady.set(m.url, f); return f;
+    }).finally(() => fileLoading.delete(m.url)));
+    return fileLoading.get(m.url);
+  }));
+  function postHint(c, phone, n) {
+    const rest = c.thread.length > 1 ? ` Then reply to your post with posts 2 to ${c.thread.length}: tap Copy on each one under "Copy one post at a time".` : "";
+    const files = n ? (n > 1 ? `the ${n} files` : "the file") : "";
+    if (phone) return {
+      Instagram: `Choose Instagram, then Feed (or Reels for a video). The caption is copied: long-press the caption box, tap Paste, then Share.`,
+      Facebook: `Choose Facebook (switch to the JOMO page if it asks). The caption is copied: tap the text box, Paste, then Post.`,
+      LinkedIn: `Choose LinkedIn. The caption is copied: tap the text box, Paste, then Post.`,
+      X: `Choose X. ${c.thread.length > 1 ? "Post 1" : "The post"} is filled in${n ? ` and ${n > 1 ? `the ${n} images are` : "the image is"} attached` : ""}; check it and tap Post.${rest}`,
+    }[c.platform];
+    const add = files ? `add ${files} from your Downloads folder` : "";
+    return {
+      Instagram: `Caption copied${files ? ` and ${files} downloaded` : ""}. On Instagram, click Create, ${add || "pick your visual"}, then paste the caption (Ctrl+V) and click Share.`,
+      Facebook: `Caption copied${files ? ` and ${files} downloaded` : ""}. On the JOMO Facebook page, click Photo/video, ${add || "pick your visual"}, paste the caption (Ctrl+V) and click Post.`,
+      LinkedIn: `Caption copied${files ? ` and ${files} downloaded` : ""}. On LinkedIn, start a post as the JOMO page, ${add ? add + ", " : ""}paste the caption (Ctrl+V) and click Post.`,
+      X: `${c.thread.length > 1 ? "Post 1 is" : "The post is"} filled in on X${files ? `; ${add} with the image button` : ""}. Check it and click Post.${rest}`,
+    }[c.platform];
+  }
+  async function postTo(p, c, v, btn, el) {
+    const text = c.thread.length ? c.thread[0] : c.variants[v]?.text || "";
+    const ms = postMedia(p, c);
+    const hint = el.querySelector(".post-hint");
+    const say = (t) => { hint.textContent = t; hint.hidden = false; };
+    const label = `Post to ${c.platform}`;
+    if (c.thread.length > 1) el.querySelector(".ch-thread")?.setAttribute("open", "");
+    if (text) await navigator.clipboard?.writeText(text).catch(() => {});
+
+    if (onPhone()) {
+      btn.textContent = label;
+      let files = ms.map((m) => fileReady.get(m.url));
+      if (!files.every(Boolean)) {
+        btn.disabled = true; btn.textContent = "Getting the visuals ready…";
+        try { files = await loadFiles(ms); } catch { btn.disabled = false; btn.textContent = label; return toast("Could not load the visuals"); }
+        btn.disabled = false; btn.textContent = label;
+      }
+      // Instagram and Facebook drop shared text, so only X gets it; the caption is on the clipboard for everyone
+      const data = files.length ? { files } : { text };
+      if (files.length && c.platform === "X") data.text = text;
+      if (navigator.canShare(data)) {
+        say(postHint(c, true, files.length));
+        try { await navigator.share(data); return; }
+        catch (e) {
+          if (e.name === "AbortError") return;
+          // the browser wants a fresh tap after the visuals finished loading
+          if (e.name === "NotAllowedError") { btn.textContent = `Ready: tap to open ${c.platform}`; return; }
+        }
+      }
+    }
+
+    // computer (or a phone that can't share these files): download, copy, open the platform
+    ms.forEach((m) => { const a = document.createElement("a"); a.href = m.url; a.download = m.file.split("/").pop(); document.body.append(a); a.click(); a.remove(); });
+    window.open(COMPOSER[c.platform](text), "_blank", "noopener");
+    say(postHint(c, false, ms.length));
+    toast(`${c.platform} opened: caption copied`);
   }
   // a kit holds exactly one channel post per folder; several channels → one folder each
   async function addChannel(zip, p, c, base) {

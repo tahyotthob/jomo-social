@@ -22,3 +22,7 @@ Verdict: **PASS**
 ## Operator sign-off (2026-11-01)
 
 Approved by the operator ("Approve all").
+
+## Update for the week of 8 Nov (2026-11-09)
+
+Re-dated to Thu 12 Nov. The caption opener is now COP31's Resilient Cities day (official themed-days page) instead of World Tsunami Awareness Day; no other claims changed. **PASS**

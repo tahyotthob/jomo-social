@@ -109,3 +109,7 @@ Verdict: **PASS**. The post content changed, so it needs the operator's sign-off
 ## Operator sign-off on the redesign (2026-11-02)
 
 Approved by the operator.
+
+## Update for the week of 8 Nov (2026-11-09)
+
+Re-dated to Wed 11 Nov. Captions changed: applications are closed, so they introduce the people leading Weekend 1 (Fri 13 Nov). The apply link, the close date and "50 fellows" are removed (50 is a target, not a confirmed intake). Slides unchanged. **PASS**
