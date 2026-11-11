@@ -26,7 +26,8 @@ const ROLE_BY_FILE = [
   [/signoff-pack/, "Editor-in-Chief"], [/week-briefs/, "Creative Director"], [/^captions/, "Copywriter"], [/^review/, "Policy and Safety Reviewer"],
 ];
 
-const read = (p) => fs.readFileSync(p, "utf8");
+// normalise Windows line endings: a trailing \r stops the line patterns (e.g. "Alt text:") from matching
+const read = (p) => fs.readFileSync(p, "utf8").replace(/\r\n?/g, "\n");
 const exists = (p) => fs.existsSync(p);
 
 function git(args) {

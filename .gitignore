@@ -14,3 +14,4 @@ blender/renders/*/_tt/
 blender/renders/*/_ps/
 blender/renders/*/_anim/
 *.blend1
+.venv-blender/
