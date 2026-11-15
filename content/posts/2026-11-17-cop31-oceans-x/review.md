@@ -17,3 +17,7 @@ Verdict: **PASS**
 ## Brand review (Marketing plugin, brand-review against `references/voice.md`, 2026-11-15)
 
 No changes.
+
+## Operator sign-off (2026-11-15)
+
+Approved by the operator ("Approve all").
