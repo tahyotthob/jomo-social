@@ -25,3 +25,7 @@ Verdict: **PASS**
 ## Brand review (Marketing plugin, brand-review against `references/voice.md`, 2026-11-15)
 
 LinkedIn hashtags cut from 5 to 2; a call to action ("try the mapping") added to every channel.
+
+## Operator sign-off (2026-11-15)
+
+Approved by the operator ("Approve all").
