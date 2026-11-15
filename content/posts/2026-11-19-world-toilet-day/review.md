@@ -20,3 +20,7 @@ Verdict: **PASS**
 ## Brand review (Marketing plugin, brand-review against `references/voice.md`, 2026-11-15)
 
 LinkedIn hashtags cut from 3 to 2 and a genuine question added; the X hashtag moved out of mid-sentence to the end.
+
+## Operator sign-off (2026-11-15)
+
+Approved by the operator ("Approve all").
