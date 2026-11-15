@@ -14,7 +14,20 @@ Every post should serve at least one of these.
 
 ## Programmes and partners
 
-- **Running now:** JOMO's Pods (the podcast) and the Young Climate Educators Fellowship (YCEF). YCEF applications opened Mon 12 Oct 2026 and now close **Tue 3 Nov 2026** (extended from Mon 26 Oct; operator, 2026-10-24); Weekend 1 is Fri 13 Nov 2026. YCEF is a 3-weekend virtual programme for 50 fellows across Nigeria and Zambia, open to university students and grassroots community volunteers aged 18 and over. Fellows research hyper-local climate challenges, design youth-led "sustenance engineering" projects and learn to pitch for seed funding. Never promise funding: there is no funding guarantee and no pitch competition.
+- **Running now:** JOMO's Pods (the podcast) and the Young Climate Educators Fellowship (YCEF). YCEF applications opened Mon 12 Oct 2026 and now close **Tue 3 Nov 2026** (extended from Mon 26 Oct; operator, 2026-10-24); applications are now closed. The programme runs 11 to 29 Nov 2026 (orientation Sat 14 Nov), then a 30-day climate action challenge. YCEF is a 3-weekend virtual programme for 50 fellows across Nigeria and Zambia, open to university students and grassroots community volunteers aged 18 and over. Fellows research hyper-local climate challenges, design youth-led "sustenance engineering" projects and learn to pitch for seed funding. Never promise funding: there is no funding guarantee and no pitch competition.
+- **YCEF 2026 final schedule (operator, 2026-11-15):**
+  - **Week 1, Understand:**
+    - Sat 14 Nov: 1.1 Climate Change: Science, Causes and Impacts (Kamal Daniyal); 1.2 Climate Challenges in Nigeria and Zambia (Gome Ng'ona).
+    - Sun 15 Nov: 1.3 Community Problem Mapping and Evidence Gathering (Graham Favour).
+  - **Week 2, Educate:**
+    - Sat 21 Nov: 2.1 Climate Storytelling and Policy Development & Architecture (Ashraf Nehal); 2.2 Designing Effective Climate Lessons and Campaigns (Kamal Daniyal).
+    - Sun 22 Nov: 2.3 Micro-teaching: Fellows Practise and Receive Feedback (Ochanya Okoh).
+  - **Week 3, Act:**
+    - Sat 28 Nov: 3.1 Design Thinking and Community Solutions (Ochanya Okoh); 3.2 Project Planning, Budgeting and Sustainability (Ashraf Nehal).
+    - Sun 29 Nov: 3.3 Impact Measurement and Project Pitching (Dr. Akpem Terese Shadrach).
+  - **Then:** a 30-day Climate Action Challenge.
+  - **Tagline:** "YCEF 2026: Understand. Educate. Act."
+  - **This schedule overrides the handbook's session table.** James Odhiambo and Joseph Ngur are not on the final schedule.
 - **YCEF application link:** https://jomoclimatechange.org/events?apply=ycef (use this in every YCEF call to action; confirmed working by the operator, 2026-10-23). Applications close **Tue 3 Nov 2026 at 11:59 PM WAT**, which is 12:59 AM on Wed 4 Nov in Zambia (operator, 2026-10-24; the earlier close of Mon 26 Oct was extended). Say both times when a post speaks to Zambia.
 - **Past work to use as proof:** tree planting, community and market clean-ups, school sensitisation, the "My Photo With Earth" campaign.
 - **Why JOMO built YCEF (operator, 2026-10-24):** to scale JOMO's impact. Many young people want to solve problems in their communities but don't know how to go about it or where to start.

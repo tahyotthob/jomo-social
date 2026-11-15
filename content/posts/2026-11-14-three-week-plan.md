@@ -18,12 +18,22 @@ Role: Editor-in-Chief
 
 ## Holding points (operator)
 
-- **Final session timetable:** the operator will send it. The handbook and the designer's posters disagree (for example, which day Ashraf Nehal facilitates). Until then:
-  - session and facilitator posts carry [SESSION], [DATE] and [FACILITATOR];
-  - no session poster goes out unconfirmed.
+- **Final session timetable: received 2026-11-15** (now in `references/brand-guide.md`; it overrides the handbook):
+
+| Date | Session | Facilitator |
+|---|---|---|
+| Sat 14 Nov | 1.1 Climate Change: Science, Causes and Impacts | Kamal Daniyal |
+| Sat 14 Nov | 1.2 Climate Challenges in Nigeria and Zambia | Gome Ng'ona |
+| Sun 15 Nov | 1.3 Community Problem Mapping and Evidence Gathering | Graham Favour |
+| Sat 21 Nov | 2.1 Climate Storytelling and Policy Development & Architecture | Ashraf Nehal |
+| Sat 21 Nov | 2.2 Designing Effective Climate Lessons and Campaigns | Kamal Daniyal |
+| Sun 22 Nov | 2.3 Micro-teaching: Fellows Practise and Receive Feedback | Ochanya Okoh |
+| Sat 28 Nov | 3.1 Design Thinking and Community Solutions | Ochanya Okoh |
+| Sat 28 Nov | 3.2 Project Planning, Budgeting and Sustainability | Ashraf Nehal |
+| Sun 29 Nov | 3.3 Impact Measurement and Project Pitching | Dr. Akpem Terese Shadrach |
 - **Ashraf Nehal's bio:** being confirmed with him. Use his name and confirmed role only until then.
 - **Swapped poster titles:** the two existing facilitator posters have Daniyal's and Ashraf's titles swapped (operator confirmed). They must not be posted as they are. The fix: Daniyal is "Co-Founder of RE-AD, Environmental Scientist, Climate Advocate"; Ashraf takes the handbook's title once his bio is confirmed.
-- **Photo consent:** consent is on record for Dr. Shadrach, Gome Ng'ona and Muhammad Daniyal Kamal. Ashraf Nehal, Ochanya Okoh, Graham Favour, James Odhiambo and Joseph Ngur need consent rows before their photos are used.
+- **Photo consent:** consent is on record for Dr. Shadrach, Gome Ng'ona and Muhammad Daniyal Kamal. **Graham Favour, Ashraf Nehal and Ochanya Okoh** need consent rows before their photos are used. Graham's photo is from the handbook; Ashraf's is on the designer's poster.
 - **Fellows:** no names, faces, screenshots or numbers without permission. The handbook's own rule is "Protect privacy". Behind-the-scenes content uses only screenshots with consent, or no faces.
 
 ## Content series running through the three weeks
@@ -36,9 +46,10 @@ Role: Editor-in-Chief
 
 | # | Date | Time (WAT) | Platform | Pillar | Programme | Hook | Format | Notes |
 |---|---|---|---|---|---|---|---|---|
-| A1 | Sat 14 | 09:00 | IG + FB story, LinkedIn 11:00, X 12:00 | Opportunities and calls to action | YCEF | YCEF starts today. Welcome, fellows. | Story; 16:9 image | The approved-for-review Weekend 1 post, re-dated from Fri 13. Orientation today |
-| A2 | Sat 14 | 18:00 | IG + FB, X 12:00 | Climate, explained locally | | ~~A classroom subject.~~ It's your street. | Carousel, 5 slides (**big swing, week A**) | Drafted last week for COP31's youth, education and skills day (today). Fits YCEF's opening day too |
-| A3 | Mon 16 | 18:00 | IG + FB, LinkedIn 11:00 | Climate, explained locally | YCEF | What 50 young climate educators learned this weekend: 3 takeaways. | Carousel, 4 slides | Series 2. Topics from Weekend 1: climate science; climate challenges in Nigeria and Zambia; community problem mapping. Facts checked as usual |
+| A0 | **Sun 15 (today)** | 09:00 | IG + FB, LinkedIn | Youth and volunteer voices | YCEF | Today at YCEF: Graham Favour on community problem mapping and evidence gathering. | Facilitator poster 4:5 | Session 1.3. Needs Graham's photo consent and the operator's yes today; otherwise skip |
+| A1 | Sat 14 (passed) | 09:00 | IG + FB story, LinkedIn 11:00, X 12:00 | Opportunities and calls to action | YCEF | YCEF starts today. Welcome, fellows. | Story; 16:9 image | The approved-for-review Weekend 1 post, re-dated from Fri 13. Orientation today |
+| A2 | **Wed 18** (moved; Sat 14 passed) | 18:00 | IG + FB, X 12:00 | Climate, explained locally | | ~~A classroom subject.~~ It's your street. | Carousel, 5 slides (**big swing, week A**) | Drafted for COP31's youth day (Sat 14, passed). Moved to Wed 18 with the COP31 tape swapped for "YCEF 2026: Understand. Educate. Act." |
+| A3 | Mon 16 | 18:00 | IG + FB, LinkedIn 11:00 | Climate, explained locally | YCEF | What 50 young climate educators learned this weekend: 3 takeaways. | Carousel, 4 slides | Series 2. Also carries the Weekend 1 facilitators who weren't posted in time (Kamal Daniyal, Gome Ng'ona, Graham Favour) |
 | A4 | Tue 17 | 12:00 | X | Climate, explained locally | | COP31's theme today: oceans, nature and land. Lagos lives on a lagoon. | Single post + 16:9 image | Process only. No outcomes |
 | A5 | Thu 19 | 18:00 | IG + FB, LinkedIn 11:00, X 12:00 | Climate, explained locally | | World Toilet Day: when the drain floods, where does the toilet go? | Carousel, 4 slides | UN theme "Safe toilets. Equal futures." Sanitation, flooding and open drains in Lagos. No shaming: no identifiable people in poor conditions |
 | A6 | Fri 20 | 12:00 | X, LinkedIn 11:00 | Climate, explained locally | | COP31 ends today. Here's what happens on the last day of a COP. | Thread of 4; single image | Process only. A plain-language "what was agreed" follows next week, once outcomes are published and fact-checked |
@@ -47,7 +58,8 @@ Role: Editor-in-Chief
 
 | # | Date | Time (WAT) | Platform | Pillar | Programme | Hook | Format | Notes |
 |---|---|---|---|---|---|---|---|---|
-| B1 | Sat 21 | 09:00 | IG + FB, LinkedIn, X | Youth and volunteer voices | YCEF | Meet your facilitator: [FACILITATOR], [SESSION] | Single image 4:5 per session (a "Meet your facilitator" poster) | Series 1. Waits for the final timetable and consent |
+| B1 | Sat 21 | 09:00 | IG + FB, LinkedIn, X | Youth and volunteer voices | YCEF | Today at YCEF: Ashraf Nehal (2.1 Climate Storytelling and Policy) and Kamal Daniyal (2.2 Designing Effective Climate Lessons and Campaigns). | Two facilitator posters 4:5 | Series 1. Ashraf: name and role only until his bio is confirmed; needs consent |
+| B1b | Sun 22 | 09:00 | IG + FB, LinkedIn | Youth and volunteer voices | YCEF | Today at YCEF: Ochanya Okoh leads micro-teaching, with fellows teaching for the first time. | Facilitator poster 4:5 | Needs consent and her bio from the handbook (Technical Adviser on Agriculture, Benue State Government) |
 | B2 | Sat 21 | 18:00 | IG story | Youth and volunteer voices | YCEF | Weekend 2: learning to teach climate. | Story with a poll sticker ("Who taught you about climate?") | Behind-the-scenes. No fellows' faces without consent |
 | B3 | Mon 23 | 18:00 | IG + FB, LinkedIn 11:00 | Climate, explained locally | YCEF | How to explain climate change to your neighbour in 60 seconds. | Carousel, 5 slides (**big swing, week B**) | Series 2 from Weekend 2 (storytelling; effective climate lessons and campaigns). Gives the public a usable skill |
 | B4 | Tue 24 | 11:00 | LinkedIn, X 12:00 | Climate, explained locally | | COP31 is over. What was agreed, in plain language. | Document carousel; thread | Written after outcomes are published. Facts only: no scoring, blocs or finance fights |
@@ -58,7 +70,8 @@ Role: Editor-in-Chief
 
 | # | Date | Time (WAT) | Platform | Pillar | Programme | Hook | Format | Notes |
 |---|---|---|---|---|---|---|---|---|
-| C1 | Sat 28 | 09:00 | IG + FB, LinkedIn, X | Youth and volunteer voices | YCEF | Meet your facilitator: [FACILITATOR], [SESSION] | Single image 4:5 per session | Series 1 for Weekend 3 |
+| C1 | Sat 28 | 09:00 | IG + FB, LinkedIn, X | Youth and volunteer voices | YCEF | Today at YCEF: Ochanya Okoh (3.1 Design Thinking) and Ashraf Nehal (3.2 Project Planning, Budgeting and Sustainability). | Two facilitator posters 4:5 | Series 1 |
+| C1b | Sun 29 | 09:00 | IG + FB, LinkedIn, X | Youth and volunteer voices | YCEF | Today at YCEF: Dr. Akpem Terese Shadrach on impact measurement and project pitching. | Facilitator poster 4:5 | Consent on record |
 | C2 | Sun 29 | 18:00 | IG story | Opportunities and calls to action | YCEF | Last YCEF session today. Tomorrow, 50 fellows take it to their streets. | Story with a countdown sticker | Countdown to the challenge |
 | C3 | Mon 30 | 18:00 | IG + FB, LinkedIn 11:00, X 12:00 | Opportunities and calls to action | YCEF | The 30-day climate action challenge starts today. | Carousel, 5 slides (**big swing, week C**) | The four phases from the handbook. Invites the public to follow along. No promises of funding or results |
 | C4 | Tue 1 Dec | 09:00 | IG + FB, X | Youth and volunteer voices | | ~~November.~~ Happy new month. Welcome to December. | Single image (new-month format) | Volunteer cut-out format the operator liked. Also GivingTuesday: "give an hour, not money"; no funding asks |
