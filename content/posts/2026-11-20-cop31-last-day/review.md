@@ -17,3 +17,7 @@ Verdict: **PASS**
 ## Brand review (Marketing plugin, brand-review against `references/voice.md`, 2026-11-15)
 
 Ending question added to the thread and to LinkedIn, so the post ends with something to do.
+
+## Operator sign-off (2026-11-15)
+
+Approved by the operator ("Approve all").
