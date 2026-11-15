@@ -1,4 +1,4 @@
-# Three-week plan: Sat 14 Nov to Fri 4 Dec 2026, built around YCEF (awaiting operator approval)
+# Three-week plan: Sat 14 Nov to Fri 4 Dec 2026, built around YCEF (approved by the operator, 2026-11-15)
 Role: Editor-in-Chief
 
 **Source:** the YCEF 2026 Fellow Brochure and Handbook (operator, 2026-11-13), the Trend Scout (2026-11-13) and the operator's answers.
