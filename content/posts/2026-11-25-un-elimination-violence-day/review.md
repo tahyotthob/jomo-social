@@ -8,3 +8,7 @@ Role: Policy and Safety Reviewer
 | 13 | Safety | No stories or images of survivors; only the UN's own post is shared |
 
 Verdict: **PASS**. The operator should check the exact UN post before reposting.
+
+## Operator sign-off (2026-11-21)
+
+Approved by the operator ("Approve all").
