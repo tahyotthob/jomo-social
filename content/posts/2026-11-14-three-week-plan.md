@@ -121,3 +121,10 @@ The changes for this run:
    - detail goes in the caption.
 4. **Subtler texture and detail:** real paper grain, photo grading in the brand palette, and consistent cut-out shadows. No decorative clip-art leaves on every slide.
 5. **Typographic hierarchy:** a strong headline, a small label and generous white space.
+
+## Week B changes (operator, 2026-11-21)
+
+- **All of week A went out** (operator, 2026-11-21).
+- **Sat 21 facilitator posts (B1) skipped.** Ashraf Nehal is held until his bio is confirmed. Kamal Daniyal and Ashraf are credited in the Mon 23 recap instead.
+- **B4 reframed:** COP31 has no official adopted outcome yet (Fact-checker, 2026-11-21), so Tue 24 becomes "How does a COP agree anything?", process only. It gets re-checked on Mon 23. "What was agreed" follows once the decisions are published.
+- **Wed 25 Nov:** quiet share of the UN's post on LinkedIn (operator).
