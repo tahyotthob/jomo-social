@@ -8,3 +8,7 @@ Role: Policy and Safety Reviewer
 | 13 | Safety | No fellows shown |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-21)
+
+Approved by the operator ("Approve all").
