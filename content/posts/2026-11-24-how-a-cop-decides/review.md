@@ -14,3 +14,7 @@ Role: Policy and Safety Reviewer (fact-check by Fact-checker)
 | 5 | Boosting | Not planned |
 
 Verdict: **PASS**, with the re-check on Mon 23 Nov before posting.
+
+## Operator sign-off (2026-11-21)
+
+Approved by the operator ("Approve all").
