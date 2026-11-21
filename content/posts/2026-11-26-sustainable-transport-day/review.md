@@ -13,3 +13,7 @@ Role: Policy and Safety Reviewer (fact-check by Fact-checker)
 | 13 | Safety | No road-safety advice beyond walking short trips |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-21)
+
+Approved by the operator ("Approve all").
