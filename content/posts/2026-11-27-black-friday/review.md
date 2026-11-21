@@ -9,3 +9,7 @@ Role: Policy and Safety Reviewer (fact-check by Fact-checker)
 | 9 | Copyright | JOMO's own photo; no brand logos |
 
 Verdict: **PASS**
+
+## Operator sign-off (2026-11-21)
+
+Approved by the operator ("Approve all").
